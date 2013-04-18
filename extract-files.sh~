@@ -16,4 +16,4 @@ for FILE in `cat $WHEREPF/proprietary-files.txt | grep -v ^# | grep -v ^$`; do
     adb pull /system/$FILE $BASE/$FILE
 done
 
-./$WHEREPF/setup-makefiles.sh
+./setup-makefiles.sh

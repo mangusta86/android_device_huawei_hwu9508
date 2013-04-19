@@ -21,11 +21,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):zImage
 
 #init
+#   $(LOCAL_PATH)/prebuilt/init.huawei.usb.rc:root/init.huawei.usb.rc \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/init.rc:root/init.rc \
     $(LOCAL_PATH)/prebuilt/init.huawei.rc:root/init.huawei.rc \
     $(LOCAL_PATH)/prebuilt/init.usb.rc:root/init.usb.rc \
-    $(LOCAL_PATH)/prebuilt/init.huawei.usb.rc:root/init.huawei.usb.rc \
     $(LOCAL_PATH)/prebuilt/ueventd.huawei.rc:root/ueventd.huawei.rc
 
 # vold

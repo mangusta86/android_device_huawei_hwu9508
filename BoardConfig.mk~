@@ -2,19 +2,17 @@
 -include vendor/huawei/u9508/BoardConfigVendor.mk
 
 #cpu + kernel info for boot.img
-TARGET_CPU_ABI := armeabi-v7a
-TARGET_CPU_ABI2 := armeabi
-TARGET_CPU_SMP := true
 TARGET_ARCH := arm
-TARGET_ARCH_VARIANT := armv7-a
-TARGET_ARCH_VARIANT_CPU := cortex-a9
-
 BOARD_KERNEL_CMDLINE := console=ttyS0 vmalloc=384M k3v2_pmem=1 mmcparts=mmcblk0:p1(xloader),p3(nvme),p4(misc),p5(splash),p6(oeminfo),p7(reserved1),p8(reserved2),p9(recovery2),p10(recovery),p11(boot),p12(modemimage),p13(modemnvm1),p14(modemnvm2),p15(system),p16(cache),p17(cust),p18(userdata);mmcblk1:p1(ext_sdcard)
 
 BOARD_KERNEL_PAGESIZE := 2048 
 BOARD_KERNEL_BASE := 0x80000000
 TARGET_PREBUILT_KERNEL := device/huawei/u9508/zImage
 
+TARGET_CPU_ABI := armeabi-v7a
+#TARGET_CPU_ABI2 := armeabi
+#TARGET_CPU_SMP := true
+#TARGET_ARCH_VARIANT := armv7-a-neon
 #ARCH_ARM_HAVE_TLS_REGISTER := true
 
 #TARGET_NO_BOOTLOADER := true

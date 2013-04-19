@@ -1,27 +1,23 @@
 # inherit from the proprietary version
 -include vendor/huawei/u9508/BoardConfigVendor.mk
 
-#cpu + kernel info for boot.img
+LOCAL_PATH := device/huawei/u9508
+
+# CPU
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a
 TARGET_ARCH_VARIANT_CPU := cortex-a9
+ARCH_ARM_HAVE_TLS_REGISTER := true
 
 BOARD_KERNEL_CMDLINE := console=ttyS0 vmalloc=384M k3v2_pmem=1 mmcparts=mmcblk0:p1(xloader),p3(nvme),p4(misc),p5(splash),p6(oeminfo),p7(reserved1),p8(reserved2),p9(recovery2),p10(recovery),p11(boot),p12(modemimage),p13(modemnvm1),p14(modemnvm2),p15(system),p16(cache),p17(cust),p18(userdata);mmcblk1:p1(ext_sdcard)
-
 BOARD_KERNEL_PAGESIZE := 2048 
 BOARD_KERNEL_BASE := 0x8000
-TARGET_PREBUILT_KERNEL := device/huawei/u9508/kernel
 
-#ARCH_ARM_HAVE_TLS_REGISTER := true
 BOARD_HAS_NO_SELECT_BUTTON := true
-#TARGET_NO_BOOTLOADER := true
-#TARGET_NO_RADIOIMAGE := true
-#TARGET_BOARD_PLATFORM := omap4
-#TARGET_BOOTLOADER_BOARD_NAME := viva
-#TARGET_OTA_ASSERT_DEVICE := viva,u9508
+
 
 # fix this up by examining partition on a running device
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -33,6 +29,14 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 # Use this flag if the board has a ext4 partition larger than 2gb
 BOARD_HAS_LARGE_FILESYSTEM := true
+
+#
+TARGET_PREBUILT_KERNEL := device/huawei/u9508/kernel
+TARGET_NO_BOOTLOADER := true
+TARGET_NO_RADIOIMAGE := true
+TARGET_BOARD_PLATFORM := k3v2oem1
+#TARGET_BOOTLOADER_BOARD_NAME := viva
+#TARGET_OTA_ASSERT_DEVICE := viva,u9508
 
 #Graphics
 BOARD_EGL_CFG := device/huawei/u9508/configs/egl.cfg

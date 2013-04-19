@@ -2,19 +2,21 @@
 -include vendor/huawei/u9508/BoardConfigVendor.mk
 
 #cpu + kernel info for boot.img
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_CPU_SMP := true
 TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv7-a
+TARGET_ARCH_VARIANT_CPU := cortex-a9
+
 BOARD_KERNEL_CMDLINE := console=ttyS0 vmalloc=384M k3v2_pmem=1 mmcparts=mmcblk0:p1(xloader),p3(nvme),p4(misc),p5(splash),p6(oeminfo),p7(reserved1),p8(reserved2),p9(recovery2),p10(recovery),p11(boot),p12(modemimage),p13(modemnvm1),p14(modemnvm2),p15(system),p16(cache),p17(cust),p18(userdata);mmcblk1:p1(ext_sdcard)
 
 BOARD_KERNEL_PAGESIZE := 2048 
-BOARD_KERNEL_BASE := 0x80000000
-TARGET_PREBUILT_KERNEL := device/huawei/u9508/zImage
+BOARD_KERNEL_BASE := 0x8000
+TARGET_PREBUILT_KERNEL := device/huawei/u9508/kernel
 
-TARGET_CPU_ABI := armeabi-v7a
-#TARGET_CPU_ABI2 := armeabi
-#TARGET_CPU_SMP := true
-#TARGET_ARCH_VARIANT := armv7-a-neon
 #ARCH_ARM_HAVE_TLS_REGISTER := true
-
+BOARD_HAS_NO_SELECT_BUTTON := true
 #TARGET_NO_BOOTLOADER := true
 #TARGET_NO_RADIOIMAGE := true
 #TARGET_BOARD_PLATFORM := omap4
@@ -28,6 +30,9 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 83886080
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 419430400
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 419430400
 BOARD_FLASH_BLOCK_SIZE := 131072
+
+# Use this flag if the board has a ext4 partition larger than 2gb
+BOARD_HAS_LARGE_FILESYSTEM := true
 
 #Graphics
 BOARD_EGL_CFG := device/huawei/u9508/configs/egl.cfg
@@ -61,6 +66,4 @@ TARGET_BOOTANIMATION_PRELOAD := true
 # Vold
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/android0/f_mass_storage/lun/file"
 
-BOARD_HAS_NO_SELECT_BUTTON := true
-# Use this flag if the board has a ext4 partition larger than 2gb
-#BOARD_HAS_LARGE_FILESYSTEM := true
+

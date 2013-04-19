@@ -18,7 +18,7 @@ else
 endif
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):zImage
+    $(LOCAL_KERNEL):kernel
 
 #init
 #   $(LOCAL_PATH)/prebuilt/init.huawei.usb.rc:root/init.huawei.usb.rc \

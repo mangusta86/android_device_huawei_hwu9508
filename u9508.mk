@@ -21,7 +21,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
 #init
-#   $(LOCAL_PATH)/prebuilt/init.huawei.usb.rc:root/init.huawei.usb.rc \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/init.rc:root/init.rc \
     $(LOCAL_PATH)/prebuilt/init.huawei.rc:root/init.huawei.rc \

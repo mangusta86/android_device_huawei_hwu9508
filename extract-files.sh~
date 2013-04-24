@@ -60,10 +60,10 @@ for FILE in `cat proprietary-files.txt | grep -v ^# | grep -v ^$`; do
     if [ $COUNT = "0" ]; then
         LINEEND=""
     fi
-    echo "    $OUTDIR/proprietary/$FILE:system/$FILE$LINEEND" >> $MAKEFILE
+    echo "    $DEVICEBASE/$FILE:system/$FILE$LINEEND" >> $MAKEFILE
 done
 
-(cat << EOF) > $OUTDIR/$DEVICE-vendor.mk
+(cat << EOF) > $DEVICEOUTDIR/$DEVICE-vendor.mk
 # Copyright (C) 2012 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -98,7 +98,7 @@ DEVICE_PACKAGE_OVERLAYS := vendor/$VENDOR/$DEVICE/overlay
 \$(call inherit-product, vendor/$VENDOR/$DEVICE/$DEVICE-vendor-blobs.mk)
 EOF
 
-(cat << EOF) > $OUTDIR/BoardConfigVendor.mk
+(cat << EOF) > $DEVICEOUTDIR/BoardConfigVendor.mk
 # Copyright (C) 2012 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");

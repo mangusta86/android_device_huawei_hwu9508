@@ -29,8 +29,7 @@ $(call inherit-product-if-exists, vendor/huawei/u9508/u9508-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/huawei/u9508/overlay
 
-PRODUCT_DEVICE := u9508
-PRODUCT_NAME := full_u9508
+
 
 # high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal hdpi
@@ -199,4 +198,5 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 $(call inherit-product, build/target/product/full.mk)
 
-
+PRODUCT_DEVICE := u9508
+PRODUCT_NAME := full_u9508

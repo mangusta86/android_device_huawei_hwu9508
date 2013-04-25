@@ -68,31 +68,31 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/permissions/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml 
 
 # Key maps (keylayouts and keychars)
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
-    $(LOCAL_PATH)/configs/Generic.kl:system/usr/keylayout/Generic.kl \
-    $(LOCAL_PATH)/configs/k3_keypad.kl:system/usr/keylayout/k3_keypad.kl \
-    $(LOCAL_PATH)/configs/qwerty.kl:system/usr/keylayout/qwerty.kl \
-    $(LOCAL_PATH)/configs/Vendor_05ac_Product_0239.kl:system/usr/keylayout/Vendor_05ac_Product_0239.kl \
-    $(LOCAL_PATH)/configs/Vendor_22b8_Product_093d.kl:system/usr/keylayout/Vendor_22b8_Product_093d.kl \
-    $(LOCAL_PATH)/configs/Vendor_045e_Product_028e.kl:system/usr/keylayout/Vendor_045e_Product_028e.kl \
-    $(LOCAL_PATH)/configs/Vendor_046d_Product_c216.kl:system/usr/keylayout/Vendor_046d_Product_c216.kl \
-    $(LOCAL_PATH)/configs/Vendor_046d_Product_c294.kl:system/usr/keylayout/Vendor_046d_Product_c294.kl \
-    $(LOCAL_PATH)/configs/Vendor_046d_Product_c299.kl:system/usr/keylayout/Vendor_046d_Product_c299.kl \
-    $(LOCAL_PATH)/configs/Vendor_046d_Product_c532.kl:system/usr/keylayout/Vendor_046d_Product_c532.kl \
-    $(LOCAL_PATH)/configs/Vendor_054c_Product_0268.kl:system/usr/keylayout/Vendor_054c_Product_0268.kl \
-    $(LOCAL_PATH)/configs/Generic.kcm:system/usr/keychars/Generic.kcm \
-    $(LOCAL_PATH)/configs/qwerty.kcm:system/usr/keychars/qwerty.kcm \
-    $(LOCAL_PATH)/configs/qwerty2.kcm:system/usr/keychars/qwerty2.kcm \
-    $(LOCAL_PATH)/configs/Virtual.kcm:system/usr/keychars/Virtual.kcm 
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/configs/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
+#    $(LOCAL_PATH)/configs/Generic.kl:system/usr/keylayout/Generic.kl \
+#    $(LOCAL_PATH)/configs/k3_keypad.kl:system/usr/keylayout/k3_keypad.kl \
+#    $(LOCAL_PATH)/configs/qwerty.kl:system/usr/keylayout/qwerty.kl \
+#    $(LOCAL_PATH)/configs/Vendor_05ac_Product_0239.kl:system/usr/keylayout/Vendor_05ac_Product_0239.kl \
+#    $(LOCAL_PATH)/configs/Vendor_22b8_Product_093d.kl:system/usr/keylayout/Vendor_22b8_Product_093d.kl \
+#    $(LOCAL_PATH)/configs/Vendor_045e_Product_028e.kl:system/usr/keylayout/Vendor_045e_Product_028e.kl \
+#    $(LOCAL_PATH)/configs/Vendor_046d_Product_c216.kl:system/usr/keylayout/Vendor_046d_Product_c216.kl \
+#    $(LOCAL_PATH)/configs/Vendor_046d_Product_c294.kl:system/usr/keylayout/Vendor_046d_Product_c294.kl \
+#    $(LOCAL_PATH)/configs/Vendor_046d_Product_c299.kl:system/usr/keylayout/Vendor_046d_Product_c299.kl \
+#    $(LOCAL_PATH)/configs/Vendor_046d_Product_c532.kl:system/usr/keylayout/Vendor_046d_Product_c532.kl \
+#    $(LOCAL_PATH)/configs/Vendor_054c_Product_0268.kl:system/usr/keylayout/Vendor_054c_Product_0268.kl \
+#    $(LOCAL_PATH)/configs/Generic.kcm:system/usr/keychars/Generic.kcm \
+#    $(LOCAL_PATH)/configs/qwerty.kcm:system/usr/keychars/qwerty.kcm \
+#    $(LOCAL_PATH)/configs/qwerty2.kcm:system/usr/keychars/qwerty2.kcm \
+#    $(LOCAL_PATH)/configs/Virtual.kcm:system/usr/keychars/Virtual.kcm 
 
 # Input device calibration files
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/hisik3_touchscreen.idc:system/usr/idc/hisik3_touchscreen.idc \
-	$(LOCAL_PATH)/configs/k3_keypad.idc:system/usr/idc/k3_keypad.idc \
-	$(LOCAL_PATH)/configs/qwerty.idc:system/usr/idc/qwerty.idc \
-    	$(LOCAL_PATH)/configs/qwerty2.idc:system/usr/idc/qwerty2.idc \
-	$(LOCAL_PATH)/configs/synaptics.idc:system/usr/idc/synaptics.idc
+#PRODUCT_COPY_FILES += \
+#	$(LOCAL_PATH)/configs/hisik3_touchscreen.idc:system/usr/idc/hisik3_touchscreen.idc \
+#	$(LOCAL_PATH)/configs/k3_keypad.idc:system/usr/idc/k3_keypad.idc \
+#	$(LOCAL_PATH)/configs/qwerty.idc:system/usr/idc/qwerty.idc \
+#   	$(LOCAL_PATH)/configs/qwerty2.idc:system/usr/idc/qwerty2.idc \
+#	$(LOCAL_PATH)/configs/synaptics.idc:system/usr/idc/synaptics.idc
 
 PRODUCT_PACKAGES += \
 	librs_jni \
@@ -132,8 +132,8 @@ PRODUCT_PACKAGES += \
 
 # etc
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/vold.fstab:system/etc/vold.fstab \
-    $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml 
+    $(LOCAL_PATH)/configs/vold.fstab:system/etc/vold.fstab 
+#    $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml 
 
 #    device/huawei/u8800/wpa_supplicant.conf:/system/etc/wifi/wpa_supplicant.conf 
 
@@ -149,8 +149,8 @@ PRODUCT_COPY_FILES += \
 # other bin (proprietry)
 
 # Audio
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf 
+#PRODUCT_COPY_FILES += \
+#	$(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf 
 
 # $(LOCAL_PATH)/configs/audio/front_audio_config.conf:system/etc/huawei/audio/front_audio_config.conf \
 # $(LOCAL_PATH)/configs/audio/front_factory_audio_config.conf:system/etc/huawei/audio/front_factory_audio_config.conf \

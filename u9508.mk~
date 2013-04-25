@@ -131,8 +131,6 @@ PRODUCT_PACKAGES += \
 # Firmware wlan
 
 # EGL
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/egl.cfg:system/usr/lib/egl/egl.cfg
 
 # Gralloc
 

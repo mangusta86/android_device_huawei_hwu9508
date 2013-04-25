@@ -30,11 +30,11 @@ $(call inherit-product-if-exists, vendor/huawei/u9508/u9508-vendor.mk)
 DEVICE_PACKAGE_OVERLAYS += device/huawei/u9508/overlay
 
 #PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := huawei_u9508
-PRODUCT_DEVICE := u9508
-PRODUCT_MODEL := huawei u9508
 PRODUCT_MANUFACTURER := huawei
-
+PRODUCT_DEVICE := u9508
+PRODUCT_NAME := cm_u9508
+PRODUCT_BRAND := Huawei
+PRODUCT_MODEL := U9508
 # high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal hdpi
 

@@ -1,0 +1,21 @@
+object libandroid_servers.so
+depends_on_symbols liblog.so libstdc++.so libm.so libc.so libcutils.so libutils.so libandroid_runtime.so libnativehelper.so libskia.so libui.so libgui.so libandroidfw.so libhardware.so libhardware_legacy.so libusbhost.so libsystem_server.so libinput.so libsuspend.so
+
+object libskia.so
+depends_on_symbols liblog.so libstdc++.so libm.so libc.so libdl.so libz.so libcutils.so libutils.so libexpat.so libjpeg.so libemoji.so
+
+object libandroidfw.so
+depends_on_symbols liblog.so libstdc++.so libm.so libc.so libz.so libcutils.so libutils.so libskia.so libbinder.so
+
+object libsuspend.so
+depends_on_symbols liblog.so libstdc++.so libm.so libc.so libcutils.so
+
+object libusbhost.so
+depends_on_symbols liblog.so libstdc++.so libm.so libc.so libcutils.so
+
+object libinput.so
+depends_on_symbols liblog.so libstdc++.so libm.so libc.so libcutils.so libutils.so libskia.so libui.so libgui.so libandroidfw.so libhardware.so libhardware_legacy.so
+
+object libnativehelper.so
+depends_on_symbols liblog.so libstdc++.so libm.so libc.so libstlport.so
+

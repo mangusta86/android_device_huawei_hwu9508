@@ -11,12 +11,11 @@ $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 $(call inherit-product, device/huawei/u9508/full_u9508.mk)
 
 ## Device identifier. This must come after all inclusions
+PRODUCT_MANUFACTURER := huawei
 PRODUCT_DEVICE := u9508
 PRODUCT_NAME := cm_u9508
 PRODUCT_BRAND := Huawei
 PRODUCT_MODEL := U9508
-
-#PRODUCT_MANUFACTURER := huawei
 PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=u9508 
 
 # Allow ADB (to access dev settings)

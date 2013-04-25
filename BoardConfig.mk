@@ -111,7 +111,7 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 
 
 # Vold
-TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/android0/f_mass_storage/lun/file"
+#TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/android0/f_mass_storage/lun/file"
 
 # adb has root
 ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0

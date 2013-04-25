@@ -50,10 +50,10 @@ PRODUCT_COPY_FILES += \
 
 # init files from Huawei initramfs B627
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/init.rc:root/init.rc \
-    $(LOCAL_PATH)/prebuilt/init.huawei.rc:root/init.huawei.rc \
-    $(LOCAL_PATH)/prebuilt/init.usb.rc:root/init.usb.rc \
-    $(LOCAL_PATH)/prebuilt/ueventd.huawei.rc:root/ueventd.huawei.rc
+    $(LOCAL_PATH)/init.rc:root/init.rc \
+    $(LOCAL_PATH)/init.huawei.rc:root/init.huawei.rc \
+    $(LOCAL_PATH)/init.usb.rc:root/init.usb.rc \
+    $(LOCAL_PATH)/ueventd.huawei.rc:root/ueventd.huawei.rc
 
 # Install the features available on this device.
 PRODUCT_COPY_FILES += \
@@ -131,8 +131,10 @@ PRODUCT_PACKAGES += \
 # Firmware wlan
 
 # EGL
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/egl.cfg:system/usr/lib/egl/egl.cfg
 
-# Gralloc (proprietry)
+# Gralloc
 
 # etc
 PRODUCT_COPY_FILES += \
@@ -178,17 +180,11 @@ PRODUCT_PACKAGES := \
 
 # Huawei libs(proprietry)
 
-# we have enough storage space to hold precise GC data
-PRODUCT_TAGS += dalvik.gc.type-precise
-
-
-#configs
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf \
-    $(LOCAL_PATH)/configs/gpsconfig.xml:system/etc/gpsconfig.xml \
-    $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml 
-
-
+#configs remainings (just disabled)
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf \
+#    $(LOCAL_PATH)/configs/gpsconfig.xml:system/etc/gpsconfig.xml \
+#    $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml 
 
 
 # Filesystem management tools
@@ -197,7 +193,8 @@ PRODUCT_PACKAGES += \
 	e2fsck \
 	setup_fs
 
-
+# we have enough storage space to hold precise GC data
+PRODUCT_TAGS += dalvik.gc.type-precise
 
 
 

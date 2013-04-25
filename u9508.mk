@@ -132,7 +132,7 @@ PRODUCT_PACKAGES += \
 
 # EGL
 
-# Gralloc (proprietry)
+# Gralloc
 
 # etc
 PRODUCT_COPY_FILES += \
@@ -178,17 +178,11 @@ PRODUCT_PACKAGES := \
 
 # Huawei libs(proprietry)
 
-# we have enough storage space to hold precise GC data
-PRODUCT_TAGS += dalvik.gc.type-precise
-
-
-#configs
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf \
-    $(LOCAL_PATH)/configs/gpsconfig.xml:system/etc/gpsconfig.xml \
-    $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml 
-
-
+#configs remainings (just disabled)
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf \
+#    $(LOCAL_PATH)/configs/gpsconfig.xml:system/etc/gpsconfig.xml \
+#    $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml 
 
 
 # Filesystem management tools
@@ -197,7 +191,8 @@ PRODUCT_PACKAGES += \
 	e2fsck \
 	setup_fs
 
-
+# we have enough storage space to hold precise GC data
+PRODUCT_TAGS += dalvik.gc.type-precise
 
 
 

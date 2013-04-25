@@ -17,14 +17,14 @@
 VENDOR=huawei
 DEVICE=u9508
 DEVICEOUTDIR=vendor/$VENDOR/$DEVICE
-DEVICEBASE=../../../$DEVICEOUTDIR/proprietary
-DEVICEMAKEFILE=../../../$DEVICEOUTDIR/$DEVICE-vendor-blobs.mk
-#COMMONPROPS=../galaxys2-common/proprietary-files.txt
+DEVICEBASE=$DEVICEOUTDIR/proprietary
+DEVICEMAKEFILE=$DEVICEOUTDIR/$DEVICE-vendor-blobs.mk
+COMMONPROPS=device/$VENDOR/$DEVICE/proprietary-files.txt
 adb root
 adb wait-for-device
 
 echo "Pulling device specific files..."
-for FILE in `cat proprietary-files.txt | grep -v ^# | grep -v ^$`; do
+for FILE in `cat $COMMONPROPS | grep -v ^# | grep -v ^$`; do
     DIR=`dirname $FILE`
     if [ ! -d $DEVICEBASE/$DIR ]; then
         mkdir -p $DEVICEBASE/$DIR
@@ -54,8 +54,8 @@ PRODUCT_COPY_FILES += \\
 EOF
 
 LINEEND=" \\"
-COUNT=`cat proprietary-files.txt | grep -v ^# | grep -v ^$ | wc -l | awk {'print $1'}`
-for FILE in `cat proprietary-files.txt | grep -v ^# | grep -v ^$`; do
+COUNT=`cat $COMMONPROPS | grep -v ^# | grep -v ^$ | wc -l | awk {'print $1'}`
+for FILE in `cat $COMMONPROPS | grep -v ^# | grep -v ^$`; do
     COUNT=`expr $COUNT - 1`
     if [ $COUNT = "0" ]; then
         LINEEND=""

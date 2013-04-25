@@ -132,3 +132,5 @@ system/lib/lib_g1.so
 system/lib/lib_8290.so
 system/lib/libgnuexif.so
 system/lib/libchip_state.so
+system/lib/liboverlay.so
+

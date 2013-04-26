@@ -62,7 +62,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 TARGET_PREBUILT_KERNEL := device/huawei/u9508/kernel
 
 #Graphics
-BOARD_EGL_CFG := device/huawei/u9508/configs/egl.cfg
+#BOARD_EGL_CFG := device/huawei/u9508/configs/egl.cfg
 #USE_OPENGL_RENDERER := false
 
 # Bootanimation
@@ -82,8 +82,8 @@ BOARD_EGL_CFG := device/huawei/u9508/configs/egl.cfg
 #WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/bcmdhd.ko"
 
 #Bluetooth
-BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_BLUETOOTH_BCM := true
+#BOARD_HAVE_BLUETOOTH := true
+#BOARD_HAVE_BLUETOOTH_BCM := true
 
 # Camera
 #BOARD_USE_FROYO_LIBCAMERA := true

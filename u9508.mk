@@ -32,7 +32,8 @@ DEVICE_PACKAGE_OVERLAYS += device/huawei/u9508/overlay
 
 
 # high-density artwork where available
-PRODUCT_AAPT_CONFIG := normal hdpi
+PRODUCT_AAPT_CONFIG := normal mdpi hdpi
+PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 LOCAL_PATH := device/huawei/u9508
 ifeq ($(TARGET_PREBUILT_KERNEL),)
@@ -94,9 +95,9 @@ PRODUCT_COPY_FILES += \
 #   	$(LOCAL_PATH)/configs/qwerty2.idc:system/usr/idc/qwerty2.idc \
 #	$(LOCAL_PATH)/configs/synaptics.idc:system/usr/idc/synaptics.idc
 
-#PRODUCT_PACKAGES += \
-#	librs_jni \
-#	com.android.future.usb.accessory
+PRODUCT_PACKAGES += \
+	librs_jni \
+	com.android.future.usb.accessory
 #PRODUCT_PACKAGES += \
 #    LiveWallpapers \
 #    LiveWallpapersPicker \
@@ -194,7 +195,7 @@ PRODUCT_PACKAGES += \
 
 
 
-#$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 $(call inherit-product, build/target/product/full.mk)
 

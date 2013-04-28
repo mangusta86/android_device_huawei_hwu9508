@@ -62,11 +62,11 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 TARGET_PREBUILT_KERNEL := device/huawei/u9508/kernel
 
 #Graphics
-#BOARD_EGL_CFG := device/huawei/u9508/configs/egl.cfg
+BOARD_EGL_CFG := device/huawei/u9508/configs/egl.cfg
 #USE_OPENGL_RENDERER := false
 
 # Bootanimation
-#TARGET_BOOTANIMATION_PRELOAD := true
+TARGET_BOOTANIMATION_PRELOAD := true
 
 # Wifi related defines
 #BOARD_WPA_SUPPLICANT_DRIVER := NL80211

@@ -23,3 +23,4 @@
 
 add_lunch_combo full_u9508-eng
 add_lunch_combo full_u9508-userdebug
+add_lunch_combo full_u9508-user

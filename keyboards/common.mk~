@@ -29,23 +29,15 @@ keylayouts := \
 	Vendor_046d_Product_c532.kl \
 	Vendor_054c_Product_0268.kl 
 
-keycharmaps := 
-#	Generic.kcm \
-#	Virtual.kcm \
-#	qwerty.kcm \
-#	qwerty2.kcm
-#    $(LOCAL_PATH)/configs/Generic.kcm:system/usr/keychars/Generic.kcm \
-#    $(LOCAL_PATH)/configs/qwerty.kcm:system/usr/keychars/qwerty.kcm \
-#    $(LOCAL_PATH)/configs/qwerty2.kcm:system/usr/keychars/qwerty2.kcm \
-#    $(LOCAL_PATH)/configs/Virtual.kcm:system/usr/keychars/Virtual.kcm 
+keycharmaps := \
+	Generic.kcm \
+	qwerty.kcm \
+	qwerty2.kcm \
+	Virtual.kcm 
 
 keyconfigs := \
-	sensor00fn11.idc
-
-# Input device calibration files
-#PRODUCT_COPY_FILES += \
-#	$(LOCAL_PATH)/configs/hisik3_touchscreen.idc:system/usr/idc/hisik3_touchscreen.idc \
-#	$(LOCAL_PATH)/configs/k3_keypad.idc:system/usr/idc/k3_keypad.idc \
-#	$(LOCAL_PATH)/configs/qwerty.idc:system/usr/idc/qwerty.idc \
-#   	$(LOCAL_PATH)/configs/qwerty2.idc:system/usr/idc/qwerty2.idc \
-#	$(LOCAL_PATH)/configs/synaptics.idc:system/usr/idc/synaptics.idc
+	hisik3_touchscreen.idc \
+	k3_keypad.idc \
+	qwerty.idc \
+	qwerty2.idc \
+	synaptics.idc

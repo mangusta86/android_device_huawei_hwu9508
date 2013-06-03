@@ -20,11 +20,11 @@ keylayouts := \
 	Generic.kl \
 	k3_keypad.kl \
 	qwerty.kl \
-	keylayout/Vendor_05ac_Product_0239.kl \
+	Vendor_05ac_Product_0239.kl \
 	Vendor_22b8_Product_093d.kl \
 	Vendor_045e_Product_028e.kl \
 	Vendor_046d_Product_c216.kl \
-	keylayout/Vendor_046d_Product_c294.kl \
+	Vendor_046d_Product_c294.kl \
 	Vendor_046d_Product_c299.kl \
 	Vendor_046d_Product_c532.kl \
 	Vendor_054c_Product_0268.kl 

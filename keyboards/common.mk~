@@ -1,0 +1,51 @@
+# Copyright (C) 2010 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# This is the list of device provided keylayouts and key character maps to include.
+# Used by Android.mk and keyboards.mk.
+
+keylayouts := \
+	AVRCP.kl \
+	Generic.kl \
+	k3_keypad.kl \
+	qwerty.kl \
+	keylayout/Vendor_05ac_Product_0239.kl \
+	Vendor_22b8_Product_093d.kl \
+	Vendor_045e_Product_028e.kl \
+	Vendor_046d_Product_c216.kl \
+	keylayout/Vendor_046d_Product_c294.kl \
+	Vendor_046d_Product_c299.kl \
+	Vendor_046d_Product_c532.kl \
+	Vendor_054c_Product_0268.kl 
+
+keycharmaps := 
+#	Generic.kcm \
+#	Virtual.kcm \
+#	qwerty.kcm \
+#	qwerty2.kcm
+#    $(LOCAL_PATH)/configs/Generic.kcm:system/usr/keychars/Generic.kcm \
+#    $(LOCAL_PATH)/configs/qwerty.kcm:system/usr/keychars/qwerty.kcm \
+#    $(LOCAL_PATH)/configs/qwerty2.kcm:system/usr/keychars/qwerty2.kcm \
+#    $(LOCAL_PATH)/configs/Virtual.kcm:system/usr/keychars/Virtual.kcm 
+
+keyconfigs := \
+	sensor00fn11.idc
+
+# Input device calibration files
+#PRODUCT_COPY_FILES += \
+#	$(LOCAL_PATH)/configs/hisik3_touchscreen.idc:system/usr/idc/hisik3_touchscreen.idc \
+#	$(LOCAL_PATH)/configs/k3_keypad.idc:system/usr/idc/k3_keypad.idc \
+#	$(LOCAL_PATH)/configs/qwerty.idc:system/usr/idc/qwerty.idc \
+#   	$(LOCAL_PATH)/configs/qwerty2.idc:system/usr/idc/qwerty2.idc \
+#	$(LOCAL_PATH)/configs/synaptics.idc:system/usr/idc/synaptics.idc

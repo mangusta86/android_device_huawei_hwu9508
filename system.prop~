@@ -1,3 +1,13 @@
 #
 # system.prop for u9508
 #
+
+rild.libpath=/system/lib/libxgold-ril.so
+rild.libargs=-d /dev/ttyACM0
+ro.ril.ecclist=112,911,#911,*911
+audioril.lib=libhuawei-audio-ril.so
+
+#
+# system prop for opengles version
+#
+ro.opengles.version=131072

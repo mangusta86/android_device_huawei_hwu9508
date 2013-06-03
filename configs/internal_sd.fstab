@@ -1,0 +1,24 @@
+## Vold 2.0 Generic fstab
+## - San Mehat (san@android.com)
+##
+
+#######################
+## Regular device mount
+##
+## Format: dev_mount <label> <mount_point> <part> <sysfs_path1...>
+## label        - Label for the volume
+## mount_point  - Where the volume will be mounted
+## part         - Partition # (1 based), or 'auto' for first usable partition.
+## <sysfs_path> - List of sysfs paths to source devices
+######################
+
+## Example of a standard sdcard mount for the emulator / Dream
+# Mounts the first usable partition of the specified device
+#DTS2012012001091	w00177577	2012/01/20	rm external primary
+#DTS2011121600087 w00177577	2011/12/28 ics dual sdcard
+#DTS2012051401548 k00195289 add otg
+#DTS2012083100452 y00173682 20120831 modify the mount point to follow the J changes
+dev_mount sdcard /storage/sdcard0 fuse
+dev_mount sdcard2 /storage/sdcard1 auto /devices/platform/hi_mci.0/mmc_host/mmc1
+dev_mount usbotg /mnt/usb auto /devices/hisik3-usb-otg/usb1
+

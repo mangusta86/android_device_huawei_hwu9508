@@ -80,17 +80,13 @@ PRODUCT_PACKAGES += \
 # etc
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/vold.fstab:system/etc/vold.fstab \
-    $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml \
+    $(LOCAL_PATH)/configs/vold.fstab:system/etc/internal_sd.fstab \
     $(LOCAL_PATH)/configs/wpa_supplicant.conf:/system/etc/wifi/wpa_supplicant.conf 
-
-
-
-
-
+#   $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml \
 
 # Audio
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf 
+#PRODUCT_COPY_FILES += \
+#	$(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf 
 
 # $(LOCAL_PATH)/configs/audio/front_audio_config.conf:system/etc/huawei/audio/front_audio_config.conf \
 # $(LOCAL_PATH)/configs/audio/front_factory_audio_config.conf:system/etc/huawei/audio/front_factory_audio_config.conf \

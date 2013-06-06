@@ -77,16 +77,15 @@ PRODUCT_PACKAGES += \
 	com.android.future.usb.accessory
 
 
-# etc
+# mount points SDCARDS
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/vold.fstab:system/etc/vold.fstab \
-    $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml \
-    $(LOCAL_PATH)/configs/wpa_supplicant.conf:/system/etc/wifi/wpa_supplicant.conf 
+    $(LOCAL_PATH)/configs/vold.fstab:system/etc/internal_sd.fstab 
 
 
 # Audio
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf 
+#PRODUCT_COPY_FILES += \
+#	$(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf 
 
 # $(LOCAL_PATH)/configs/audio/front_audio_config.conf:system/etc/huawei/audio/front_audio_config.conf \
 # $(LOCAL_PATH)/configs/audio/front_factory_audio_config.conf:system/etc/huawei/audio/front_factory_audio_config.conf \
@@ -94,7 +93,7 @@ PRODUCT_COPY_FILES += \
 # $(LOCAL_PATH)/configs/audio/u9508_factory_audio_config.conf:system/etc/huawei/audio/u9508_factory_audio_config.conf \
 # $(LOCAL_PATH)/configs/audio/viva_audio_config.conf:system/etc/huawei/audio/viva_audio_config.conf \
 # $(LOCAL_PATH)/configs/audio/viva_factory_audio_config.conf:system/etc/huawei/audio/viva_factory_audio_config.conf
-
+#   $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml \
 
 # Camera
 #PRODUCT_PACKAGES := \

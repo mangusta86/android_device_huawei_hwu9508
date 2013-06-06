@@ -106,6 +106,7 @@ PRODUCT_PACKAGES += \
     Term \
     librs_jni \
 	CMFileManager\
+	Superuser\
     libOmxCore \
     libOmxVdec 
 

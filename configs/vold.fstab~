@@ -30,8 +30,8 @@
 
 # Mounts the first usable partition of the specified device
 #DTS2012080105006 y00173682 begin
-dev_mount internal_sd /mnt/sdcard 19 /devices/platform/hi_mci.3/mmc_host
+dev_mount internal_sd /storage/sdcard0 19 /devices/platform/hi_mci.3/mmc_host
 #DTS2012083100452 y00173682 20120831 modify the mount point to follow the J changes
- dev_mount sdcard /storage/sdcard0 auto /devices/platform/hi_mci.0/mmc_host/mmc1
+ dev_mount sdcard /storage/sdcard1 auto /devices/platform/hi_mci.0/mmc_host/mmc1
 #DTS2012080105006 y00173682 end 
  dev_mount usbotg /mnt/usb auto /devices/hisik3-usb-otg/usb1

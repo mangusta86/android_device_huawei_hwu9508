@@ -71,17 +71,52 @@ PRODUCT_COPY_FILES += \
 # Include keyboards
 $(call inherit-product-if-exists, device/huawei/u9508/keyboards/keyboards.mk)
 
+# packages
+PRODUCT_PACKAGES += \
+    audio.a2dp.default \
+    Camera \
+    com.android.future.usb.accessory \
+    Torch 
 
+# HAL
 PRODUCT_PACKAGES += \
 	librs_jni \
-	com.android.future.usb.accessory
+    libhwconverter \
+    libs5pjpeg \
+    libfimg
 
+# Charger
+PRODUCT_PACKAGES += \
+    charger \
+    charger_res_images
+
+# MFC API
+PRODUCT_PACKAGES += \
+    libsecmfcapi
+
+# OMX
+PRODUCT_PACKAGES += \
+   LiveWallpapers \
+    LiveWallpapersPicker \
+    VisualizationWallpapers \
+    MagicSmokeWallpapers \
+    VisualizationWallpapers \
+    Gallery3d \
+    SpareParts \
+    Term \
+    librs_jni \
+	CMFileManager\
+    libOmxCore \
+    libOmxVdec 
 
 # mount points SDCARDS
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/vold.fstab:system/etc/vold.fstab \
     $(LOCAL_PATH)/configs/vold.fstab:system/etc/internal_sd.fstab 
 
+#video
+PRODUCT_COPY_FILES += \
+	 $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 # Audio
 #PRODUCT_COPY_FILES += \
@@ -93,7 +128,7 @@ PRODUCT_COPY_FILES += \
 # $(LOCAL_PATH)/configs/audio/u9508_factory_audio_config.conf:system/etc/huawei/audio/u9508_factory_audio_config.conf \
 # $(LOCAL_PATH)/configs/audio/viva_audio_config.conf:system/etc/huawei/audio/viva_audio_config.conf \
 # $(LOCAL_PATH)/configs/audio/viva_factory_audio_config.conf:system/etc/huawei/audio/viva_factory_audio_config.conf
-#   $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml \
+#   \
 
 # Camera
 #PRODUCT_PACKAGES := \
@@ -113,49 +148,17 @@ PRODUCT_COPY_FILES += \
 # Include initscripts
 $(call inherit-product-if-exists, device/huawei/u9508/initscripts/initscripts.mk)
 
+
+
+# we have enough storage space to hold precise GC data
+PRODUCT_TAGS += dalvik.gc.type-precise
+
+
 # Filesystem management tools
 PRODUCT_PACKAGES += \
 	make_ext4fs \
 	e2fsck \
 	setup_fs
-
-# we have enough storage space to hold precise GC data
-#PRODUCT_TAGS += dalvik.gc.type-precise
-
-#DISABLE_DEXPREOPT := false
-#PRODUCT_LOCALES += hdpi
-
-# Huawei libs(proprietry)
-# RIL (proprietry)
-
-# other bin (proprietry)
-
-# Firmware
-
-# Firmware wlan
-
-# EGL
-
-# Gralloc
-
-#PRODUCT_PACKAGES += \
-#    LiveWallpapers \
-#    LiveWallpapersPicker \
-#    VisualizationWallpapers \
-#    MagicSmokeWallpapers \
-#    VisualizationWallpapers \
-#    Gallery3d \
-#    SpareParts \
-#    Term \
-#    librs_jni \
-#    overlay.default \
-#    gps.u8800 \
-#    gralloc.u8800 \
-#    copybit.u8800 \
-#    lights.u8800 \
-#    sensors.blade \
-#    libOmxCore \
-#    libOmxVdec \
 
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)

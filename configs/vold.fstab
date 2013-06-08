@@ -30,6 +30,6 @@
 
 # Mounts the first usable partition of the specified device
 
-dev_mount internal_sd /storage/sdcard0 auto /devices/platform/hi_mci.3/mmc_host
-dev_mount sdcard /storage/sdcard1 auto /devices/platform/hi_mci.0/mmc_host/mmc1
+dev_mount EXTERNAL_STORAGE /storage/sdcard0 auto /devices/platform/hi_mci.3/mmc_host
+dev_mount SECONDARY_STORAGE /storage/sdcard1 auto /devices/platform/hi_mci.0/mmc_host/mmc1
 dev_mount usbotg /mnt/usb auto /devices/hisik3-usb-otg/usb1

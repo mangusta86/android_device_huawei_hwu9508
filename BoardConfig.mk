@@ -65,8 +65,9 @@ TARGET_PREBUILT_KERNEL := device/huawei/u9508/kernel
 BOARD_EGL_CFG := device/huawei/u9508/configs/egl.cfg
 USE_OPENGL_RENDERER := true
 
+# Probably is better without it
 # HWComposer
-BOARD_USES_HWCOMPOSER := true
+#BOARD_USES_HWCOMPOSER := true
 
 # Enable WEBGL in WebKit
 ENABLE_WEBGL := true

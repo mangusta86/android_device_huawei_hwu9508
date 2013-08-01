@@ -21,7 +21,7 @@
 # function: add_lunch_combo generic-eng
 
 
-add_lunch_combo full_u9508-eng
-add_lunch_combo full_u9508-userdebug
-add_lunch_combo full_u9508-user
-add_lunch_combo full_u9508-tests
+add_lunch_combo u9508-eng
+add_lunch_combo u9508-userdebug
+add_lunch_combo u9508-user
+add_lunch_combo u9508-tests

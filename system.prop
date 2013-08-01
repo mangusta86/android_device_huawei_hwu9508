@@ -2,9 +2,190 @@
 # system.prop for u9508
 #
 
+#
+#rild properties
+#
 rild.libpath=/system/lib/libxgold-ril.so
 rild.libargs=-d /dev/ttyACM0
-ro.ril.ecclist=112,911,#911,*911
 audioril.lib=libhuawei-audio-ril.so
+#Default ecclist begin
+ro.ril.ecclist=112,911,#911,*911
+# for custom-make emergency numbers, the format is ECC category + ECM number
+ro.config.hw_ecclist_withcard=1+110,6+119,8+118
+ro.config.hw_ecclist_nocard=1+110,6+119,8+118
+# global version
+ro.config.hw_globalEcc = true
 
+#
+#audio properties
+#
+ro.camera.sound.forced=1
+ro.config.hw_dolby=true
+ro.config.hw_voicerecord=true
+ro.config.switchPrimaryVolume=true
+
+#
+#drm properties
+#
+# add for widevine level3
+ro.config.widevine_level3=true
+drm.service.enabled=true
+ro.huawei.cust.oma_drm=false
+ro.huawei.cust.drm.fl_only=false
+
+#
+#dalvik-cache properties
+#
+dalvik.vm.heapsize=256m
+dalvik.vm.dexopt-flags=m=y
+dalvik.vm.stack-trace-file=/data/anr/traces.txt
+
+#
+#bluetooth properties
+#
+net.bt.name=Android
+ro.config.bluetooth.name=U9508
+
+#
+#date and time formats
+#
+ro.config.AM_PM_STYLE=1
+ro.com.android.dateformat=MM-dd-yyyy
+
+#
+#double home properties
+#
+ro.config.doublehome=true
+ro.config.doubleHomeSetting=0
+
+#
+#OTA updates
+#
+ro.config.do_sdcard_upgrade=true
+ro.config.hw_omacp=1
+
+
+#
+#Memory card
+#
+ro.config.hw_allowformat=true
+ro.config.internal_sdcard=yes
+ro.config.hw_allow_ums_and_mtp=true
+
+#
+# http://www.globalcertificationforum.org/  can it be related to this?
+#
+ro.config.hw_gcf=false
+
+#
+# lockscreen
+#
+ro.config.hw_lockscreen=true
+ro.config.hw_menu_unlockscreen=false
+ro.config.hwft_PinPukUnlockscr=true
+
+#
+# phone apk layout
+#
+ro.config.hw_opta=999
+ro.config.hw_optb=156
+ro.config.incall_notify_mms=true
+ro.config.hw_show_number=false
+#add for ipcall
+ro.config.hw_support_ipcall=true
+ro.config.bg_call_twinking=true
+ro.config.hwft_MatchNum=8
+
+#
+# power properties
+#
+persist.sys.quickpoweron=normal
+persist.sys.animationstart=false
+ro.config.hw_poanimation=5000
+ro.config.hw_quickpoweron=true
+#upgrade to J_version sync DTS2012010500769
+persist.sys.powerup_reason=
+ro.poweroff_alarm=true
+persist.sys.actualpoweron=true
+#DTS2012080203926  poweroff alarm 20120802 end
+persist.alarm.enable.uhb=0
+# allow to tear down mobile data connection when device is idle
+ro.config.hw_power_saving=true
+ro.config.fast_dormancy=false
+
+#
+# codecs properties
+#
+ro.config.helix_enable=true
+#the unit is M.if the size of image is larger than limitSize, will not be decoded
+ro.config.hw_pic_limit_size=50
+ro.config.usesEncodingDetector=0
+# add for HIGH QUALITY RESAMPLER
+af.resampler.quality=3
+
+#
+# modem properties
+#
+ro.cellbroadcast.emergencyids=0-65534
+
+#
+# hardware properties
+#
+ro.config.hw_GSensorOptimize=true
+ro.config.hw_RemindWifiToPdp=false
+ro.wifi.channels=
+ro.config.hw_proximitySensor=true
+ro.config.hw_proximity=true
+ro.config.hw_flashless=true
+# 2011/08/25 add bcm4330 FM module
+ro.config.fm_type=libbcmfm_if
+
+
+#OpenGLES version allowed on this device
+ro.opengles.version=131072
+
+# StrictMode is a developer tool which detects things you might be doing by accident and brings them to your attention so you can fix them.
+persist.sys.strictmode.visual=false
+
+#should it be forbidden instead of frobidden??? changing this value nothing happen
+#install.frobidden=true
+
+ro.config.keypasstouser=true
+keyguard.no_require_sim=true
+
+ro.config.modem_hsic=true
+
+ro.config.hw_addsettingsdbex=1
+
+
+ro.config.hw_use_browser_ua=http://wap1.huawei.com/uaprof/HUAWEI_U9508_UAProfile.xml
+
+ro.config.hw_always_allow_mms=false
+
+
+ro.config.hw_vcardBase64=true
+
+ro.config.hw_useCtrlSocket=true
+
+ro.config.hw_toolbox = true
+
+ro.config.hwtheme=1
+ro.config.hw_battery_percent=true
+ro.config.app_big_icon_size=108
+ro.ads.bootanim=true
+ro.config.always_animation=true
+
+ro.config.hwft_emerCallDefNum=""
+
+ro.carrier=unknown
+
+ro.config.hw_eapsim=false
+
+ro.setupwizard.mode=ENABLED
+
+ro.config.hw_toolbox = true
+
+ro.config.disablesmbacklinght=true
+
+ro.config.hw_subtitle_support=true
 

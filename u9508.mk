@@ -171,10 +171,10 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 $(call inherit-product, build/target/product/full.mk)
 
 PRODUCT_DEVICE := u9508
-PRODUCT_NAME := full_u9508
+PRODUCT_NAME := u9508
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := full_u9508
+PRODUCT_NAME := u9508
 PRODUCT_DEVICE := u9508
 PRODUCT_BRAND := Huawei
 PRODUCT_MANUFACTURER := huawei

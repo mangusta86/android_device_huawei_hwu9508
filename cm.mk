@@ -24,13 +24,13 @@ PRODUCT_RELEASE_NAME := U9508
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # Inherit device configuration
-$(call inherit-product, device/huawei/u9508/full_u9508.mk)
+$(call inherit-product, device/huawei/u9508/device_u9508.mk)
 
 ## Device identifier. This must come after all inclusions
 
 PRODUCT_DEVICE := u9508
 PRODUCT_MODEL := u9508
-PRODUCT_NAME := cm_u9508
+PRODUCT_NAME := u9508
 PRODUCT_BRAND := huawei
 PRODUCT_MANUFACTURER := huawei
 

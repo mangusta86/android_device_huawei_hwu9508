@@ -89,7 +89,7 @@ WIFI_DRIVER_FW_PATH_AP      := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
 #WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/bcmdhd.ko"
 
 #Bluetooth
-#BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH := true
 #BOARD_HAVE_BLUETOOTH_BCM := true
 
 # Camera

@@ -76,41 +76,41 @@ $(call inherit-product-if-exists, device/huawei/u9508/keyboards/keyboards.mk)
 
 # packages
 PRODUCT_PACKAGES += \
-    audio.a2dp.default \
-    Camera \
-    com.android.future.usb.accessory \
-    Torch 
+#    audio.a2dp.default \
+#    Camera \
+    com.android.future.usb.accessory 
+#    Torch 
 
 # HAL
-PRODUCT_PACKAGES += \
-	librs_jni \
-    libhwconverter \
-    libs5pjpeg \
-    libfimg
+#PRODUCT_PACKAGES += \
+#	librs_jni \
+#    libhwconverter \
+#    libs5pjpeg \
+#    libfimg
 
 # Charger
-PRODUCT_PACKAGES += \
-    charger \
-    charger_res_images
+#PRODUCT_PACKAGES += \
+#    charger \
+#    charger_res_images
 
 # MFC API
-PRODUCT_PACKAGES += \
-    libsecmfcapi
+#PRODUCT_PACKAGES += \
+#    libsecmfcapi
 
 # OMX
-PRODUCT_PACKAGES += \
-   LiveWallpapers \
-    LiveWallpapersPicker \
-    VisualizationWallpapers \
-    MagicSmokeWallpapers \
-    VisualizationWallpapers \
-    Gallery3d \
-    SpareParts \
-    Term \
-    librs_jni \
-    CMFileManager\
-    libOmxCore \
-    libOmxVdec 
+#PRODUCT_PACKAGES += \
+#   LiveWallpapers \
+#    LiveWallpapersPicker \
+#    VisualizationWallpapers \
+#    MagicSmokeWallpapers \
+#    VisualizationWallpapers \
+#    Gallery3d \
+#    SpareParts \
+#    Term \
+#    librs_jni \
+#    CMFileManager\
+#    libOmxCore \
+#    libOmxVdec 
 
 # mount points SDCARDS
 PRODUCT_COPY_FILES += \

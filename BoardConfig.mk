@@ -90,7 +90,7 @@ WIFI_DRIVER_FW_PATH_AP      := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
 
 #Bluetooth
 BOARD_HAVE_BLUETOOTH := true
-#BOARD_HAVE_BLUETOOTH_BCM := true
+BOARD_HAVE_BLUETOOTH_BCM := true
 
 # Camera
 #BOARD_USE_FROYO_LIBCAMERA := true

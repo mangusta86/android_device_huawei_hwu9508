@@ -52,7 +52,7 @@ TARGET_SPECIFIC_HEADER_PATH := device/huawei/hwu9508/overlay/include
 BOARD_KERNEL_CMDLINE := console=ttyS0 vmalloc=384M k3v2_pmem=1 mmcparts=mmcblk0:p1(xloader),p3(nvme),p4(misc),p5(splash),p6(oeminfo),p7(reserved1),p8(reserved2),p9(recovery2),p10(recovery),p11(boot),p12(modemimage),p13(modemnvm1),p14(modemnvm2),p15(system),p16(cache),p17(cust),p18(userdata);mmcblk1:p1(ext_sdcard)
 BOARD_KERNEL_PAGESIZE := 2048 
 BOARD_KERNEL_BASE := 0x8000
-#TARGET_PREBUILT_KERNEL := device/huawei/u9508/kernel
+#TARGET_PREBUILT_KERNEL := device/huawei/hwu9508/kernel
 
 
 # Recovery

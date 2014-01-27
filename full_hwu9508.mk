@@ -29,16 +29,16 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
-$(call inherit-product-if-exists, vendor/huawei/u9508/u9508-vendor.mk)
+$(call inherit-product-if-exists, vendor/huawei/hwu9508/hwu9508-vendor.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/huawei/u9508/overlay
+DEVICE_PACKAGE_OVERLAYS += device/huawei/hwu9508/overlay
 
 
 # high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal mdpi hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
-LOCAL_PATH := device/huawei/u9508
+LOCAL_PATH := device/huawei/hwu9508
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 	LOCAL_KERNEL := $(LOCAL_PATH)/kernel
 else
@@ -72,7 +72,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/permissions/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml 
 
 # Include keyboards
-$(call inherit-product-if-exists, device/huawei/u9508/keyboards/keyboards.mk)
+$(call inherit-product-if-exists, device/huawei/hwu9508/keyboards/keyboards.mk)
 
 # packages
 PRODUCT_PACKAGES += \
@@ -149,7 +149,7 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth 
 # Include initscripts
-$(call inherit-product-if-exists, device/huawei/u9508/initscripts/initscripts.mk)
+$(call inherit-product-if-exists, device/huawei/hwu9508/initscripts/initscripts.mk)
 
 
 
@@ -168,15 +168,11 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 $(call inherit-product, build/target/product/full.mk)
 
-PRODUCT_DEVICE := u9508
-PRODUCT_NAME := u9508
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := u9508
-PRODUCT_DEVICE := u9508
-PRODUCT_BRAND := Huawei
-PRODUCT_MANUFACTURER := huawei
+PRODUCT_DEVICE := hwu9508
+PRODUCT_NAME := hwu9508
+PRODUCT_BRAND := huawei
 PRODUCT_MODEL := U9508
+PRODUCT_MANUFACTURER := HUAWEI
 
-# Set build fingerprint / ID / Product Name ect.
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=u9508 TARGET_DEVICE=u9508

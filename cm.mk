@@ -33,7 +33,7 @@ $(call inherit-product, device/huawei/hwu9508/full_hwu9508.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := hwu9508
-PRODUCT_NAME := cm_hwu9508
+PRODUCT_NAME := hwu9508
 PRODUCT_BRAND := huawei
 PRODUCT_MODEL := U9508
 PRODUCT_MANUFACTURER := HUAWEI

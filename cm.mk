@@ -14,31 +14,36 @@
 # limitations under the License.
 #
 
-## Specify phone tech before including full_phone
+
+# Specify phone tech before including full_phone
 $(call inherit-product, vendor/cm/config/gsm.mk)
 
 # Release name
-PRODUCT_RELEASE_NAME := U9508
+PRODUCT_RELEASE_NAME := hwu9508
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 1280
+TARGET_SCREEN_WIDTH := 720
 
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # Inherit device configuration
-$(call inherit-product, device/huawei/u9508/device_u9508.mk)
+$(call inherit-product, device/huawei/hwu9508/full_hwu9508.mk)
 
-## Device identifier. This must come after all inclusions
-
-PRODUCT_DEVICE := u9508
-PRODUCT_MODEL := u9508
-PRODUCT_NAME := u9508
+# Device identifier. This must come after all inclusions
+PRODUCT_DEVICE := hwu9508
+PRODUCT_NAME := cm_hwu9508
 PRODUCT_BRAND := huawei
+PRODUCT_MODEL := U9508
 PRODUCT_MANUFACTURER := huawei
 
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=u9508 
+# Set build fingerprint / ID / Product Name ect.
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=hwu9508 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
-# Allow ADB (to access dev settings)
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.debuggable=1 persist.sys.usb.config=mtp persist.service.adb.enable=1
+#from GS3 
+#PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=m0xx TARGET_DEVICE=m0 BUILD_FINGERPRINT="samsung/m0xx/m0:4.1.1/JRO03C/I9300XXDLIB:user/release-keys" PRIVATE_BUILD_DESC="m0xx-user 4.1.1 JRO03C I9300XXDLIB release-keys"
 
 
 #BUILD_FINGERPRINT=Huawei/U9508/hwu9508:4.1.1/HuaweiU9508/C00B023:user/release-keys PRIVATE_BUILD_DESC="u9508-userdebug 4.1.1 JRO03L userdebug.s00219286.20120919.191922 test-keys"

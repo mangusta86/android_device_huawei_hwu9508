@@ -12,6 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+ifeq ($(TARGET_DEVICE),hwu9508)
 
-PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/full_hwu9508.mk
+LOCAL_PATH := $(call my-dir)
+
+include $(call all-makefiles-under,$(LOCAL_PATH))
+
+endif

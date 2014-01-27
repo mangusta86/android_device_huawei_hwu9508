@@ -30,7 +30,7 @@ $(call inherit-product, device/huawei/u9508/device_u9508.mk)
 
 PRODUCT_DEVICE := u9508
 PRODUCT_MODEL := u9508
-PRODUCT_NAME := cm_u9508
+PRODUCT_NAME := u9508
 PRODUCT_BRAND := huawei
 PRODUCT_MANUFACTURER := huawei
 

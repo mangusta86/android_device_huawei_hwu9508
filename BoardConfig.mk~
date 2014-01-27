@@ -25,7 +25,7 @@ LOCAL_PATH:= $(call my-dir)
 
 # inherit from the proprietary version
 
--include vendor/huawei/u9508/BoardConfigVendor.mk
+-include vendor/huawei/hwu9508/BoardConfigVendor.mk
 
 
 # Huawei U9508 platform
@@ -56,21 +56,21 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 939524096
 BOARD_DATA_DEVICE := /dev/block/mmcblk0p18
 BOARD_DATA_FILESYSTEM := ext4
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 5926551552
-#BOARD_CACHE_DEVICE := /dev/block/mmcblk0p16
-#BOARD_CACHE_FILESYSTEM := ext4
+BOARD_CACHE_DEVICE := /dev/block/mmcblk0p16
+BOARD_CACHE_FILESYSTEM := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
-TARGET_PREBUILT_KERNEL := device/huawei/u9508/kernel
+#TARGET_PREBUILT_KERNEL := device/huawei/u9508/kernel
 
 #Graphics
-BOARD_EGL_CFG := device/huawei/u9508/configs/egl.cfg
+BOARD_EGL_CFG := device/huawei/hwu9508/configs/egl.cfg
 USE_OPENGL_RENDERER := true
 
 # Probably is better without it
 # HWComposer
-#BOARD_USES_HWCOMPOSER := true
+BOARD_USES_HWCOMPOSER := true
 
 # Enable WEBGL in WebKit
-#ENABLE_WEBGL := true
+ENABLE_WEBGL := true
 
 # Bootanimation
 TARGET_BOOTANIMATION_PRELOAD := true
@@ -90,7 +90,7 @@ WIFI_DRIVER_FW_PATH_AP      := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
 
 #Bluetooth
 BOARD_HAVE_BLUETOOTH := true
-#BOARD_HAVE_BLUETOOTH_BCM := true
+BOARD_HAVE_BLUETOOTH_BCM := true
 
 # Camera
 #BOARD_USE_FROYO_LIBCAMERA := true

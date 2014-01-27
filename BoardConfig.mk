@@ -17,28 +17,43 @@
 # Product-specific compile-time definitions.
 #
 
-LOCAL_PATH:= $(call my-dir)
+USE_CAMERA_STUB := true
+BOARD_USES_GENERIC_AUDIO := true
 
-# WARNING: This line must come *before* including the proprietary
-# variant, so that it gets overwritten by the parent (which goes
-# against the traditional rules of inheritance).
+TARGET_BOOTANIMATION_PRELOAD := true
 
-# inherit from the proprietary version
-
--include vendor/huawei/u9508/BoardConfigVendor.mk
-
-
-# Huawei U9508 platform
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
 TARGET_ARCH := arm
-TARGET_ARCH_VARIANT := armv7-a
+TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_ARCH_VARIANT_CPU := cortex-a9
+ARCH_ARM_HAVE_NEON := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
+TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
+
+
+BOARD_VENDOR := huawei
+TARGET_BOARD_PLATFORM := k3v2oem1
+TARGET_SOC := k3v2
+
+TARGET_NO_BOOTLOADER := true
+TARGET_NO_RADIOIMAGE := true
+
+TARGET_PROVIDES_INIT := true
+TARGET_PROVIDES_INIT_TARGET_RC := true
+TARGET_RECOVERY_INITRC := device/huawei/hwu9508/recovery.rc
+
+TARGET_SPECIFIC_HEADER_PATH := device/huawei/hwu9508/overlay/include
+
+
+# kernel
 BOARD_KERNEL_CMDLINE := console=ttyS0 vmalloc=384M k3v2_pmem=1 mmcparts=mmcblk0:p1(xloader),p3(nvme),p4(misc),p5(splash),p6(oeminfo),p7(reserved1),p8(reserved2),p9(recovery2),p10(recovery),p11(boot),p12(modemimage),p13(modemnvm1),p14(modemnvm2),p15(system),p16(cache),p17(cust),p18(userdata);mmcblk1:p1(ext_sdcard)
 BOARD_KERNEL_PAGESIZE := 2048 
 BOARD_KERNEL_BASE := 0x8000
+#TARGET_PREBUILT_KERNEL := device/huawei/u9508/kernel
+
 
 # Recovery
 BOARD_HAS_NO_SELECT_BUTTON := true
@@ -56,26 +71,22 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 939524096
 BOARD_DATA_DEVICE := /dev/block/mmcblk0p18
 BOARD_DATA_FILESYSTEM := ext4
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 5926551552
-#BOARD_CACHE_DEVICE := /dev/block/mmcblk0p16
-#BOARD_CACHE_FILESYSTEM := ext4
+BOARD_CACHE_DEVICE := /dev/block/mmcblk0p16
+BOARD_CACHE_FILESYSTEM := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
-TARGET_PREBUILT_KERNEL := device/huawei/u9508/kernel
+
 
 #Graphics
-BOARD_EGL_CFG := device/huawei/u9508/configs/egl.cfg
+BOARD_EGL_CFG := device/huawei/hwu9508/configs/egl.cfg
 USE_OPENGL_RENDERER := true
 
-# Probably is better without it
 # HWComposer
-#BOARD_USES_HWCOMPOSER := true
+BOARD_USES_HWCOMPOSER := true
 
 # Enable WEBGL in WebKit
-#ENABLE_WEBGL := true
+ENABLE_WEBGL := true
 
-# Bootanimation
-TARGET_BOOTANIMATION_PRELOAD := true
-
-# Wifi related defines
+# Wifi 
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 WPA_SUPPLICANT_VERSION      := VER_0_8_X
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
@@ -124,10 +135,12 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
 ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
 
-# miscellaneus
-TARGET_NO_BOOTLOADER := true
-TARGET_NO_RADIOIMAGE := true
-TARGET_BOARD_PLATFORM := k3v2oem1
-#TARGET_BOOTLOADER_BOARD_NAME := 
-#TARGET_OTA_ASSERT_DEVICE := u9508
+
+
+#u9508 specific files
+
+TARGET_KERNEL_SOURCE := kernel/huawei/k3v2oem1
+TARGET_KERNEL_CONFIG := cyanogenmod_hwu9508_defconfig
+
+-include vendor/huawei/hwu9508/BoardConfigVendor.mk
 

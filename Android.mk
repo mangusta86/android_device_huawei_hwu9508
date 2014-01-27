@@ -12,9 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifeq ($(TARGET_DEVICE),u9508)
 
 LOCAL_PATH := $(call my-dir)
+
+ifeq ($(TARGET_DEVICE),hwu9508)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 

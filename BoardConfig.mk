@@ -58,8 +58,8 @@ BOARD_KERNEL_BASE := 0x8000
 # Recovery
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_HAS_LARGE_FILESYSTEM := true
-#BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/huawei/u9508/recovery/recovery_ui.c
-#BOARD_CUSTOM_GRAPHICS := ../../../device/huawei/u9508/recovery/minui/graphics.c
+#BOARD_CUSTOM_RECOVERY_KEYMAPPING := device/huawei/hwu9508/recovery/recovery_ui.c
+#BOARD_CUSTOM_GRAPHICS := device/huawei/hwu9508/recovery/graphics.c
 
 # filesystem
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608

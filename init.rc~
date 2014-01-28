@@ -5,7 +5,7 @@
 #
 
 import /init.k3v2oem1.rc
-import /init.usb.rc
+#import /init.usb.rc
 import /init.trace.rc
 
 on early-init

@@ -22,6 +22,10 @@ BOARD_USES_GENERIC_AUDIO := true
 
 TARGET_BOOTANIMATION_PRELOAD := true
 
+# inherit from the proprietary version
+include vendor/huawei/hwu9508/BoardConfigVendor.mk
+
+
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true

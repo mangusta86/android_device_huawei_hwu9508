@@ -14,5 +14,4 @@
 
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/hwu9508.mk \
     $(LOCAL_DIR)/full_hwu9508.mk

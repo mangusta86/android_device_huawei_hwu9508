@@ -51,12 +51,14 @@ LOCAL_PATH := device/huawei/hwu9508
 
 # init files from Huawei initramfs
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/init.rc:root/init.rc \
-    $(LOCAL_PATH)/init.trace.rc:root/init.trace.rc \
-    $(LOCAL_PATH)/init.k3v2oem1.rc:root/init.k3v2oem1.rc \
-    $(LOCAL_PATH)/init.usb.rc:root/init.usb.rc \
-    $(LOCAL_PATH)/ueventd.rc:root/ueventd.rc \
-    $(LOCAL_PATH)/ueventd.k3v2oem1.rc:root/ueventd.k3v2oem1.rc
+    $(LOCAL_PATH)/rootdir/init.rc:root/init.rc \
+    $(LOCAL_PATH)/rootdir/init.trace.rc:root/init.trace.rc \
+    $(LOCAL_PATH)/rootdir/init.k3v2oem1.rc:root/init.k3v2oem1.rc \
+    $(LOCAL_PATH)/rootdir/init.usb.rc:root/init.usb.rc \
+    $(LOCAL_PATH)/rootdir/ueventd.rc:root/ueventd.rc \
+    $(LOCAL_PATH)/rootdir/ueventd.k3v2oem1.rc:root/ueventd.k3v2oem1.rc \
+    $(LOCAL_PATH)/rootdir/ueventd.k3v2oem1.rc:recovery/root/ueventd.k3v2oem1.rc \
+    $(LOCAL_PATH)/rootdir/fstab.k3v2oem1:recovery/root/fstab.k3v2oem1 
 
 # Install the features available on this device.
 PRODUCT_COPY_FILES += \

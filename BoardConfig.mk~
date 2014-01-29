@@ -123,19 +123,15 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/huawei/hwu9508/bluetooth
 
-## Audio
+# Audio
 BOARD_USES_GENERIC_AUDIO := true
-#TARGET_PROVIDES_LIBAUDIO := true
-#BOARD_PREBUILT_LIBAUDIO := true
-#BOARD_USES_GENERIC_AUDIO := false
-#BOARD_USES_QCOM_AUDIO_V2 := true
-#BUILD_WITHOUT_PV := false
+TARGET_PROVIDES_LIBAUDIO := true
 
-## Lights
-#TARGET_PROVIDES_LIBLIGHTS := true
+# Lights
+TARGET_PROVIDES_LIBLIGHTS := true
 
 # RIL
-#BOARD_RIL_CLASS := ../../../device/huawei/hwu9508/ril/
+BOARD_RIL_CLASS := ../../../device/huawei/hwu9508/ril/
 
 # Camera
 USE_CAMERA_STUB := true
@@ -155,9 +151,17 @@ USE_CAMERA_STUB := true
 
 # Gps
 
+# Audio
+#BOARD_USES_GENERIC_AUDIO := false
+#BOARD_USES_QCOM_AUDIO_V2 := true
+#BOARD_PREBUILT_LIBAUDIO := true
+#TARGET_PROVIDES_LIBAUDIO := true
+#BUILD_WITHOUT_PV := false
 
 # HDMI
 #TARGET_HAVE_HDMI_OUT := true
+
+
 
 
 -include vendor/huawei/hwu9508/BoardConfigVendor.mk

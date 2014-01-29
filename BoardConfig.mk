@@ -17,14 +17,10 @@
 # Product-specific compile-time definitions.
 #
 
-
-
-
 TARGET_BOOTANIMATION_PRELOAD := true
 
 # inherit from the proprietary version
 include vendor/huawei/hwu9508/BoardConfigVendor.mk
-
 
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
@@ -36,7 +32,6 @@ ARCH_ARM_HAVE_NEON := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
-
 
 BOARD_VENDOR := huawei
 TARGET_BOARD_PLATFORM := k3v2oem1

@@ -57,6 +57,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.usb.rc:root/init.usb.rc \
     $(LOCAL_PATH)/rootdir/ueventd.rc:root/ueventd.rc \
     $(LOCAL_PATH)/rootdir/ueventd.k3v2oem1.rc:root/ueventd.k3v2oem1.rc \
+    $(LOCAL_PATH)/rootdir/ueventd.rc:recovery/root/ueventd.rc \
     $(LOCAL_PATH)/rootdir/ueventd.k3v2oem1.rc:recovery/root/ueventd.k3v2oem1.rc \
     $(LOCAL_PATH)/rootdir/fstab.k3v2oem1:recovery/root/fstab.k3v2oem1 
 
@@ -120,7 +121,7 @@ PRODUCT_PACKAGES += \
 # mount points SDCARDS
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/vold.fstab:system/etc/vold.fstab \
-    $(LOCAL_PATH)/configs/vold.fstab:system/etc/internal_sd.fstab 
+    $(LOCAL_PATH)/configs/internal_sd.fstab:system/etc/internal_sd.fstab 
 
 #video
 PRODUCT_COPY_FILES += \

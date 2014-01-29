@@ -12,16 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# config.mk
-#
-# Product-specific compile-time definitions.
-#
-
-TARGET_BOOTANIMATION_PRELOAD := true
-
 # inherit from the proprietary version
 include vendor/huawei/hwu9508/BoardConfigVendor.mk
 
+# Platform
+TARGET_BOOTANIMATION_PRELOAD := true
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
@@ -62,15 +57,16 @@ TARGET_RECOVERY_FSTAB := device/huawei/hwu9508/recovery/etc/recovery.fstab
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_USES_MMCUTILS := true
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
-#BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/huawei/hwu9508/recovery/recovery-keys.c
+#BOARD_CUSTOM_RECOVERY_KEYMAPPING := device/huawei/hwu9508/recovery/recovery-keys.c
 DEVICE_RESOLUTION := 720x1280
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun%d/file
 BOARD_USE_CUSTOM_RECOVERY_FONT:= \"roboto_10x18.h\"
-#BOARD_CUSTOM_GRAPHICS := ../../../device/huawei/hwu9508/recovery/graphics.c
+#BOARD_CUSTOM_GRAPHICS := device/huawei/hwu9508/recovery/graphics.c
 
 # USB
 BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun%d/file"
 TARGET_USE_CUSTOM_SECOND_LUN_NUM := 1
+BOARD_MTP_DEVICE := "/dev/mtp"
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 BOARD_VOLD_MAX_PARTITIONS := 19
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
@@ -154,6 +150,5 @@ USE_CAMERA_STUB := true
 # HDMI
 #TARGET_HAVE_HDMI_OUT := true
 
-
--include vendor/huawei/hwu9508/BoardConfigVendor.mk
+TARGET_OTA_ASSERT_DEVICE := hwu9508,U9508,u9508,U9508B,hwu9508B,u9508B
 

@@ -17,14 +17,10 @@
 # Product-specific compile-time definitions.
 #
 
-
-
-
 TARGET_BOOTANIMATION_PRELOAD := true
 
 # inherit from the proprietary version
 include vendor/huawei/hwu9508/BoardConfigVendor.mk
-
 
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
@@ -36,7 +32,6 @@ ARCH_ARM_HAVE_NEON := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
-
 
 BOARD_VENDOR := huawei
 TARGET_BOARD_PLATFORM := k3v2oem1
@@ -123,15 +118,19 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/huawei/hwu9508/bluetooth
 
-# Audio
+## Audio
 BOARD_USES_GENERIC_AUDIO := true
-TARGET_PROVIDES_LIBAUDIO := true
+#TARGET_PROVIDES_LIBAUDIO := true
+#BOARD_PREBUILT_LIBAUDIO := true
+#BOARD_USES_GENERIC_AUDIO := false
+#BOARD_USES_QCOM_AUDIO_V2 := true
+#BUILD_WITHOUT_PV := false
 
-# Lights
-TARGET_PROVIDES_LIBLIGHTS := true
+## Lights
+#TARGET_PROVIDES_LIBLIGHTS := true
 
 # RIL
-BOARD_RIL_CLASS := ../../../device/huawei/hwu9508/ril/
+#BOARD_RIL_CLASS := ../../../device/huawei/hwu9508/ril/
 
 # Camera
 USE_CAMERA_STUB := true
@@ -151,18 +150,9 @@ USE_CAMERA_STUB := true
 
 # Gps
 
-# Audio
-#BOARD_USES_GENERIC_AUDIO := false
-#BOARD_USES_QCOM_AUDIO_V2 := true
-#BOARD_PREBUILT_LIBAUDIO := true
-#TARGET_PROVIDES_LIBAUDIO := true
-#BUILD_WITHOUT_PV := false
 
 # HDMI
 #TARGET_HAVE_HDMI_OUT := true
 
-
-
-
--include vendor/huawei/hwu9508/BoardConfigVendor.mk
+TARGET_OTA_ASSERT_DEVICE := hwu9508,U9508,u9508,U9508B,hwu9508B,u9508B
 

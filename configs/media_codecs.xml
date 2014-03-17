@@ -93,10 +93,6 @@ Only the three quirks included above are recognized at this point:
 
         <MediaCodec name="OMX.k3.video.decoder.vp8" type="video/x-vnd.on2.vp8" />
         <MediaCodec name="OMX.k3.video.decoder.rv" type="video/x-pn-realvideo" />
-        <MediaCodec name="OMX.k3.video.decoder.mpeg2" type="video/mpeg2" >
-            <Quirk name="requires-allocate-on-input-ports" />
-        </MediaCodec>
-        <MediaCodec name="OMX.k3.video.decoder.mpeg2" type="video/mpeg" />
         <MediaCodec name="OMX.k3.video.decoder.vc1" type="video/x-ms-wmv" />
         <MediaCodec name="OMX.k3.video.decoder.vc1" type="video/x-ms-wmv3" />
         <MediaCodec name="OMX.k3.video.decoder.vc1" type="video/wvc1" />
@@ -109,7 +105,6 @@ Only the three quirks included above are recognized at this point:
         <MediaCodec name="OMX.google.g711.alaw.decoder" type="audio/g711-alaw" />
         <MediaCodec name="OMX.google.g711.mlaw.decoder" type="audio/g711-mlaw" />
         <MediaCodec name="OMX.google.vorbis.decoder" type="audio/vorbis" />
-        <MediaCodec name="OMX.k3.ra.decoder" type="audio/x-pn-realaudio" />
         <MediaCodec name="OMX.k3.ffmpeg.decoder" type="audio/ffmpeg" />
         <MediaCodec name="OMX.dolby.ac3.decoder" type="audio/ac3" />
         <MediaCodec name="OMX.dolby.ec3.decoder" type="audio/eac3" />  
@@ -123,7 +118,7 @@ Only the three quirks included above are recognized at this point:
     <Encoders>
         <MediaCodec name="OMX.k3.video.encoder.avc" type="video/avc" />
         <MediaCodec name="OMX.google.h263.encoder" type="video/3gpp" />
-        <MediaCodec name="OMX.google.h263.encoder" type="video/mp4v-es" />
+        <MediaCodec name="OMX.google.mpeg4.encoder" type="video/mp4v-es" />
         <MediaCodec name="OMX.google.amrnb.encoder" type="audio/3gpp" />
         <MediaCodec name="OMX.google.amrwb.encoder" type="audio/amr-wb" />
         <MediaCodec name="OMX.google.aac.encoder" type="audio/mp4a-latm" />

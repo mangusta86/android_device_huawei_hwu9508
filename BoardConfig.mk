@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # inherit from the proprietary version
-include vendor/huawei/hwu9508/BoardConfigVendor.mk
+include vendor/huawei/u9508/BoardConfigVendor.mk
 
 # Platform
 TARGET_BOOTANIMATION_PRELOAD := true
@@ -37,30 +37,29 @@ TARGET_NO_RADIOIMAGE := true
 
 TARGET_PROVIDES_INIT := true
 TARGET_PROVIDES_INIT_TARGET_RC := true
-TARGET_SPECIFIC_HEADER_PATH := device/huawei/hwu9508/overlay/include
+TARGET_SPECIFIC_HEADER_PATH := device/huawei/u9508/overlay/include
 
 # kernel
 BOARD_KERNEL_CMDLINE := console=ttyS0 vmalloc=384M k3v2_pmem=1 mmcparts=mmcblk0:p1(xloader),p3(nvme),p4(misc),p5(splash),p6(oeminfo),p7(reserved1),p8(reserved2),p9(recovery2),p10(recovery),p11(boot),p12(modemimage),p13(modemnvm1),p14(modemnvm2),p15(system),p16(cache),p17(cust),p18(userdata);mmcblk1:p1(ext_sdcard)
 BOARD_KERNEL_PAGESIZE := 2048 
-#TARGET_PREBUILT_KERNEL := device/huawei/hwu9508/kernel
+TARGET_PREBUILT_KERNEL := device/huawei/u9508/kernel
 #u9508 specific files
-TARGET_KERNEL_SOURCE := kernel/huawei/k3v2oem1
-TARGET_KERNEL_CONFIG := cyanogenmod_hwu9508_defconfig
+#TARGET_KERNEL_SOURCE := kernel/huawei/k3v2oem1
+#TARGET_KERNEL_CONFIG := cyanogenmod_u9508_defconfig
 
 # Recovery
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_HAS_LARGE_FILESYSTEM := true
-TARGET_PREBUILT_RECOVERY_KERNEL := device/huawei/hwu9508/recovery/kernel
-TARGET_RECOVERY_INITRC := device/huawei/hwu9508/recovery/init.rc
-TARGET_RECOVERY_FSTAB := device/huawei/hwu9508/recovery/etc/recovery.fstab
+TARGET_RECOVERY_INITRC := device/huawei/u9508/recovery/init.rc
+TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_USES_MMCUTILS := true
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
-#BOARD_CUSTOM_RECOVERY_KEYMAPPING := device/huawei/hwu9508/recovery/recovery-keys.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := device/huawei/u9508/recovery/recovery_keys.c
 DEVICE_RESOLUTION := 720x1280
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun%d/file
 BOARD_USE_CUSTOM_RECOVERY_FONT:= \"roboto_10x18.h\"
-#BOARD_CUSTOM_GRAPHICS := device/huawei/hwu9508/recovery/graphics.c
+#BOARD_CUSTOM_GRAPHICS := device/huawei/u9508/recovery/graphics.c
 
 # USB
 BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun%d/file"
@@ -86,7 +85,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 
 #Graphics
-BOARD_EGL_CFG := device/huawei/hwu9508/configs/egl.cfg
+BOARD_EGL_CFG := device/huawei/u9508/configs/egl.cfg
 USE_OPENGL_RENDERER := true
 
 # HWComposer
@@ -111,7 +110,7 @@ WIFI_DRIVER_FW_PATH_AP      := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
 #Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/huawei/hwu9508/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/huawei/u9508/bluetooth
 
 ## Audio
 BOARD_USES_GENERIC_AUDIO := true
@@ -125,7 +124,7 @@ BOARD_USES_GENERIC_AUDIO := true
 #TARGET_PROVIDES_LIBLIGHTS := true
 
 # RIL
-#BOARD_RIL_CLASS := ../../../device/huawei/hwu9508/ril/
+#BOARD_RIL_CLASS := ../../../device/huawei/u9508/ril/
 
 # Camera
 USE_CAMERA_STUB := true
@@ -149,5 +148,5 @@ USE_CAMERA_STUB := true
 # HDMI
 #TARGET_HAVE_HDMI_OUT := true
 
-TARGET_OTA_ASSERT_DEVICE := hwu9508,U9508,u9508,U9508B,hwu9508B,u9508B
+TARGET_OTA_ASSERT_DEVICE := u9508,U9508,U9508B,u9508B
 

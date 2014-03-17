@@ -1,62 +1,55 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <glgps xmlns="http://www.glpals.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.glpals.com/ glconfig.xsd" >
   <!--HAL Confguration  -->
-  
   <hal 
-	acPortName="/dev/ttyAMA3" 
+       acPortName="/dev/ttyAMA3"
        lBaudRate="115200"
-       gpioDelayMs="250"
-       acNvStoDir="/data/gps/"
+       
        cLogEnabled="false"
-       acLogDirectory="/data/gps/log/" 
-              
+       Log="FILE"
+       acLogDirectory="/data/gps/log/"
+
+       gpioNStdbyPath="/sys/class/gpio/gpio151/value"
+       gpioDelayMs="100"
+       acNvStoDir="/data/gps/"
+       acNmeaOutName="/data/gps/gpspipe"
+       ctrlPipe="/data/gps/glgpsctrl"	   
+
        arp-supl-enable="true"
        arp-supl-cap-msb="true"
        arp-supl-cap-msa="true"
        arp-supl-cap-ecid="false"
        arp-supl-use-apn="false"
-       arp-supl-ssl-verify="none"
        acSuplServer="supl.google.com"
-	   SuplPort="7275" 
-       tlsCertPath="/system/bin/gps.cer"
+       SuplPort="7275"
+       tlsCertPath="/data/gps/gps.pem"
        ReAidingIntervalSec="1200"
        SuplUT1Seconds="20"
        SuplUT2Seconds="20"
        SuplUT3Seconds="20"
        SuplVersion="1"
 	   
-       LbsEnable="true"
-       LbsLocal="false"
-       LbsServer="BCMLS2.glpals.com"
-       LbsPort="7275"
-       LbsSyncLto="false"
-       SyncLto="true"
-       ltoFileName="lto2.dat"	   
-       acLtoDir="/data/gps/"      
+       SuplLogEnable="false"
+       SuplLogFullName="/data/share/log/gps/supllog.txt"
+       ltoFileName="lto2.dat" 
        LbsSyncLtoThresholdDays="3"
-       LbsTAC="10101222"
-       LbsWlanEnable="false"
-	gpioNStdbyPath="/sys/class/gpio/gpio151/value"
-	gpioNResetPath="/sys/class/gpio/gpio152/value"
-	acNmeaOutName="/data/gps/gpspipe"  
-	ctrlPipe="/data/gps/glgpsctrl"
-
-   />
-  
+       acLtoDir="/data/gps/"
+       LbsEnable="false"
+  />
   <hal 
-    SensorsEnable="true"
-    SensorsMask="0F"
-    SensorsLog="true"
-    SensorsMoEnable="true" 
-    SensorsTurnEnable="false"
-    SensorsRawAcclGyroEnable="true"
+	   SensorsEnable="true"
+	   SensorsMask="0F"
+	   SensorsLog="false"
+	   SensorsMoEnable="true" 
+	   SensorsTurnEnable="false"
+	   SensorsRawAcclGyroEnable="true"
   />
 
   <gll 
        LogPriMask="LOG_INFO"
-       LogFacMask="LOG_GLLAPI | LOG_NMEA | LOG_RAWDATA" 
-       FrqPlan="FRQ_PLAN_26MHZ_2PPM_26MHZ_300PPB"   
-   RfType="GL_RF_47511_BRCM_EXT_LNA"
+       LogFacMask="LOG_GLLAPI | LOG_NMEA " 
+       FrqPlan="FRQ_PLAN_26MHZ_2PPM"
+       RfType="GL_RF_47511_BRCM_EXT_LNA"
        WarmStandbyTimeout1Seconds="10"
        WarmStandbyTimeout2Seconds="15"
   >
@@ -71,5 +64,25 @@
         <req_pos/>
     </task>
 </job>
-  
+
+<job id="Factory_High_SNR">
+    <task id="test" repeat="1">
+           <startup
+                     ignore_osc="true"
+                     ignore_rom_alm="true"
+                     ignore_ram_alm="true"
+                     ignore_pos="true"
+                     ignore_nav="true"
+                     ignore_time="true"
+           />
+           <req_ftest
+                    PRN="1"
+                    GL_FACT_TEST_MODE="GL_FACT_TEST_CONT"
+                    GL_FACT_TEST_ITEMS="GL_FACT_TEST_CW"
+                    avg_int_sec="10" 
+                    duration_sec="60"
+           />
+     </task>
+</job>
+
 </glgps>

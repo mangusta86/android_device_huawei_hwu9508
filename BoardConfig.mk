@@ -85,8 +85,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 
 #Graphics
-BOARD_EGL_CFG := device/huawei/u9508/configs/egl.cfg
-USE_OPENGL_RENDERER := true
+BOARD_EGL_CFG := device/huawei/u9508/prebuilts/lib/egl/egl.cfg
 
 # HWComposer
 BOARD_USES_HWCOMPOSER := true
@@ -105,7 +104,6 @@ WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/bcmdhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA     := "/system/vendor/firmware/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_P2P     := "/system/vendor/firmware/fw_bcmdhd_p2p.bin"
 WIFI_DRIVER_FW_PATH_AP      := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
-#WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/bcmdhd.ko"
 
 #Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -138,7 +136,7 @@ USE_CAMERA_STUB := true
 ## FM Radio
 #BOARD_HAVE_QCOM_FM := true
 #COMMON_GLOBAL_CFLAGS += -DQCOM_FM_ENABLED
-#BOARD_HAVE_FM_RADIO := true
+BOARD_HAVE_FM_RADIO := true
 #BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
 #BOARD_FM_DEVICE := tavarua
 
@@ -148,5 +146,5 @@ USE_CAMERA_STUB := true
 # HDMI
 #TARGET_HAVE_HDMI_OUT := true
 
-TARGET_OTA_ASSERT_DEVICE := u9508,U9508,U9508B,u9508B
+# TARGET_OTA_ASSERT_DEVICE := u9508,U9508,U9508B,u9508B
 

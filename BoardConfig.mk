@@ -142,8 +142,7 @@ BOARD_HAVE_FM_RADIO := true
 #TARGET_HAVE_HDMI_OUT := true
 
 
-#TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/hisik3-usb-otg/gadget/lun0/file
-#BOARD_UMS_LUNFILE := "/sys/devices/hisik3-usb-otg/gadget/lun0/file"
+
 
 ###################################
 #
@@ -169,8 +168,8 @@ BOARD_RECOVERY_SWIPE := true
 #TWRP
 HAVE_SELINUX := false
 
-TW_MAX_BRIGHTNESS := 255
-#RECOVERY_GRAPHICS_USE_LINELENGTH := true
+
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
 
 #TW_ALWAYS_RMRF := true
 #TW_NEVER_UMOUNT_SYSTEM := true
@@ -180,7 +179,10 @@ TW_MAX_BRIGHTNESS := 255
 #SP2_BACKUP_METHOD := files
 #SP2_MOUNTABLE := 1
 
-#TW_CUSTOM_BATTERY_PATH := "/sys/devices/platform/bq_bci_battery.1/Battery"
+TW_CUSTOM_BATTERY_PATH := "/sys/devices/platform/k3-battery.1"
+TW_BRIGHTNESS_PATH := /sys/class/leds/lcd_backlight0/brightness
+TW_MAX_BRIGHTNESS := 255
+
 RECOVERY_SDCARD_ON_DATA := true 
 #TW_HAS_NO_RECOVERY_PARTITION := true
 TW_FLASH_FROM_STORAGE := true
@@ -190,13 +192,18 @@ TW_DEFAULT_EXTERNAL_STORAGE := true
 TW_EXTERNAL_STORAGE_PATH := "/sdcard"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard"
 TW_INTERNAL_STORAGE_PATH := "/data/share"
-TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "emmc"
 
-#TW_INCLUDE_JB_CRYPTO := true
-#TW_CRYPTO_FS_TYPE := "ext4"
-TW_BRIGHTNESS_PATH := /sys/class/leds/lcd_backlight0/brightness
-#TW_CRYPTO_REAL_BLKDEV := "/dev/block/platform/hi_mci.1/by-name/userdata"
-#TW_CRYPTO_MNT_POINT := "/data"
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/hisik3-usb-otg/gadget/lun0/file
+BOARD_UMS_LUNFILE := "/sys/devices/hisik3-usb-otg/gadget/lun0/file"
+
+TW_INCLUDE_JB_CRYPTO := true
+TW_CRYPTO_FS_TYPE := "ext4"
+TW_CRYPTO_REAL_BLKDEV := "/dev/block/platform/hi_mci.1/by-name/userdata"
+TW_CRYPTO_MNT_POINT := "/data"
+
+
+
 
 ###################################
 #

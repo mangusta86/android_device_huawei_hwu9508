@@ -2,30 +2,37 @@ on early-init
     start ueventd
 
 on init
-    export PATH /sbin
     export PATH /sbin:/vendor/bin:/system/sbin:/system/bin:/system/xbin
-    export LD_LIBRARY_PATH /vendor/lib:/system/lib
+    export LD_LIBRARY_PATH .:/sbin:/vendor/lib:/system/lib
     export ANDROID_ROOT /system
     export ANDROID_DATA /data
     export EXTERNAL_STORAGE /sdcard
-    export BOOTCLASSPATH /system/framework/core.jar:/system/framework/core-junit.jar:/system/framework/bouncycastle.jar:/system/framework/ext.jar:/system/framework/framework.jar:/system/framework/android.policy.jar:/system/framework/services.jar:/system/framework/apache-xml.jar:/system/framework/filterfw.jar
-
+    
     symlink /system/etc /etc
+    symlink /system/busybox /sbin/sh
+
+    chmod 0755 /sbin/busybox
+
 
 # Right now vendor lives on the same filesystem as system,
 # but someday that may change.
-    symlink /system/vendor /vendor
-    mkdir /sdcard
-    mkdir /system
-    mkdir /data
+
+
+    mkdir /cache
     mkdir /cust
+    mkdir /data
     mkdir /modem
     mkdir /modem/modem_image
     mkdir /modem/nvm1
     mkdir /modem/nvm2
+    mkdir /sdcard
+    mkdir /system
+
+
     chown system system /dev/cpuctl
     chown system system /dev/cpuctl/tasks
-    mkdir /cache
+
+
     write /sys/module/block2mtd/parameters/block2mtd /dev/block/mmcblk0p3
     mount /tmp /tmp tmpfs
     # change nve device visit permission
@@ -38,14 +45,10 @@ on fs
     mount yaffs2 mtd@system /system ro remount
     mount yaffs2 mtd@userdata /data nosuid nodev
     mount yaffs2 mtd@cache /cache nosuid nodev
-    #mount ext4 /dev/block/mmcblk0p15 /system
-    #mount ext4 /dev/block/mmcblk0p15 /system ro remount
     mount ext4 /dev/block/platform/hi_mci.1/by-name/system /system wait rw
-    #mount ext4 /dev/block/mmcblk0p16 /cache
     mount ext4 /dev/block/platform/hi_mci.1/by-name/cache /cache wait rw
     wait /dev/block/mmcblk0p18
     exec /system/bin/e2fsck -p /dev/block/mmcblk0p18
-    #mount ext4 /dev/block/mmcblk0p18 /data
     mount ext4 /dev/block/platform/hi_mci.1/by-name/userdata /data wait rw
     mount ext4 /dev/block/platform/hi_mci.1/by-name/cust /cust wait rw
     mount vfat /dev/block/platform/hi_mci.0/mmcblk1p1 /sdcard
@@ -134,7 +137,6 @@ on boot
 
     class_start default
 
-	#add by w00187765
 	mkdir /data/dumplog
 	chmod 777 /data/dumplog
 
@@ -143,9 +145,6 @@ service ueventd /sbin/ueventd
 
 service recovery /sbin/recovery
 
-# DTS2011082903260  r00186667 2011/08/30 added begin
-service chargeservice /sbin/chargeservice
-# DTS2011082903260  r00186667 2011/08/30 added end
 service adbd /sbin/adbd recovery
     disabled
 
@@ -180,10 +179,5 @@ service imc_poweron /system/bin/imc_poweron
     user root
 #    group radio cache inet misc
 #    disabled
-    oneshot
-
-# ATcmd Server source upload begin
-service atcmdserver  /system/bin/atcmdserver
-    user root
     oneshot
 

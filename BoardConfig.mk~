@@ -148,10 +148,10 @@ BOARD_HAVE_FM_RADIO := true
 #
 ###################################
 
-# BOARD_TOUCH_RECOVERY := true
+BOARD_TOUCH_RECOVERY := true
 #TARGET_RECOVERY_INITRC := device/huawei/u9508/recovery/recovery.rc
-#TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab
-TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab2
+TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab
+#TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab2
 RECOVERY_FSTAB_VERSION := 2
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/hisik3-usb-otg/gadget/lun0/file
 BOARD_UMS_LUNFILE := "/sys/devices/hisik3-usb-otg/gadget/lun0/file"
@@ -178,11 +178,14 @@ TW_CUSTOM_BATTERY_PATH := "/sys/devices/platform/bq_bci_battery.1/Battery"
 RECOVERY_SDCARD_ON_DATA := true 
 TW_HAS_NO_RECOVERY_PARTITION := true
 TW_FLASH_FROM_STORAGE := true
-TW_EXTERNAL_STORAGE_PATH := "/external_sd"
-TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
 TW_DEFAULT_EXTERNAL_STORAGE := true
+
+# dual storage configuration
+TW_EXTERNAL_STORAGE_PATH := "/sdcard"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard"
 TW_INTERNAL_STORAGE_PATH := "/data/share"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
+
 TW_INCLUDE_JB_CRYPTO := true
 TW_CRYPTO_FS_TYPE := "ext4"
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd_backlight0/brightness

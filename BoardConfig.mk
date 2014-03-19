@@ -150,9 +150,9 @@ BOARD_HAVE_FM_RADIO := true
 
 # BOARD_TOUCH_RECOVERY := true
 #TARGET_RECOVERY_INITRC := device/huawei/u9508/recovery/recovery.rc
-#TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab
-TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab2
-RECOVERY_FSTAB_VERSION := 2
+TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab
+#TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab2
+#RECOVERY_FSTAB_VERSION := 2
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/hisik3-usb-otg/gadget/lun0/file
 BOARD_UMS_LUNFILE := "/sys/devices/hisik3-usb-otg/gadget/lun0/file"
 BOARD_HAS_NO_SELECT_BUTTON := true

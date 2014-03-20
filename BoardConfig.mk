@@ -157,7 +157,7 @@ TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab
 RECOVERY_FSTAB_VERSION := 2
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/huawei/u9508/recovery/recovery_keys.c
-# BOARD_RECOVERY_HANDLES_MOUNT 
+# BOARD_RECOVERY_HANDLES_MOUNT := true
 # RECOVERY_EXTEND_NANDROID_MENU 
 DEVICE_RESOLUTION := 720x1280
 #TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
@@ -205,9 +205,9 @@ TW_INTERNAL_STORAGE_MOUNT_POINT := "/data"
 
 
 TW_INCLUDE_JB_CRYPTO := true
-#TW_CRYPTO_FS_TYPE := "ext4"
-#TW_CRYPTO_REAL_BLKDEV := "/dev/block/platform/hi_mci.1/by-name/userdata"
-#TW_CRYPTO_MNT_POINT := "/data"
+TW_CRYPTO_FS_TYPE := "ext4"
+TW_CRYPTO_REAL_BLKDEV := "/dev/block/platform/hi_mci.1/by-name/userdata"
+TW_CRYPTO_MNT_POINT := "/emmc"
 
 
 

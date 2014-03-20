@@ -151,7 +151,7 @@ BOARD_HAVE_FM_RADIO := true
 ###################################
 
 BOARD_TOUCH_RECOVERY := true
-#TARGET_RECOVERY_INITRC := device/huawei/u9508/recovery/recovery.rc
+TARGET_RECOVERY_INITRC := device/huawei/u9508/recovery/recovery.rc
 TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab
 #TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab2
 RECOVERY_FSTAB_VERSION := 2

@@ -53,16 +53,11 @@ TARGET_NO_RADIOIMAGE := true
 TARGET_BOARD_PLATFORM := k3v2oem1
 TARGET_BOOTLOADER_BOARD_NAME := u9508
 TARGET_BOOTLOADER_NAME= u9508
-TARGET_BOARD_INFO_FILE := device/oppo/find5/board-info.txt
+
 
 TARGET_PROVIDES_INIT := true
 TARGET_PROVIDES_INIT_TARGET_RC := true
 
-
-
-
-# USB
-#TARGET_USE_CUSTOM_SECOND_LUN_NUM := 1
 
 
 # filesystem
@@ -138,11 +133,6 @@ BOARD_HAVE_FM_RADIO := true
 # HDMI
 #TARGET_HAVE_HDMI_OUT := true
 
-# adb has root
-ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
-ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
-ADDITIONAL_DEFAULT_PROPERTIES += persist.sys.usb.config=mass_storage
-
 
 ###################################
 #
@@ -184,7 +174,7 @@ TW_BRIGHTNESS_PATH := /sys/class/leds/lcd_backlight0/brightness
 TW_MAX_BRIGHTNESS := 255
 
 # touch configs
-BOARD_TOUCH_RECOVERY := true
+#BOARD_TOUCH_RECOVERY := true
 BOARD_RECOVERY_SWIPE := true
 
 # dual storage configuration

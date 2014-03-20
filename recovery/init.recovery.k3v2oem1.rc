@@ -7,12 +7,6 @@ on init
     mkdir /reserved2
 
 
-    mkdir /data/share
-    symlink /data/share /data/media 
-
-    chown media_rw media_rw /data/media
-    chown media_rw media_rw /data/share
-
     chown system system /dev/cpuctl
     chown system system /dev/cpuctl/tasks
 
@@ -24,6 +18,12 @@ on init
 
 
 on fs
+
+    chmod 0660 /sys/devices/virtual/usbswitch/usbsw/swstate
+    chown system system /sys/devices/virtual/usbswitch/usbsw/swstate
+
+
+
 #bq2416x_charger
      chmod 0660 /sys/bus/i2c/devices/1-006b/enable_charger
      chown system system /sys/bus/i2c/devices/1-006b/enable_charger
@@ -45,6 +45,9 @@ on fs
 
      write /proc/apanic_console 1
 
+on post-fs-data
+    chown system system /sys/class/android_usb/android0/f_mass_storage/lun/file
+    chmod 0660 /sys/class/android_usb/android0/f_mass_storage/lun/file
 
 on boot
     write /sys/devices/system/cpu/cpu1/online 0
@@ -97,18 +100,6 @@ on property:sys.usb.config=mtp,adb
     write /sys/class/android_usb/android0/enable 1
     start adbd
     setprop sys.usb.state $sys.usb.config
-
-service nvm-server /system/bin/nvm_server
-socket nvm-ctl stream 777 root root
-    user root
-    group root
-    oneshot
-
-service imc_poweron /system/bin/imc_poweron
-    user root
-#    group radio cache inet misc
-#    disabled
-    oneshot
 
 
 

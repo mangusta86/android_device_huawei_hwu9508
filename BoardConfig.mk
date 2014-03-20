@@ -191,14 +191,14 @@ TW_CUSTOM_BATTERY_PATH := "/sys/devices/platform/k3_battery_monitor.1/power_supp
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd_backlight0/brightness
 TW_MAX_BRIGHTNESS := 255
 
-RECOVERY_SDCARD_ON_DATA := true 
+#RECOVERY_SDCARD_ON_DATA := true 
 #TW_HAS_NO_RECOVERY_PARTITION := true
 TW_FLASH_FROM_STORAGE := true
 TW_DEFAULT_EXTERNAL_STORAGE := true
 
 # dual storage configuration
-TW_HAS_DUAL_STORAGE := true
-TW_HAS_DATA_MEDIA := false
+#TW_HAS_DUAL_STORAGE := true
+#TW_HAS_DATA_MEDIA := false
 TW_EXTERNAL_STORAGE_PATH := "/sdcard"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "/sdcard"
 TW_INTERNAL_STORAGE_PATH := "/data/share"

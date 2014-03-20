@@ -149,7 +149,7 @@ ADDITIONAL_DEFAULT_PROPERTIES += persist.sys.usb.config=mass_storage
 ## Recovery - BEGIN
 #
 ###################################
-
+BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_TOUCH_RECOVERY := true
 #TARGET_RECOVERY_INITRC := device/huawei/u9508/recovery/recovery.rc
 TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab
@@ -166,7 +166,7 @@ DEVICE_RESOLUTION := 720x1280
 BOARD_RECOVERY_SWIPE := true
 
 # USB mass storage
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/hisik3-usb-otg/gadget/lun0/file
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/virtual/android_usb/android0/f_mass_storage/lun/file
 BOARD_MTP_DEVICE := "/dev/mtp_usb"
 BOARD_VOLD_MAX_PARTITIONS := 19
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
@@ -197,6 +197,8 @@ TW_FLASH_FROM_STORAGE := true
 TW_DEFAULT_EXTERNAL_STORAGE := true
 
 # dual storage configuration
+TW_HAS_DUAL_STORAGE := true
+TW_HAS_DATA_MEDIA := false
 TW_EXTERNAL_STORAGE_PATH := "/sdcard"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "/sdcard"
 TW_INTERNAL_STORAGE_PATH := "/data/share"

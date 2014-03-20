@@ -1,5 +1,5 @@
 # mount point	fstype		device
-/sdcard		vfat		/dev/block/mmcblk1p1		flags=display="External Storage";storage;wipeingui;removable;backup=1
+/sdcard		auto		/dev/block/mmcblk1p1		flags=display="External Storage";storage;wipeingui;removable;backup=1
 /system		ext4		/dev/block/platform/hi_mci.1/by-name/system
 /cache		ext4		/dev/block/platform/hi_mci.1/by-name/cache
 /data		ext4		/dev/block/platform/hi_mci.1/by-name/userdata length=-16384 flags=wipeingui;storage;backup=1

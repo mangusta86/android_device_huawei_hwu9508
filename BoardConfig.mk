@@ -179,7 +179,7 @@ RECOVERY_GRAPHICS_USE_LINELENGTH := true
 #SP2_BACKUP_METHOD := files
 #SP2_MOUNTABLE := 1
 
-TW_CUSTOM_BATTERY_PATH := "/sys/devices/platform/k3-battery.1"
+TW_CUSTOM_BATTERY_PATH := "/sys/devices/platform/k3_battery_monitor.1/power_supply/Battery"
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd_backlight0/brightness
 TW_MAX_BRIGHTNESS := 255
 
@@ -190,17 +190,17 @@ TW_DEFAULT_EXTERNAL_STORAGE := true
 
 # dual storage configuration
 TW_EXTERNAL_STORAGE_PATH := "/sdcard"
-TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "/sdcard"
 TW_INTERNAL_STORAGE_PATH := "/data/share"
-TW_INTERNAL_STORAGE_MOUNT_POINT := "emmc"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "/data"
 
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/hisik3-usb-otg/gadget/lun0/file
 BOARD_UMS_LUNFILE := "/sys/devices/hisik3-usb-otg/gadget/lun0/file"
 
 TW_INCLUDE_JB_CRYPTO := true
-TW_CRYPTO_FS_TYPE := "ext4"
-TW_CRYPTO_REAL_BLKDEV := "/dev/block/platform/hi_mci.1/by-name/userdata"
-TW_CRYPTO_MNT_POINT := "/data"
+#TW_CRYPTO_FS_TYPE := "ext4"
+#TW_CRYPTO_REAL_BLKDEV := "/dev/block/platform/hi_mci.1/by-name/userdata"
+#TW_CRYPTO_MNT_POINT := "/data"
 
 
 

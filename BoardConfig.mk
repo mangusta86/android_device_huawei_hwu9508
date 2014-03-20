@@ -149,8 +149,8 @@ ADDITIONAL_DEFAULT_PROPERTIES += persist.sys.usb.config=mass_storage
 ## Recovery - BEGIN
 #
 ###################################
-BOARD_HAS_LARGE_FILESYSTEM := true
-BOARD_TOUCH_RECOVERY := true
+
+
 #TARGET_RECOVERY_INITRC := device/huawei/u9508/recovery/recovery.rc
 TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab
 #TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab2
@@ -159,60 +159,45 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/huawei/u9508/recovery/recovery_keys.c
 # BOARD_RECOVERY_HANDLES_MOUNT := true
 # RECOVERY_EXTEND_NANDROID_MENU 
-DEVICE_RESOLUTION := 720x1280
+
 #TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 #BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
-
-BOARD_RECOVERY_SWIPE := true
+# to compile mmcutils
+BOARD_HAS_LARGE_FILESYSTEM := true
 
 # USB mass storage
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/virtual/android_usb/android0/f_mass_storage/lun/file
 BOARD_MTP_DEVICE := "/dev/mtp_usb"
 BOARD_VOLD_MAX_PARTITIONS := 19
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
-#BOARD_USE_USB_MASS_STORAGE_SWITCH := true
-#BOARD_UMS_LUNFILE := "/sys/devices/hisik3-usb-otg/gadget/lun0/file"
+BOARD_USE_USB_MASS_STORAGE_SWITCH := true
+BOARD_UMS_LUNFILE := "/sys/devices/virtual/android_usb/android0/f_mass_storage/lun/file"
 
-#TWRP
 HAVE_SELINUX := false
+TW_FLASH_FROM_STORAGE := true
 
-
+# Graphics 
+DEVICE_RESOLUTION := 720x1280
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
-
-#TW_ALWAYS_RMRF := true
-#TW_NEVER_UMOUNT_SYSTEM := true
-
-#SP2_NAME := "osh"
-#SP2_DISPLAY_NAME := "Webtop"
-#SP2_BACKUP_METHOD := files
-#SP2_MOUNTABLE := 1
-
 TW_CUSTOM_BATTERY_PATH := "/sys/devices/platform/k3_battery_monitor.1/power_supply/Battery"
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd_backlight0/brightness
 TW_MAX_BRIGHTNESS := 255
 
-#RECOVERY_SDCARD_ON_DATA := true 
-#TW_HAS_NO_RECOVERY_PARTITION := true
-TW_FLASH_FROM_STORAGE := true
-TW_DEFAULT_EXTERNAL_STORAGE := true
+# touch configs
+BOARD_TOUCH_RECOVERY := true
+BOARD_RECOVERY_SWIPE := true
 
 # dual storage configuration
-#TW_HAS_DUAL_STORAGE := true
-#TW_HAS_DATA_MEDIA := false
+RECOVERY_SDCARD_ON_DATA := true 
 TW_EXTERNAL_STORAGE_PATH := "/sdcard"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "/sdcard"
 TW_INTERNAL_STORAGE_PATH := "/data/share"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "/data"
-
-
-
+TW_DEFAULT_EXTERNAL_STORAGE := true
 TW_INCLUDE_JB_CRYPTO := true
 TW_CRYPTO_FS_TYPE := "ext4"
 TW_CRYPTO_REAL_BLKDEV := "/dev/block/platform/hi_mci.1/by-name/userdata"
 TW_CRYPTO_MNT_POINT := "/emmc"
-
-
-
 
 ###################################
 #

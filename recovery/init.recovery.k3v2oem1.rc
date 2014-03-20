@@ -6,6 +6,13 @@ on init
     mkdir /cust
     mkdir /reserved2
 
+
+    mkdir /data/share
+    symlink /data/share /data/media 
+
+    chown media_rw media_rw /data/media
+    chown media_rw media_rw /data/share
+
     chown system system /dev/cpuctl
     chown system system /dev/cpuctl/tasks
 

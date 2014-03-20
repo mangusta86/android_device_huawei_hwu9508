@@ -63,10 +63,7 @@ TARGET_PROVIDES_INIT_TARGET_RC := true
 
 # USB
 #TARGET_USE_CUSTOM_SECOND_LUN_NUM := 1
-#BOARD_MTP_DEVICE := "/dev/mtp_usb"
-#BOARD_USE_USB_MASS_STORAGE_SWITCH := true
-#BOARD_VOLD_MAX_PARTITIONS := 19
-#BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
+
 
 # filesystem
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
@@ -141,7 +138,10 @@ BOARD_HAVE_FM_RADIO := true
 # HDMI
 #TARGET_HAVE_HDMI_OUT := true
 
-
+# adb has root
+ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
+ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
+ADDITIONAL_DEFAULT_PROPERTIES += persist.sys.usb.config=mass_storage
 
 
 ###################################
@@ -151,7 +151,7 @@ BOARD_HAVE_FM_RADIO := true
 ###################################
 
 BOARD_TOUCH_RECOVERY := true
-TARGET_RECOVERY_INITRC := device/huawei/u9508/recovery/recovery.rc
+#TARGET_RECOVERY_INITRC := device/huawei/u9508/recovery/recovery.rc
 TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab
 #TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab2
 RECOVERY_FSTAB_VERSION := 2
@@ -164,6 +164,14 @@ DEVICE_RESOLUTION := 720x1280
 #BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 
 BOARD_RECOVERY_SWIPE := true
+
+# USB mass storage
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/hisik3-usb-otg/gadget/lun0/file
+BOARD_MTP_DEVICE := "/dev/mtp_usb"
+BOARD_VOLD_MAX_PARTITIONS := 19
+BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
+#BOARD_USE_USB_MASS_STORAGE_SWITCH := true
+#BOARD_UMS_LUNFILE := "/sys/devices/hisik3-usb-otg/gadget/lun0/file"
 
 #TWRP
 HAVE_SELINUX := false
@@ -194,8 +202,7 @@ TW_EXTERNAL_STORAGE_MOUNT_POINT := "/sdcard"
 TW_INTERNAL_STORAGE_PATH := "/data/share"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "/data"
 
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/hisik3-usb-otg/gadget/lun0/file
-BOARD_UMS_LUNFILE := "/sys/devices/hisik3-usb-otg/gadget/lun0/file"
+
 
 TW_INCLUDE_JB_CRYPTO := true
 #TW_CRYPTO_FS_TYPE := "ext4"

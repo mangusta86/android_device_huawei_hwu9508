@@ -6,13 +6,6 @@ on init
     mkdir /cust
     mkdir /reserved2
 
-
-    mkdir /data/share
-    symlink /data/share /data/media 
-
-    chown media_rw media_rw /data/media
-    chown media_rw media_rw /data/share
-
     chown system system /dev/cpuctl
     chown system system /dev/cpuctl/tasks
 
@@ -24,36 +17,20 @@ on init
 
 
 on fs
-
     chmod 0660 /sys/devices/virtual/usbswitch/usbsw/swstate
     chown system system /sys/devices/virtual/usbswitch/usbsw/swstate
-
-
 
 #bq2416x_charger
      chmod 0660 /sys/bus/i2c/devices/1-006b/enable_charger
      chown system system /sys/bus/i2c/devices/1-006b/enable_charger
 
 
-# Create dump dir and collect dumps.
-# Do this before we mount cache so eventually we can use cache for
-# storing dumps on platforms which do not have a dedicated dump partition.
-     mkdir /data/dontpanic 0750 root log
-
-# Collect apanic data, free resources and re-arm trigger
-     copy /proc/apanic_console /data/dontpanic/apanic_console
-     chown root log /data/dontpanic/apanic_console
-     chmod 0640 /data/dontpanic/apanic_console
-
-     copy /proc/apanic_threads /data/dontpanic/apanic_threads
-     chown root log /data/dontpanic/apanic_threads
-     chmod 0640 /data/dontpanic/apanic_threads
-
-     write /proc/apanic_console 1
-
 on post-fs-data
-    chown system system /sys/class/android_usb/android0/f_mass_storage/lun/file
-    chmod 0660 /sys/class/android_usb/android0/f_mass_storage/lun/file
+    chown system system sys/class/android_usb/f_mass_storage/lun/file
+    chmod 0660 sys/class/android_usb/f_mass_storage/lun/file
+    chown system system	/sys/class/android_usb/f_mass_storage/luns
+    chmod 0660 /sys/class/android_usb/f_mass_storage/luns
+
 
 on boot
     write /sys/devices/system/cpu/cpu1/online 0
@@ -61,20 +38,9 @@ on boot
     write /sys/devices/platform/ipps-v2.0/mcu "I 112"
     write /sys/devices/platform/ipps-v2.0/mcu "I 17"
     write /sys/devices/platform/ipps-v2.0/mcu "I 49"
+	
+    setprop sys.usb.config mass_storage,adb
 
-     mkdir /data/dumplog
-     chmod 777 /data/dumplog
-
-on property:sys.usb.config=mass_storage
-    write /sys/class/android_usb/android0/enable 0
-    write /sys/class/android_usb/android0/idVendor 12d1
-    write /sys/class/android_usb/android0/idProduct 1037
-    write /sys/class/android_usb/android0/iSerial $ro.serialno
-    write /sys/class/android_usb/f_mass_storage/luns sdcard
-    write /sys/class/android_usb/f_mass_storage/lun/file none
-    write /sys/class/android_usb/android0/functions $sys.usb.config
-    write /sys/class/android_usb/android0/enable 1
-    setprop sys.usb.state $sys.usb.config
 
 on property:sys.usb.config=mass_storage,adb
     write /sys/class/android_usb/android0/enable 0
@@ -88,36 +54,7 @@ on property:sys.usb.config=mass_storage,adb
     start adbd
     setprop sys.usb.state $sys.usb.config
 
-on property:sys.usb.config=mtp
-    write /sys/class/android_usb/android0/enable 0
-    write /sys/class/android_usb/android0/idVendor 12d1
-    write /sys/class/android_usb/android0/idProduct 1051
-    write /sys/class/android_usb/android0/iSerial $ro.serialno
-    write /sys/class/android_usb/android0/functions $sys.usb.config
-    write /sys/class/android_usb/android0/enable 1
-    setprop sys.usb.state $sys.usb.config
-
-on property:sys.usb.config=mtp,adb
-    write /sys/class/android_usb/android0/enable 0
-    write /sys/class/android_usb/android0/idVendor 12d1
-    write /sys/class/android_usb/android0/idProduct 1052
-    write /sys/class/android_usb/android0/iSerial $ro.serialno
-    write /sys/class/android_usb/android0/functions $sys.usb.config
-    write /sys/class/android_usb/android0/enable 1
-    start adbd
-    setprop sys.usb.state $sys.usb.config
-
-service nvm-server /system/bin/nvm_server
-socket nvm-ctl stream 777 root root
-    user root
-    group root
-    oneshot
-
-service imc_poweron /system/bin/imc_poweron
-    user root
-#    group radio cache inet misc
-#    disabled
-    oneshot
 
 
+setprop sys.usb.state $sys.usb.config
 

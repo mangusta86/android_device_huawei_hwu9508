@@ -167,6 +167,11 @@ BOARD_UMS_LUNFILE := "/sys/devices/virtual/android_usb/android0/f_mass_storage/l
 HAVE_SELINUX := false
 TW_FLASH_FROM_STORAGE := true
 
+SP1_NAME := "cust"
+SP1_BACKUP_METHOD := files
+SP1_MOUNTABLE := 1
+TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
+
 # Graphics 
 DEVICE_RESOLUTION := 720x1280
 RECOVERY_GRAPHICS_USE_LINELENGTH := true

@@ -36,6 +36,10 @@ PRODUCT_COPY_FILES += \
 #PRODUCT_PACKAGES := \
 #	lights.k3v2oem1
 
+# keyboards
+PRODUCT_MAKEFILES := \
+    $(LOCAL_DIR)/keyboards/keyboards.mk 
+
 # product specific permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
@@ -102,6 +106,8 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilts/etc/fir_filter/fir_coef_capture_U9508.txt:system/etc/fir_filter/fir_coef_capture_U9508.txt \
 	$(LOCAL_PATH)/prebuilts/etc/dbus.conf:system/etc/dbus.conf \
 	$(LOCAL_PATH)/prebuilts/etc/es305_uart.bin:/etc/es305_uart.bin 
+
+
 
 $(call inherit-product, build/target/product/full.mk)
 

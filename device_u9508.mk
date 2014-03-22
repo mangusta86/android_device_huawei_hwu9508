@@ -107,7 +107,13 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilts/etc/dbus.conf:system/etc/dbus.conf \
 	$(LOCAL_PATH)/prebuilts/etc/es305_uart.bin:/etc/es305_uart.bin 
 
-
+# Misc
+PRODUCT_PACKAGES += \
+    setup_fs \
+    librs_jni \
+    libsrec_jni \
+    com.android.future.usb.accessory \
+    make_ext4fs 
 
 $(call inherit-product, build/target/product/full.mk)
 

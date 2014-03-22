@@ -132,6 +132,7 @@ BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
 #TARGET_HAVE_HDMI_OUT := true
 
 # enable adb access from user builds
+ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
 ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
 ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
 

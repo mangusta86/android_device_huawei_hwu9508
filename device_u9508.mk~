@@ -69,6 +69,7 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/rootdir/fstab.k3v2oem1:root/fstab.k3v2oem1 \
 	$(LOCAL_PATH)/rootdir/ueventd.k3v2oem1.rc:root/ueventd.k3v2oem1.rc 
 
+
 PRODUCT_PACKAGES += \
     	Torch \
 	Camera

@@ -61,7 +61,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
 	device/huawei/u9508/rootdir/init.k3v2oem1.rc:root/init.k3v2oem1.rc \
 	device/huawei/u9508/rootdir/init:root/init \
-	device/huawei/u9508/rootdir/init.rc:root/init.rc \
 	device/huawei/u9508/rootdir/init.k3v2oem1.usb.rc:root/init.k3v2oem1.usb.rc \
 	device/huawei/u9508/recovery/init.recovery.k3v2oem1.rc:root/init.recovery.k3v2oem1.rc \
 	device/huawei/u9508/rootdir/fstab.k3v2oem1:root/fstab.k3v2oem1 \

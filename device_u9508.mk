@@ -119,7 +119,7 @@ PRODUCT_COPY_FILES += \
 
 # Enable switch storage 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/etc/init.d/preparesd:/system/etc/init.d/preparesd
+    $(LOCAL_PATH)/prebuilts/etc/init.d/preparesd:/system/etc/init.d/preparesd
 
 # Misc
 PRODUCT_PROPERTY_OVERRIDES += \

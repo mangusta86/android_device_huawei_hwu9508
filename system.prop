@@ -1,13 +1,12 @@
-# -------------------------------------------
+#
 # system.prop for U9508
-# Copyright (C) 2013, EternityProject TeaM
-# Angelo G. Del Regno <kholk11@gmail.com
-# -------------------------------------------
+#
 
-# RIL
-audioril.lib=libhuawei-audio-ril.so
 rild.libpath=/system/lib/libxgold-ril.so
 rild.libargs=-d /dev/ttyACM0
 rild.cfgfile=/system/etc/ril_xgold_radio.cfg
-ro.telephony.ril_class=EPRJ9508RIL
+audioril.lib=libhuawei-audio-ril.so
+ro.ril.ecclist=112,911,#911,*911
 
+ro.sf.lcd_density=320
+hw.lcd.density=320

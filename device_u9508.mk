@@ -116,7 +116,20 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilts/etc/dbus.conf:system/etc/dbus.conf \
 	$(LOCAL_PATH)/prebuilts/etc/es305_uart.bin:/etc/es305_uart.bin 
 
+
+# Enable switch storage 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/etc/init.d/preparesd:/system/etc/init.d/preparesd
+
 # Misc
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.ril.hsxpa=2
+    wifi.interface=wlan0 \
+    ap.interface=wlan1 \
+    ro.vold.switchablepair=yes \
+    persist.sys.usb.config=mtp,adb \
+    ro.opengles.version=131072
+
 PRODUCT_PACKAGES += \
     setup_fs \
     librs_jni \

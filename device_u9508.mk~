@@ -39,7 +39,7 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilts/etc/audio_policy.conf:system/etc/audio_policy.conf 
+    $(LOCAL_PATH)/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf 
     
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
@@ -47,7 +47,7 @@ PRODUCT_PACKAGES += \
 
 # keyboards
 PRODUCT_MAKEFILES := \
-    $(LOCAL_PATH)/keyboards/keyboards.mk 
+    $(LOCAL_DIR)/keyboards/keyboards.mk 
 
 # product specific permissions
 PRODUCT_COPY_FILES += \

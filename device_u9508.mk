@@ -33,8 +33,17 @@ endif
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
+# Lights
 #PRODUCT_PACKAGES := \
 #	lights.k3v2oem1
+
+# Audio
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf 
+    
+PRODUCT_PACKAGES += \
+    audio.a2dp.default \
+    libaudioutils
 
 # keyboards
 PRODUCT_MAKEFILES := \

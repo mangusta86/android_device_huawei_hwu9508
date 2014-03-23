@@ -96,8 +96,8 @@ WIFI_DRIVER_FW_PATH_AP      := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
 
 
 ## Audio
-BOARD_USES_GENERIC_AUDIO := true
-#TARGET_PROVIDES_LIBAUDIO := true
+#BOARD_USES_GENERIC_AUDIO := true
+TARGET_PROVIDES_LIBAUDIO := true
 #BOARD_PREBUILT_LIBAUDIO := true
 #BOARD_USES_GENERIC_AUDIO := false
 #BOARD_USES_QCOM_AUDIO_V2 := true

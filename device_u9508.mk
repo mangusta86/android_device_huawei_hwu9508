@@ -88,9 +88,19 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/rootdir/fstab.k3v2oem1:root/fstab.k3v2oem1 \
 	$(LOCAL_PATH)/rootdir/ueventd.k3v2oem1.rc:root/ueventd.k3v2oem1.rc 
 
+
+# Apps
 PRODUCT_PACKAGES += \
-    	Torch \
-	Camera
+    Torch \
+    Stk
+
+# Bluetooth & FmRadio
+PRODUCT_PACKAGES += \
+    uim-sysfs \
+    libbt-vendor \
+    bt_sco_app \
+    BluetoothSCOApp \
+    libtinyalsa
 
 # config files for wifi, camera, rild, media and GPS
 PRODUCT_COPY_FILES += \

@@ -32,6 +32,11 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 
+ARCH_ARM_HAVE_32_BYTE_CACHE_LINES := true
+ARCH_ARM_USE_NON_NEON_MEMCPY := true
+
+NEED_WORKAROUND_CORTEX_A9_745320 := true
+
 TARGET_NO_BOOTLOADER := true
 
 TARGET_BOARD_PLATFORM := k3v2oem1
@@ -75,13 +80,13 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 #Graphics
 BOARD_EGL_CFG := device/huawei/u9508/prebuilts/lib/egl/egl.cfg
-
+USE_OPENGL_RENDERER := true
 # HWComposer
 BOARD_USES_HWCOMPOSER := true
-
-# Enable WEBGL in WebKit
+# WebKit
 ENABLE_WEBGL := true
 TARGET_FORCE_CPU_UPLOAD := true
+
 
 # Wifi 
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
@@ -97,52 +102,40 @@ WIFI_DRIVER_FW_PATH_AP      := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
 
 
 ## Audio
-#BOARD_USES_GENERIC_AUDIO := true
-TARGET_PROVIDES_LIBAUDIO := true
-#BOARD_PREBUILT_LIBAUDIO := true
-#BOARD_USES_GENERIC_AUDIO := false
-#BOARD_USES_QCOM_AUDIO_V2 := true
-#BUILD_WITHOUT_PV := false
+BOARD_USES_GENERIC_AUDIO := false
+BOARD_USES_AUDIO_LEGACY = true
+#TARGET_PROVIDES_LIBAUDIO := true
+
 
 ## Lights
 #TARGET_PROVIDES_LIBLIGHTS := true
 
+
 # RIL
 #BOARD_RIL_CLASS := ../../../device/huawei/u9508/ril/
 
+
 # Camera
 USE_CAMERA_STUB := true
-#COMMON_GLOBAL_CFLAGS += -DMR0_CAMERA_BLOB
-#BOARD_USE_FROYO_LIBCAMERA := true
-#BOARD_CAMERA_USE_GETBUFFERINFO := true
-#BOARD_USE_CAF_LIBCAMERA := true
-#USE_CAMERA_STUB := false
-# BOARD_USE_REVERSE_FFC := true
+
 
 ## FM Radio
-#BOARD_HAVE_QCOM_FM := true
-#COMMON_GLOBAL_CFLAGS += -DQCOM_FM_ENABLED
 BOARD_HAVE_FM_RADIO := true
 BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
 #BOARD_FM_DEVICE := tavarua
 
-# Gps
-
-
-# HDMI
-#TARGET_HAVE_HDMI_OUT := true
 
 # enable adb access from user builds
 ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
 ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
 ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
 
+
 ###################################
 #
 ## Recovery - BEGIN
 #
 ###################################
-
 
 #TARGET_RECOVERY_INITRC := device/huawei/u9508/recovery/recovery.rc
 TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab

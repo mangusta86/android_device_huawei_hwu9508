@@ -9,10 +9,10 @@ keyboard_layout := \
 
 
 PRODUCT_COPY_FILES += $(foreach file,$(idc),\
-	$(LOCAL_PATH)/$(file):system/usr/idc/$(file))
+	$(LOCAL_PATH)/keyboards/$(file):system/usr/idc/$(file))
 
 PRODUCT_COPY_FILES += $(foreach file,$(keyboard_layout),\
-	$(LOCAL_PATH)/$(file):system/usr/keylayout/$(file))
+	$(LOCAL_PATH)/keyboards/$(file):system/usr/keylayout/$(file))
 
 #PRODUCT_COPY_FILES += $(foreach file,$(keyboard_chars),\
 #	$(LOCAL_PATH)/$(file):system/usr/keychars/$(file))

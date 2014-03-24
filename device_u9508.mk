@@ -45,10 +45,6 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     libaudioutils
 
-# keyboards
-PRODUCT_MAKEFILES := \
-    $(LOCAL_PATH)/keyboards/keyboards.mk 
-
 # product specific permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
@@ -102,7 +98,7 @@ PRODUCT_PACKAGES += \
     BluetoothSCOApp \
     libtinyalsa
 
-# config files for wifi, camera, rild, media and GPS
+# config files for wifi, camera, rild, media, GPS, keyboard
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilts/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
 	$(LOCAL_PATH)/prebuilts/etc/camera/davinci/device.config:system/etc/camera/davinci/device.config \
@@ -124,8 +120,10 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilts/etc/fir_filter/fir_coef_capture.txt:system/etc/fir_filter/fir_coef_capture.txt \
 	$(LOCAL_PATH)/prebuilts/etc/fir_filter/fir_coef_capture_U9508.txt:system/etc/fir_filter/fir_coef_capture_U9508.txt \
 	$(LOCAL_PATH)/prebuilts/etc/dbus.conf:system/etc/dbus.conf \
-	$(LOCAL_PATH)/prebuilts/etc/es305_uart.bin:/etc/es305_uart.bin 
-
+	$(LOCAL_PATH)/prebuilts/etc/es305_uart.bin:/etc/es305_uart.bin \
+	$(LOCAL_PATH)/prebuilts/usr/idc/hisik3_touchscreen.idc:system/usr/idc/hisik3_touchscreen.idc \
+	$(LOCAL_PATH)/prebuilts/usr/idc/k3_keypad.idc:system/usr/idc/k3_keypad.idc \
+	$(LOCAL_PATH)/prebuilts/usr/keylayout/k3_keypad.kl:system/usr/keylayout/k3_keypad.kl
 
 # Enable switch storage 
 PRODUCT_COPY_FILES += \

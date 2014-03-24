@@ -1,2 +1,20 @@
-Porting surdu_petru P6 CM10.1
+CM-10.1 FOR U9508
 
+As most of you know at the moment we only have one version available of CM but it is closed source... My aim is to make one that can be completed by you.
+
+What's working
+-rild (proprietary) [xmm6260]
+-wifi
+-3dhw (proprietary)
+-compass (proprietary)
+-accelerometer
+-vibrator
+-light sensor
+-proximity sensor
+
+what's not working
+-change brightness
+-audio
+-camera
+-mtp
+-led

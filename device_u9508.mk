@@ -43,6 +43,7 @@ PRODUCT_COPY_FILES += \
     
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
+    libaudiohw_legacy \
     libaudioutils
 
 # product specific permissions
@@ -85,10 +86,13 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/rootdir/ueventd.k3v2oem1.rc:root/ueventd.k3v2oem1.rc 
 
 
-# Apps
+# Sim toolkit
 PRODUCT_PACKAGES += \
-    Torch \
     Stk
+    
+# Torch
+PRODUCT_PACKAGES += \
+    Torch 
 
 # Bluetooth & FmRadio
 PRODUCT_PACKAGES += \
@@ -120,7 +124,7 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilts/etc/fir_filter/fir_coef_capture.txt:system/etc/fir_filter/fir_coef_capture.txt \
 	$(LOCAL_PATH)/prebuilts/etc/fir_filter/fir_coef_capture_U9508.txt:system/etc/fir_filter/fir_coef_capture_U9508.txt \
 	$(LOCAL_PATH)/prebuilts/etc/dbus.conf:system/etc/dbus.conf \
-	$(LOCAL_PATH)/prebuilts/etc/es305_uart.bin:/etc/es305_uart.bin \
+	$(LOCAL_PATH)/prebuilts/etc/es305_uart.bin:system/etc/es305_uart.bin \
 	$(LOCAL_PATH)/prebuilts/usr/idc/hisik3_touchscreen.idc:system/usr/idc/hisik3_touchscreen.idc \
 	$(LOCAL_PATH)/prebuilts/usr/idc/k3_keypad.idc:system/usr/idc/k3_keypad.idc \
 	$(LOCAL_PATH)/prebuilts/usr/keylayout/k3_keypad.kl:system/usr/keylayout/k3_keypad.kl

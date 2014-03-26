@@ -95,7 +95,6 @@ PRODUCT_COPY_FILES += \
 # Sim toolkit
 PRODUCT_PACKAGES += \
     Stk
- 
     
 # Torch
 PRODUCT_PACKAGES += \

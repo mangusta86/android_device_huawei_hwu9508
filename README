@@ -11,10 +11,12 @@ What's working
 -vibrator
 -light sensor
 -proximity sensor
+-gps
+-mtp
 
 what's not working
--change brightness
+-auto brightness
 -audio
 -camera
--mtp
 -led
+-softkey backlight

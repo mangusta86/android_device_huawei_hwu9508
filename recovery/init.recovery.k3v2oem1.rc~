@@ -27,9 +27,9 @@ on fs
 
 on post-fs-data
     chown system system sys/class/android_usb/f_mass_storage/lun/file
-    chmod 0777 sys/class/android_usb/f_mass_storage/lun/file
+    chmod 0660 sys/class/android_usb/f_mass_storage/lun/file
     chown system system	/sys/class/android_usb/f_mass_storage/luns
-    chmod 0777 /sys/class/android_usb/f_mass_storage/luns
+    chmod 0660 /sys/class/android_usb/f_mass_storage/luns
 
 
 on boot

@@ -152,7 +152,7 @@ BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/huawei/u9508/recovery/recovery_
 BOARD_HAS_LARGE_FILESYSTEM := true
 
 # USB mass storage
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/virtual/android_usb/android0/f_mass_storage/lun/file
+#TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/virtual/android_usb/android0/f_mass_storage/lun/file
 BOARD_MTP_DEVICE := "/dev/mtp_usb"
 BOARD_VOLD_MAX_PARTITIONS := 19
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
@@ -185,7 +185,7 @@ TW_EXTERNAL_STORAGE_MOUNT_POINT := "/sdcard"
 TW_INTERNAL_STORAGE_PATH := "/data/share"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "/emmc"
 TW_DEFAULT_EXTERNAL_STORAGE := true
-TW_INCLUDE_JB_CRYPTO := true
+TW_INCLUDE_CRYPTO := true
 TW_CRYPTO_FS_TYPE := "ext4"
 TW_CRYPTO_REAL_BLKDEV := "/dev/block/platform/hi_mci.1/by-name/userdata"
 TW_CRYPTO_MNT_POINT := "/emmc"

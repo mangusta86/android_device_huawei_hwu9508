@@ -128,6 +128,7 @@ BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
 # enable adb access from user builds
 ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
 ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
+ADDITIONAL_DEFAULT_PROPERTIES += ro.debuggable=1
 ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
 
 
@@ -157,7 +158,7 @@ BOARD_MTP_DEVICE := "/dev/mtp_usb"
 BOARD_VOLD_MAX_PARTITIONS := 19
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
-BOARD_UMS_LUNFILE := "/sys/devices/virtual/android_usb/android0/f_mass_storage/lun/file"
+#BOARD_UMS_LUNFILE := "/sys/devices/virtual/android_usb/android0/f_mass_storage/lun/file"
 
 HAVE_SELINUX := false
 TW_FLASH_FROM_STORAGE := true
@@ -188,7 +189,7 @@ TW_DEFAULT_EXTERNAL_STORAGE := true
 TW_INCLUDE_CRYPTO := true
 TW_CRYPTO_FS_TYPE := "ext4"
 TW_CRYPTO_REAL_BLKDEV := "/dev/block/platform/hi_mci.1/by-name/userdata"
-TW_CRYPTO_MNT_POINT := "/emmc"
+TW_CRYPTO_MNT_POINT := "/data"
 
 ###################################
 #

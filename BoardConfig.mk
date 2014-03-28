@@ -139,8 +139,8 @@ ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
 ###################################
 
 #TARGET_RECOVERY_INITRC := device/huawei/u9508/recovery/recovery.rc
-#TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab
-TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab2
+TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab
+#TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab2
 RECOVERY_FSTAB_VERSION := 2
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/huawei/u9508/recovery/recovery_keys.c

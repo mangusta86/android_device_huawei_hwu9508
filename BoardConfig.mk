@@ -139,12 +139,12 @@ ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
 ###################################
 
 #TARGET_RECOVERY_INITRC := device/huawei/u9508/recovery/recovery.rc
-TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab
-#TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab2
+#TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab
+TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab2
 RECOVERY_FSTAB_VERSION := 2
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/huawei/u9508/recovery/recovery_keys.c
-# BOARD_RECOVERY_HANDLES_MOUNT := true
+BOARD_RECOVERY_HANDLES_MOUNT := true
 # RECOVERY_EXTEND_NANDROID_MENU 
 
 #TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
@@ -184,7 +184,7 @@ RECOVERY_SDCARD_ON_DATA := true
 TW_EXTERNAL_STORAGE_PATH := "/sdcard"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "/sdcard"
 TW_INTERNAL_STORAGE_PATH := "/data/share"
-TW_INTERNAL_STORAGE_MOUNT_POINT := "/emmc"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "/data"
 TW_DEFAULT_EXTERNAL_STORAGE := true
 TW_INCLUDE_CRYPTO := true
 TW_CRYPTO_FS_TYPE := "ext4"

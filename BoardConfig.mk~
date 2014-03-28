@@ -128,6 +128,7 @@ BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
 # enable adb access from user builds
 ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
 ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
+ADDITIONAL_DEFAULT_PROPERTIES += ro.debuggable=1
 ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
 
 
@@ -138,12 +139,12 @@ ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
 ###################################
 
 #TARGET_RECOVERY_INITRC := device/huawei/u9508/recovery/recovery.rc
-TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab
-#TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab2
+#TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab
+TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab2
 RECOVERY_FSTAB_VERSION := 2
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/huawei/u9508/recovery/recovery_keys.c
-# BOARD_RECOVERY_HANDLES_MOUNT := true
+BOARD_RECOVERY_HANDLES_MOUNT := true
 # RECOVERY_EXTEND_NANDROID_MENU 
 
 #TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"

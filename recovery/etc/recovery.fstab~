@@ -4,7 +4,6 @@
 /cache		ext4		/dev/block/platform/hi_mci.1/by-name/cache
 /data		ext4		/dev/block/platform/hi_mci.1/by-name/userdata length=-16384 
 /boot		emmc		/dev/block/platform/hi_mci.1/by-name/boot
-/misc		emmc		/dev/block/platform/hi_mci.1/by-name/misc
 /recovery	emmc		/dev/block/platform/hi_mci.1/by-name/recovery
 /modem/modem_image	ext4		/dev/block/platform/hi_mci.1/by-name/modemimage
 /modem/nvm1	ext4		/dev/block/platform/hi_mci.1/by-name/modemnvm1

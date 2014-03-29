@@ -89,7 +89,9 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/rootdir/init.k3v2oem1.usb.rc:root/init.k3v2oem1.usb.rc \
 	$(LOCAL_PATH)/recovery/init.recovery.k3v2oem1.rc:root/init.recovery.k3v2oem1.rc \
 	$(LOCAL_PATH)/rootdir/fstab.k3v2oem1:root/fstab.k3v2oem1 \
-	$(LOCAL_PATH)/rootdir/ueventd.k3v2oem1.rc:root/ueventd.k3v2oem1.rc 
+	$(LOCAL_PATH)/rootdir/ueventd.k3v2oem1.rc:root/ueventd.k3v2oem1.rc \
+	$(LOCAL_PATH)/recovery/sbin/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
+
 
 
 # Sim toolkit

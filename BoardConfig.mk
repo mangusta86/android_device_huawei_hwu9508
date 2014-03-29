@@ -105,7 +105,7 @@ WIFI_DRIVER_FW_PATH_AP      := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
 # BOARD_USES_GENERIC_AUDIO := false
 BOARD_USES_AUDIO_LEGACY = true
 TARGET_PROVIDES_LIBAUDIO := true
-
+BOARD_USES_LEGACY_ALSA_AUDIO := true
 
 ## Lights
 #TARGET_PROVIDES_LIBLIGHTS := true
@@ -131,7 +131,11 @@ ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
 ADDITIONAL_DEFAULT_PROPERTIES += ro.debuggable=1
 ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
 
-
+#USB and Vold
+BOARD_MTP_DEVICE := "/dev/mtp_usb"
+BOARD_VOLD_MAX_PARTITIONS := 19
+BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
+BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 ###################################
 #
 ## Recovery - BEGIN
@@ -146,16 +150,14 @@ BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/huawei/u9508/recovery/recovery_
 BOARD_RECOVERY_HANDLES_MOUNT := true
 # RECOVERY_EXTEND_NANDROID_MENU 
 
+
 #TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 #BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 # to compile mmcutils
 BOARD_HAS_LARGE_FILESYSTEM := true
 
 # USB mass storage
-BOARD_MTP_DEVICE := "/dev/mtp_usb"
-BOARD_VOLD_MAX_PARTITIONS := 19
-BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
-BOARD_USE_USB_MASS_STORAGE_SWITCH := true
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/virtual/android_usb/android0/f_mass_storage/lun/file"
 
 HAVE_SELINUX := false
 TW_FLASH_FROM_STORAGE := true

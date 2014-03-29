@@ -23,13 +23,13 @@ on boot
     write /sys/devices/platform/ipps-v2.0/mcu "I 17"
     write /sys/devices/platform/ipps-v2.0/mcu "I 49"
 	
-on property:sys.usb.config=modem,nmea,mass_storage,adb,diag
+    setprop sys.usb.config mass_storage,adb
+
+on property:sys.usb.config=mass_storage,adb
     write /sys/class/android_usb/android0/enable 0
     write /sys/class/android_usb/android0/idVendor 12d1
-    write /sys/class/android_usb/android0/idProduct 1035
-    write /sys/class/android_usb/android0/iSerial cleanup
-    write /sys/class/android_usb/f_mass_storage/luns sdcard
-    write /sys/class/android_usb/f_mass_storage/lun/file none
+    write /sys/class/android_usb/android0/idProduct 1038
+    write /sys/class/android_usb/android0/iSerial $ro.serialno
     write /sys/class/android_usb/android0/functions $sys.usb.config
     write /sys/class/android_usb/android0/enable 1
     start adbd

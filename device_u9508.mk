@@ -47,9 +47,10 @@ PRODUCT_COPY_FILES += \
     
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
-    libaudiohw_legacy \
-    libaudioutils \
-    libaudio-resampler
+    libaudioutils 
+    
+ #   libaudiohw_legacy \
+ #   libaudio-resampler
 
 
 # product specific permissions
@@ -85,6 +86,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/rootdir/init.k3v2oem1.rc:root/init.k3v2oem1.rc \
 	$(LOCAL_PATH)/rootdir/init:root/init \
+	$(LOCAL_PATH)/rootdir/init:recovery/root/init \
 	$(LOCAL_PATH)/rootdir/init.rc:root/init.rc \
 	$(LOCAL_PATH)/rootdir/init.k3v2oem1.usb.rc:root/init.k3v2oem1.usb.rc \
 	$(LOCAL_PATH)/recovery/init.recovery.k3v2oem1.rc:root/init.recovery.k3v2oem1.rc \

@@ -13,10 +13,12 @@ What's working
 -proximity sensor
 -gps
 -mtp
+-USB-tethering
 
 what's not working
--auto brightness
+-change brightness
 -audio
 -camera
 -led
 -softkey backlight
+-FM radio

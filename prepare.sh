@@ -1,15 +1,32 @@
 #!/bin/bash
 
 export LOCAL_FOLDER=device/huawei/u9508;
-
 export RECOVERY_FOLDER=bootable/recovery;
+export MANIFESTS_FOLDER=.repo/local_manifests;
 
-# overlays for building TWRP
-if [ -d $RECOVERY_FOLDER/dedupe ]; then
-	echo "building full CM-10.1";
-	else
-	echo "building TWRP";
-	cp $LOCAL_FOLDER/recovery/overlay/data.cpp $RECOVERY_FOLDER
-	cp $LOCAL_FOLDER/recovery/overlay/partition.cpp $RECOVERY_FOLDER
-fi;
+PS3='Choose what you want to build '
+options=("CM" "TWRP" "Quit")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "CM")
+            echo "you chose choice 1"
+            cat $MANIFESTS_FOLDER/roomservice.xml.CM > $MANIFESTS_FOLDER/roomservice.xml
+            ;;
+        "TWRP")
+            echo "you chose choice 2"
+            cat $MANIFESTS_FOLDER/roomservice.xml.TWRP > $MANIFESTS_FOLDER/roomservice.xml
+            cp $LOCAL_FOLDER/recovery/overlay/data.cpp $RECOVERY_FOLDER
+	       cp $LOCAL_FOLDER/recovery/overlay/partition.cpp $RECOVERY_FOLDER
+            ;;
+        "Quit")
+            break
+            ;;
+        *) echo "invalid option";;
+    esac
+done
+
+repo sync;
+
+
 

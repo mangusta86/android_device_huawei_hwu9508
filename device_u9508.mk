@@ -46,8 +46,8 @@ PRODUCT_COPY_FILES += \
      $(LOCAL_PATH)/prebuilts/etc/audio_policy.conf:system/etc/audio_policy.conf 
     
 PRODUCT_PACKAGES += \
-    audio.a2dp.default \
-    libaudioutils 
+     audio.primary.$(TARGET_BOOTLOADER_BOARD_NAME) \
+     audio_policy.$(TARGET_BOOTLOADER_BOARD_NAME)
     
  #   libaudiohw_legacy \
  #   libaudio-resampler

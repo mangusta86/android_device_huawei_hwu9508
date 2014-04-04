@@ -12,14 +12,10 @@ do
         "CM")
             echo "you chose choice 1"
             cat $MANIFESTS_FOLDER/roomservice.xml.CM > $MANIFESTS_FOLDER/roomservice.xml
-            rm -rf $RECOVERY_FOLDER
-            repo sync
             ;;
         "TWRP")
             echo "you chose choice 2"
             cat $MANIFESTS_FOLDER/roomservice.xml.TWRP > $MANIFESTS_FOLDER/roomservice.xml
-            rm -rf $RECOVERY_FOLDER
-            repo sync
             cp $LOCAL_FOLDER/recovery/overlay/data.cpp $RECOVERY_FOLDER
 	       cp $LOCAL_FOLDER/recovery/overlay/partition.cpp $RECOVERY_FOLDER
             ;;
@@ -29,4 +25,8 @@ do
         *) echo "invalid option";;
     esac
 done
+
+repo sync;
+
+
 

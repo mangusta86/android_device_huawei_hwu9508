@@ -46,6 +46,7 @@ PRODUCT_COPY_FILES += \
      $(LOCAL_PATH)/prebuilts/etc/audio_policy.conf:system/etc/audio_policy.conf 
     
 PRODUCT_PACKAGES += \
+     libaudio \
      audio.primary.u9508 \
      audio_policy.u9508
     

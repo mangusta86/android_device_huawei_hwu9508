@@ -102,7 +102,7 @@ WIFI_DRIVER_FW_PATH_AP      := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
 
 
 ## Audio
-# BOARD_USES_GENERIC_AUDIO := false
+BOARD_USES_GENERIC_AUDIO := true
 BOARD_USES_ALSA_AUDIO:= true
 BOARD_USES_AUDIO_LEGACY = true
 #TARGET_PROVIDES_LIBAUDIO := true

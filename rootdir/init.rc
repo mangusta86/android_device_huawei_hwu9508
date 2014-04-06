@@ -166,74 +166,12 @@ on fs
     wait /dev/block/mmcblk0p18
     exec /system/bin/e2fsck -p /dev/block/mmcblk0p18
     mount ext4 /dev/block/mmcblk0p18 /data nosuid nodev noatime wait crypt discard,noauto_da_alloc,mblk_io_submit,data=writeback,commit=20,barrier=0
-    #DTS2011122804252 z00192785 2011-12-29 begin
-    mount ext4 /dev/block/platform/hi_mci.1/by-name/cust /tmp wait rw
-    #DTS2011122804252 z00192785 2011-12-29 end
-
-    mount ext4 /dev/block/mmcblk0p12 /modem/modem_image
-    mount ext4 /dev/block/mmcblk0p13 /modem/nvm1
-    mount ext4 /dev/block/mmcblk0p14 /modem/nvm2
-
-    #chmod 0777 /modem/
-    chmod 0740 /modem/modem_image
-    chmod 0740 /modem/nvm1
-    chmod 0740 /modem/nvm2
-    chmod 0640 /modem/modem_image/HWT6260.fls
-    chmod 0640 /modem/nvm1/flag
-    chmod 0640 /modem/nvm1/firmware.md5
-    chmod 0640 /modem/nvm1/calib.nvm
-    chmod 0640 /modem/nvm1/dynamic.nvm
-    chmod 0640 /modem/nvm1/static.nvm
-    chmod 0640 /modem/nvm2/calib.nvm
-    chmod 0640 /modem/nvm2/dynamic.nvm
-    chmod 0640 /modem/nvm2/static.nvm
-    chmod 0640 /modem/modem_image/HWT6260.fls.fls
-
-    chown radio radio /modem/
-    chown radio radio /modem/nvm1
-    chown radio radio /modem/nvm2
-    chown radio radio /modem/modem_image
-    chown radio radio /modem/modem_image/HWT6260.fls
-    chown radio radio /modem/nvm1/flag
-    chown radio radio /modem/nvm1/firmware.md5
-    chown radio radio /modem/nvm1/calib.nvm
-    chown radio radio /modem/nvm1/dynamic.nvm
-    chown radio radio /modem/nvm1/static.nvm
-    chown radio radio /modem/nvm2/calib.nvm
-    chown radio radio /modem/nvm2/dynamic.nvm
-    chown radio radio /modem/nvm2/static.nvm
-    chown radio radio /modem/modem_image/HWT6260.fls.fls
+ 
 
     chmod 0660 /sys/devices/virtual/usbswitch/usbsw/swstate
     chown system system /sys/devices/virtual/usbswitch/usbsw/swstate
 
     chmod 0744 /data/custom.bin
-
-    chown system system sys/devices/sensor00/fn01/wakeup_threshold
-    chown system system sys/devices/sensor00/fn01/nosleep
-    chown system system sys/devices/sensor00/fn01/allow_doze
-    chown system system sys/devices/sensor00/fn01/reportrate
-    chown system system sys/devices/sensor00/fn01/interrupt_enable
-    chown system system sys/devices/sensor00/fn01/chargerinput
-    chown system system sys/devices/sensor00/fn01/reset
-    chown system system sys/devices/sensor00/fn01/sleepmode
-    chown system system sys/devices/sensor00/fn01/doze_holdoff
-    chown system system sys/devices/sensor00/fn11/flip
-    chown system system sys/devices/sensor00/fn11/clip
-    chown system system sys/devices/sensor00/fn11/rezeroWait
-    chown system system sys/devices/sensor00/fn11/rezeroOnResume
-    chown system system sys/devices/sensor00/fn11/rezero
-    chown system system sys/devices/sensor00/fn11/relreport
-    chown system system sys/devices/sensor00/fn11/swap
-    chown system system sys/devices/sensor00/fn11/offset
-    chown system system sys/devices/sensor00/fn11/abs_pos_filt
-    chown system system sys/devices/sensor00/fn34/status
-    chown system system sys/devices/sensor00/fn34/cmd
-    chown system system sys/devices/sensor00/fn34/rescanPDT
-    chown system system sys/devices/sensor00/fn34/bootloaderid
-    chown system system sys/devices/sensor00/fn34/data
-    chown system system sys/devices/sensor00/fn34/blocknum
-    chown system system sys/devices/sensor00/enabled
 
 on post-fs
     # once everything is setup, no need to modify /
@@ -584,9 +522,6 @@ service console /system/bin/sh
     user shell
     group log
 
-service auditd /system/bin/auditd -k
-    class main
-
 on property:ro.debuggable=1
     start console
 
@@ -738,12 +673,6 @@ service dumpstate /system/bin/dumpstate -s
     disabled
     oneshot
 
-# /*this service is startup by apk LCA*/
-service logserver /system/bin/logserver
-    class main
-    socket logservice stream 0660 system system
-    oneshot
-
 service sshd /system/bin/start-ssh
     class main
     disabled
@@ -764,10 +693,6 @@ service yamaha_geo /system/bin/geomagneticd
     disabled
     oneshot
 
-service atcmdserver  /system/bin/atcmdserver
-    class main
-    oneshot
-
 service systemstattool /system/bin/systemstattool
     socket socket_front_act_info stream 0666 root mount
     socket socket_act_start_perf stream 0666 root mount
@@ -775,9 +700,4 @@ service systemstattool /system/bin/systemstattool
     disabled
 on property:ro.service.systemstattool=true
     start systemstattool
-
-service diagserver /system/bin/diagserver
-    class main
-    user root
-    oneshot
 

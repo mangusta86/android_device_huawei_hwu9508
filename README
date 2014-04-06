@@ -11,14 +11,19 @@ What's working
 -vibrator
 -light sensor
 -proximity sensor
--gps
--mtp
+-gps (proprietary)
+-storage management
 -USB-tethering
+-audio (proprietary)
+-led
 
 what's not working
 -change brightness
--audio
 -camera
--led
 -softkey backlight
 -FM radio
+-video playback (just use mx player)
+
+what's weird
+-presence of digital softkeys just over hardware softkeys
+-mtp is a bit buggy... need to sort out

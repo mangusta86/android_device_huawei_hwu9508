@@ -18,15 +18,126 @@
 -->
 
 <!-- These resources are around just to allow their values to be customized
-     for different hardware and product builds. -->
-<resources>
+     for different hardware and product builds.  Do not translate. -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Do not translate. Defines the slots for the right-hand side icons.  That is to say, the
+         icons in the status bar that are not notifications. -->
+    <string-array name="config_statusBarIcons">
+       <item><xliff:g id="id">ime</xliff:g></item>
+       <item><xliff:g id="id">sync_failing</xliff:g></item>
+       <item><xliff:g id="id">sync_active</xliff:g></item>
+       <item><xliff:g id="id">gps</xliff:g></item>
+       <item><xliff:g id="id">bluetooth</xliff:g></item>
+       <item><xliff:g id="id">tty</xliff:g></item>
+       <item><xliff:g id="id">speakerphone</xliff:g></item>
+       <item><xliff:g id="id">mute</xliff:g></item>
+       <item><xliff:g id="id">volume</xliff:g></item>
+       <item><xliff:g id="id">wifi</xliff:g></item>
+       <item><xliff:g id="id">cdma_eri</xliff:g></item>
+       <item><xliff:g id="id">data_connection</xliff:g></item>
+       <item><xliff:g id="id">phone_evdo_signal</xliff:g></item>
+       <item><xliff:g id="id">phone_signal</xliff:g></item>
+       <item><xliff:g id="id">battery</xliff:g></item>
+       <item><xliff:g id="id">alarm_clock</xliff:g></item>
+       <item><xliff:g id="id">secure</xliff:g></item>
+       <item><xliff:g id="id">clock</xliff:g></item>
+    </string-array>
 
+    <!-- Flag indicating whether the surface flinger has limited
+         alpha compositing functionality in hardware.  If set, the window
+         manager will disable alpha trasformation in animations where not
+         strictly needed. -->
     <bool name="config_sf_limitedAlpha">false</bool>
 
+    <!-- Default value used to block data calls if ims is not
+         connected.  If you use the ims apn DCT will block
+         any other apn from connecting until ims apn is connected-->
+    <bool name="ImsConnectedDefaultValue">false</bool>
+
+    <!-- Flag indicating whether the surface flinger is inefficient
+         at performing a blur.  Used by parts of the UI to turn off
+         the blur effect where it isn't worth the performance hit.
+         As of Honeycomb, blurring is not supported anymore. -->
     <bool name="config_sf_slowBlur">true</bool>
 
+    <!-- Flag indicating that the media framework should allow changing
+         master volume stream and nothing else . -->
+    <bool name="config_useMasterVolume">false</bool>
+
+    <!-- Flag indicating that the media framework should support playing of sounds on volume
+         key usage.  This adds noticeable additional overhead to volume key processing, so
+         is disableable for products for which it is irrelevant. -->
+    <bool name="config_useVolumeKeySounds">true</bool>
+
+    <!-- Array of integer pairs controlling the rate at which the master volume changes
+         in response to volume up and down key events.
+         The first integer of each pair is compared against the current master volume
+         (in range 0 to 100).
+         The last pair with first integer <= the current volume is chosen,
+         and the second integer of the pair indicates the amount to increase the master volume
+         when volume up is pressed. -->
+    <integer-array name="config_masterVolumeRamp">
+        <item>0</item>  <item>5</item>  <!-- default: always increase volume by 5% -->
+    </integer-array>
+
+    <!-- The attenuation in dB applied to the sound effects played
+         through AudioManager.playSoundEffect() when no volume is specified. -->
+    <integer name="config_soundEffectVolumeDb">-6</integer>
+
+    <!-- The attenuation in dB applied to the lock/unlock sounds. -->
+    <integer name="config_lockSoundVolumeDb">-6</integer>
+
+    <!-- Flag indicating whether the AUDIO_BECOMING_NOISY notification should
+         be sent during a change to the audio output device. -->
     <bool name="config_sendAudioBecomingNoisy">true</bool>
 
+    <!-- The duration (in milliseconds) of a short animation. -->
+    <integer name="config_shortAnimTime">200</integer>
+
+    <!-- The duration (in milliseconds) of a medium-length animation. -->
+    <integer name="config_mediumAnimTime">400</integer>
+
+    <!-- The duration (in milliseconds) of a long animation. -->
+    <integer name="config_longAnimTime">500</integer>
+
+    <!-- The duration (in milliseconds) of the activity open/close and fragment open/close animations. -->
+    <integer name="config_activityShortDur">150</integer>
+    <integer name="config_activityDefaultDur">220</integer>
+
+    <!-- Duration for the dim animation behind a dialog.  This may be either
+         a percentage, which is relative to the duration of the enter/open
+         animation of the window being shown that is dimming behind, or it may
+         be an integer for a constant duration. -->
+    <fraction name="config_dimBehindFadeDuration">100%</fraction>
+
+    <!-- The maximum width we would prefer dialogs to be.  0 if there is no
+         maximum (let them grow as large as the screen).  Actual values are
+         specified for -large and -xlarge configurations. -->
+    <dimen name="config_prefDialogWidth">320dp</dimen>
+
+    <!-- Enables or disables fading edges when marquee is enabled in TextView. -->
+    <bool name="config_ui_enableFadingMarquee">true</bool>
+
+    <!-- Whether dialogs should close automatically when the user touches outside
+         of them.  This should not normally be modified. -->
+    <bool name="config_closeDialogWhenTouchOutside">true</bool>
+
+    <!-- The duration (in milliseconds) that the radio will scan for a signal
+         when there's no network connection. If the scan doesn't timeout, use zero -->
+    <integer name="config_radioScanningTimeout">0</integer>
+
+    <!-- XXXXX NOTE THE FOLLOWING RESOURCES USE THE WRONG NAMING CONVENTION.
+         Please don't copy them, copy anything else. -->
+
+    <!-- This string array should be overridden by the device to present a list of network
+         attributes.  This is used by the connectivity manager to decide which networks can coexist
+         based on the hardware -->
+    <!-- An Array of "[Connection name],[ConnectivityManager.TYPE_xxxx],
+         [associated radio-type],[priority],[restoral-timer(ms)],[dependencyMet]  -->
+    <!-- the 5th element "resore-time" indicates the number of milliseconds to delay
+         before automatically restore the default connection.  Set -1 if the connection
+         does not require auto-restore. -->
+    <!-- the 6th element indicates boot-time dependency-met value. -->
     <string-array translatable="false" name="networkAttributes">
         <item>wifi,1,1,1,-1,true</item>
         <item>mobile,0,0,0,-1,true</item>
@@ -37,6 +148,14 @@
         <item>mobile_bluetooth,7,7,1,-1,true</item>
         <item>wifi_p2p,13,1,0,-1,true</item>
     </string-array>
+
+    <!-- Array of ConnectivityManager.TYPE_xxxx constants for networks that may only
+         be controlled by systemOrSignature apps.  -->
+    <integer-array translatable="false" name="config_protectedNetworks">
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </integer-array>
 
     <!-- This string array should be overridden by the device to present a list of radio
          attributes.  This is used by the connectivity manager to decide which networks can coexist
@@ -61,18 +180,44 @@
         <item>12</item> <!-- TYPE_MOBILE_CBS -->
     </integer-array>
 
+    <!-- The maximum duration (in milliseconds) we expect a network transition to take -->
+    <integer name="config_networkTransitionTimeout">60000</integer>
+
+    <!-- List of regexpressions describing the interface (if any) that represent tetherable
+         USB interfaces.  If the device doesn't want to support tething over USB this should
+         be empty.  An example would be "usb.*" -->
     <string-array translatable="false" name="config_tether_usb_regexs">
-        <item>"rndis0"</item>
+            <item>"rndis0"</item>
     </string-array>
 
+    <!-- List of regexpressions describing the interface (if any) that represent tetherable
+         Wifi interfaces.  If the device doesn't want to support tethering over Wifi this
+         should be empty.  An example would be "softap.*" -->
     <string-array translatable="false" name="config_tether_wifi_regexs">
-        <item>"wlan0"</item>
+            <item>"wlan0"</item>
     </string-array>
 
+    <!-- List of regexpressions describing the interface (if any) that represent tetherable
+         bluetooth interfaces.  If the device doesn't want to support tethering over bluetooth this
+         should be empty. -->
     <string-array translatable="false" name="config_tether_bluetooth_regexs">
-        <item>"bt-pan"</item>
+            <item>"bt-pan"</item>
     </string-array>
 
+    <!-- Max number of Bluetooth tethering connections allowed. If this is
+         updated config_tether_dhcp_range has to be updated appropriately. -->
+    <integer translateable="false" name="config_max_pan_devices">5</integer>
+
+    <!-- Dhcp range (min, max) to use for tethering purposes -->
+    <string-array translatable="false" name="config_tether_dhcp_range">
+    </string-array>
+
+    <!-- Regex of wired ethernet ifaces -->
+    <string translatable="false" name="config_ethernet_iface_regex">eth\\d</string>
+
+    <!-- Array of ConnectivityManager.TYPE_xxxx values allowable for tethering -->
+    <!-- Common options are [1, 4] for TYPE_WIFI and TYPE_MOBILE_DUN or
+    <!== [0,1,5,7] for TYPE_MOBILE, TYPE_WIFI, TYPE_MOBILE_HIPRI and TYPE_BLUETOOTH -->
     <integer-array translatable="false" name="config_tether_upstream_types">
         <item>0</item>
         <item>1</item>
@@ -80,34 +225,145 @@
         <item>7</item>
     </integer-array>
 
-    <!-- The default iface on which to monitor data use -->
-    <string name="config_datause_iface">rmnet0</string>
+    <!-- Boolean indicating whether Softap requires reloading AP firmware -->
+    <bool name="config_wifiApFirmwareReload">true</bool>
 
-    <string-array translatable="false" name="config_serialPorts">
-        <item>/dev/ttyACM0</item>
-    </string-array>
-
-    <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
-
+    <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
     <bool translatable="false" name="config_wifi_dual_band_support">true</bool>
 
-    <bool name="config_unplugTurnsOnScreen">true</bool>
 
-    <string-array name="config_locationProviderPackageNames" translatable="false">
-        <!-- The standard AOSP fused location provider -->
-        <item>com.android.location.fused</item>
-        <!-- The Google Network Location Services location provider -->
-        <item>com.google.android.location</item>
-    </string-array>
+    <!-- Boolean indicating whether the wifi chipset supports background scanning mechanism.
+         This mechanism allows the host to remain in suspend state and the dongle to actively
+         scan and wake the host when a configured SSID is detected by the dongle. This chipset
+         capability can provide power savings when wifi needs to be always kept on. -->
+    <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
 
-    <bool name="config_showNavigationBar">true</bool>
+    <!-- Integer indicating wpa_supplicant scan interval in milliseconds -->
+    <integer translatable="false" name="config_wifi_supplicant_scan_interval">15000</integer>
 
+    <!-- Integer indicating the framework scan interval in milliseconds. This is used in the scenario
+         where the chipset does not support background scanning (config_wifi_background_scan_suport
+         is false) to set up a periodic wake up scan so that the device can connect to a new access
+         point on the move. A value of 0 means no periodic scans will be used in the framework. -->
+    <integer translatable="false" name="config_wifi_framework_scan_interval">300000</integer>
+
+    <!-- Wifi driver stop delay, in milliseconds.
+         Default value is 2 minutes. -->
+    <integer translatable="false" name="config_wifi_driver_stop_delay">120000</integer>
+
+    <!-- Flag indicating whether the we should enable the automatic brightness in Settings.
+         Software implementation will be used if config_hardware_auto_brightness_available is not set -->
     <bool name="config_automatic_brightness_available">true</bool>
 
+    <!-- XXXXXX END OF RESOURCES USING WRONG NAMING CONVENTION -->
+
+    <!-- If this is true, the screen will come on when you unplug usb/power/whatever. -->
+    <bool name="config_unplugTurnsOnScreen">true</bool>
+
+    <!-- If this is true, the screen will fade off. -->
+    <bool name="config_animateScreenLights">true</bool>
+
+    <!-- If this is true, key chords can be used to take a screenshot on the device. -->
+    <bool name="config_enableScreenshotChord">true</bool>
+
+    <!-- If true, the screen can be rotated via the accelerometer in all 4
+         rotations as the default behavior. -->
+    <bool name="config_allowAllRotations">false</bool>
+
+    <!-- Indicate whether the SD card is accessible without removing the battery. -->
     <bool name="config_batterySdCardAccessibility">true</bool>
 
-    <bool name="config_enableLockScreenRotation">true</bool>
- 
+    <!-- List of file paths for USB host busses to exclude from USB host support.
+         For example, if the first USB bus on the device is used to communicate
+         with the modem or some other restricted hardware, add "/dev/bus/usb/001/"
+         to this list.  If this is empty, no parts of the host USB bus will be excluded.
+    -->
+    <string-array name="config_usbHostBlacklist" translatable="false">
+    </string-array>
+
+    <!-- List of paths to serial ports that are available to the serial manager.
+         for example, /dev/ttyUSB0
+    -->
+    <string-array translatable="false" name="config_serialPorts">
+            <item>/dev/ttyACM0</item>
+    </string-array>
+  
+    <!-- Display low battery warning when battery level dips to this value.
+         Also, the battery stats are flushed to disk when we hit this level.  -->
+    <integer name="config_criticalBatteryWarningLevel">4</integer>
+
+    <!-- Shutdown if the battery temperature exceeds (this value * 0.1) Celsius. -->
+    <integer name="config_shutdownBatteryTemperature">680</integer>
+
+    <!-- Display low battery warning when battery level dips to this value -->
+    <!-- Display low battery warning when battery level dips to this value -->
+    <integer name="config_lowBatteryWarningLevel">15</integer>
+
+    <!-- Close low battery warning when battery level reaches this value -->
+    <integer name="config_lowBatteryCloseWarningLevel">20</integer>
+
+    <!-- Default color for notification LED. -->
+    <color name="config_defaultNotificationColor">#ffffffff</color>
+
+    <!-- Default LED on time for notification LED in milliseconds. -->
+    <integer name="config_defaultNotificationLedOn">500</integer>
+
+    <!-- Default LED off time for notification LED in milliseconds. -->
+    <integer name="config_defaultNotificationLedOff">2000</integer>
+
+    <!-- Default value for led color when battery is low on charge -->
+    <integer name="config_notificationsBatteryLowARGB">0xFFFF0000</integer>
+
+    <!-- Default value for led color when battery is medium charged -->
+    <integer name="config_notificationsBatteryMediumARGB">0xFFFFFF00</integer>
+
+    <!-- Default value for led color when battery is fully charged -->
+    <integer name="config_notificationsBatteryFullARGB">0xFF00FF00</integer>
+
+    <!-- Default value for LED on time when the battery is low on charge in miliseconds -->
+    <integer name="config_notificationsBatteryLedOn">125</integer>
+
+    <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
+    <bool name="config_intrusiveNotificationLed">false</bool>
+
+    <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
+    <bool name="config_intrusiveBatteryLed">false</bool>
+
+    <!-- Does the battery LED support multiple colors? Used to decide if the user can change the colors -->
+    <bool name="config_multiColorBatteryLed">true</bool>
+
+    <!-- Default value for LED off time when the battery is low on charge in miliseconds -->
+    <integer name="config_notificationsBatteryLedOff">2875</integer>
+
+    <!-- Control the behavior when the user long presses the home button.
+            0 - Nothing
+            1 - Recent apps dialog
+            2 - Recent apps view in SystemUI
+         This needs to match the constants in
+         policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
+    -->
+    <integer name="config_longPressOnHomeBehavior">2</integer>
+
+    <!-- Array of light sensor LUX values to define our levels for auto backlight brightness support.
+         The N entries of this array define N + 1 control points as follows:
+         (1-based arrays)
+
+         Point 1:            (0, value[1]):             lux <= 0
+         Point 2:     (level[1], value[2]):  0        < lux <= level[1]
+         Point 3:     (level[2], value[3]):  level[2] < lux <= level[3]
+         ...
+         Point N+1: (level[N], value[N+1]):  level[N] < lux
+
+         The control points must be strictly increasing.  Each control point
+         corresponds to an entry in the brightness backlight values arrays.
+         For example, if LUX == level[1] (first element of the levels array)
+         then the brightness will be determined by value[2] (second element
+         of the brightness values array).
+
+         Spline interpolation is used to determine the auto-brightness
+         backlight values for LUX levels between these control points.
+
+         Must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLevels">
         <item>40</item>
         <item>110</item>
@@ -116,9 +372,10 @@
     </integer-array>
 
     <!-- Array of output values for LCD backlight corresponding to the LUX values
-        in the config_autoBrightnessLevels array. This array should have size one greater
-        than the size of the config_autoBrightnessLevels array.
-    -->
+         in the config_autoBrightnessLevels array.  This array should have size one greater
+         than the size of the config_autoBrightnessLevels array.
+         The brightness values must be between 0 and 255 and be non-decreasing.
+         This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
         <item>30</item>
         <item>30</item>
@@ -128,9 +385,10 @@
     </integer-array>
 
     <!-- Array of output values for button backlight corresponding to the LUX values
-        in the config_autoBrightnessLevels array. This array should have size one greater
-        than the size of the config_autoBrightnessLevels array.
-    -->
+         in the config_autoBrightnessLevels array.  This array should have size one greater
+         than the size of the config_autoBrightnessLevels array.
+         The brightness values must be between 0 and 255 and be non-decreasing.
+         This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessButtonBacklightValues">
         <item>255</item>
         <item>255</item>
@@ -140,10 +398,10 @@
     </integer-array>
 
     <!-- Array of output values for keyboard backlight corresponding to the LUX values
-        in the config_autoBrightnessLevels array. This array should have size one greater
-        than the size of the config_autoBrightnessLevels array.
-        i9300 has no keyboard so all values are zero.
-    -->
+         in the config_autoBrightnessLevels array.  This array should have size one greater
+         than the size of the config_autoBrightnessLevels array.
+         The brightness values must be between 0 and 255 and be non-decreasing.
+         This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessKeyboardBacklightValues">
         <item>16</item>
         <item>40</item>
@@ -153,37 +411,220 @@
         <item>250</item>
     </integer-array>
 
+    <!-- Amount of time it takes for the light sensor to warm up in milliseconds.
+         For this time after the screen turns on, the Power Manager
+         will not debounce light sensor readings -->
+    <integer name="config_lightSensorWarmupTime">0</integer>
 
-    <bool name="config_voice_capable">true</bool>
+    <!-- Package name(s) containing location provider support.
+         These packages can contain services implementing location providers,
+         such as the Geocode Provider, Network Location Provider, and
+         Fused Location Provider. They will each be searched for
+         service components implementing these providers.
+         It is strongly recommended that the packages explicitly named
+         below are on the system image, so that they will not map to
+         a 3rd party application.
+         The location framework also has support for installation
+         of new location providers at run-time. The new package does not
+         have to be explicitly listed here, however it must have a signature
+         that matches the signature of at least one package on this list.
+         -->
+    <string-array name="config_locationProviderPackageNames" translatable="false">
+        <!-- The standard AOSP fused location provider -->
+        <item>com.android.location.fused</item>
+        <!-- The Google Network Location Services location provider -->
+        <item>com.google.android.location</item>
+    </string-array>
 
-    <bool name="config_sms_capable">true</bool>
-
+    <!-- Boolean indicating if current platform supports bluetooth SCO for off call
+    use cases -->
     <bool name="config_bluetooth_sco_off_call">true</bool>
 
+    <!-- Boolean indicating if current platform supports bluetooth wide band
+         speech -->
+    <bool name="config_bluetooth_wide_band_speech">true</bool>
+
+    <!-- Boolean indicating if current platform need do one-time bluetooth address
+         re-validation -->
+    <bool name="config_bluetooth_address_validation">false</bool>
+
+    <!-- The default data-use polling period. -->
+    <integer name="config_datause_polling_period_sec">600</integer>
+
+    <!-- The default data-use threshold in bytes. 0 disables-->
+    <integer name="config_datause_threshold_bytes">0</integer>
+
+    <!-- The default reduced-datarate value in kilobits per sec -->
+    <integer name="config_datause_throttle_kbitsps">300</integer>
+
+    <!-- The default iface on which to monitor data use -->
+    <string name="config_datause_iface" translatable="false">rmnet0</string>
+
+    <!-- The default reduced-datarate notification mask -->
+    <!-- 2 means give warning -->
+    <integer name="config_datause_notification_type">2</integer>
+
+    <!-- Flag indicating whether the current device is "voice capable".
+         If true, this means that the device supports circuit-switched
+         (i.e. voice) phone calls over the telephony network, and is
+         allowed to display the in-call UI while a cellular voice call is
+         active.  This can be overridden to false for "data only" devices
+         which can't make voice calls and don't support any in-call UI.
+
+         Note: this flag is subtly different from the
+         PackageManager.FEATURE_TELEPHONY system feature, which is
+         available on *any* device with a telephony radio, even if the
+         device is data-only. -->
+    <bool name="config_voice_capable">true</bool>
+
+    <!-- Flag indicating whether the current device allows sms service.
+         If true, this means that the device supports both sending and
+         receiving sms via the telephony network.
+         This can be overridden to false for "data only" devices
+         which can't send and receive sms message.
+
+         Note: Disable SMS also disable voicemail waiting sms,
+               cell broadcasting sms, and MMS. -->
+    <bool name="config_sms_capable">true</bool>
+
+    <!-- If this value is true, we handle Samsung CDMA's message ID method -->
+    <bool name="config_smsSamsungCdmaAlternateMessageIDEncoding">false</bool>
+
+    <!-- Enable/disable default bluetooth profiles:
+        HSP_AG, ObexObjectPush, Audio, NAP -->
+    <bool name="config_bluetooth_default_profiles">true</bool>
+
+    <!-- IP address of the dns server to use if nobody else suggests one -->
+    <string name="config_default_dns_server" translatable="false">8.8.8.8</string>
+
+    <!-- Enables SIP on WIFI only -->
     <bool name="config_sip_wifi_only">false</bool>
 
     <!-- Enables built-in SIP phone capability -->
     <bool name="config_built_in_sip_phone">true</bool>
 
+    <!-- Boolean indicating if restoring network selection should be skipped -->
+    <!-- The restoring is handled by modem if it is true-->
+    <bool translatable="false" name="skip_restoring_network_selection">false</bool>
+
+    <!-- Maximum number of database connections opened and managed by framework layer
+         to handle queries on each database when using Write-Ahead Logging. -->
+    <integer name="db_connection_pool_size">4</integer>
+
+    <!-- The default journal mode to use use when Write-Ahead Logging is not active.
+         Choices are: OFF, DELETE, TRUNCATE, PERSIST and MEMORY.
+         PERSIST may improve performance by reducing how often journal blocks are
+         reallocated (compared to truncation) resulting in better data block locality
+         and less churn of the storage media. -->
+    <string name="db_default_journal_mode">PERSIST</string>
+
+    <!-- Maximum size of the persistent journal file in bytes.
+         If the journal file grows to be larger than this amount then SQLite will
+         truncate it after committing the transaction. -->
+    <integer name="db_journal_size_limit">524288</integer>
+
+    <!-- The database synchronization mode when using the default journal mode.
+         FULL is safest and preserves durability at the cost of extra fsyncs.
+         NORMAL also preserves durability in non-WAL modes and uses checksums to ensure
+         integrity although there is a small chance that an error might go unnoticed.
+         Choices are: FULL, NORMAL, OFF. -->
+    <string name="db_default_sync_mode">FULL</string>
+
+    <!-- The database synchronization mode when using Write-Ahead Logging.
+         FULL is safest and preserves durability at the cost of extra fsyncs.
+         NORMAL sacrifices durability in WAL mode because syncs are only performed before
+         and after checkpoint operations.  If checkpoints are infrequent and power loss
+         occurs, then committed transactions could be lost and applications might break.
+         Choices are: FULL, NORMAL, OFF. -->
+    <string name="db_wal_sync_mode">FULL</string>
+
+    <!-- The Write-Ahead Log auto-checkpoint interval in database pages (typically 1 to 4KB).
+         The log is checkpointed automatically whenever it exceeds this many pages.
+         When a database is reopened, its journal mode is set back to the default
+         journal mode, which may cause a checkpoint operation to occur.  Checkpoints
+         can also happen at other times when transactions are committed.
+         The bigger the WAL file, the longer a checkpoint operation takes, so we try
+         to keep the WAL file relatively small to avoid long delays.
+         The size of the WAL file is also constrained by 'db_journal_size_limit'. -->
+    <integer name="db_wal_autocheckpoint">100</integer>
+
+    <!-- Max space (in MB) allocated to DownloadManager to store the downloaded
+         files if they are to be stored in DownloadManager's data dir,
+         which typically is /data/data/com.android.providers.downloads/files -->
     <integer name="config_downloadDataDirSize">200</integer>
 
     <!-- Max number of downloads allowed to proceed concurrently -->
-    <integer name="config_MaxConcurrentDownloadsAllowed">7</integer>
+    <integer name="config_MaxConcurrentDownloadsAllowed">10</integer>
 
-   <bool name="config_dreamsSupported">true</bool>
+    <!-- When the free space available in DownloadManager's data dir falls
+         below the percentage value specified by this param, DownloadManager
+         starts removing files to try to make percentage of available
+         free space above this threshold value. -->
+    <integer name="config_downloadDataDirLowSpaceThreshold">10</integer>
 
-   <integer name="config_multiuserMaximumUsers">3</integer>
+    <!-- Set additional audio parameters for incall audio
+         Usage: parameter=onstring=offstring
+         Examples: <item>realcall=on=off</item>
+                   <item>dualmic_enabled=true=false</item>
+                   <item>mic_boost=yes=no</item> -->
+    <string-array name="config_telephony_set_audioparameters" translatable="false">
+    </string-array>
 
-    <!-- reference volume index for music stream to limit headphone volume and display warning -->
-    <integer name="config_safe_media_volume_index">15</integer>
+    <!-- If this value is true, The mms content-disposition field is supported correctly.
+         If false, Content-disposition fragments are ignored -->
+    <bool name="config_mms_content_disposition_support">true</bool>
 
-    <bool name="config_camera_sound_forced">true</bool>
+    <!-- Path to an ISO image to be shared with via USB mass storage.
+         This is intended to allow packaging drivers or tools for installation on a PC. -->
+    <string translatable="false" name="config_isoImagePath"></string>
 
-    <bool name="config_hasRotationLockSwitch">true</bool>
+    <!-- Whether a software navigation bar should be shown. NOTE: in the future this may be
+         autodetected from the Configuration. -->
+    <bool name="config_showNavigationBar">false</bool>
 
-    <!--string name="config_legacyUmsLunFile">/sys/class/android_usb/f_mass_storage/lun/file</string>
+    <!-- Is the dreams feature supported? -->
+    <bool name="config_dreamsSupported">true</bool>
+    <!-- If supported, are dreams enabled? (by default) -->
+    <bool name="config_dreamsEnabledByDefault">true</bool>
+    <!-- If supported and enabled, are dreams activated when docked? (by default) -->
+    <bool name="config_dreamsActivatedOnDockByDefault">true</bool>
+    <!-- If supported and enabled, are dreams activated when asleep and charging? (by default) -->
+    <bool name="config_dreamsActivatedOnSleepByDefault">false</bool>
+    <!-- ComponentName of the default dream (Settings.Secure.SCREENSAVER_COMPONENT) -->
+    <string name="config_dreamsDefaultComponent">com.google.android.deskclock/com.android.deskclock.Screensaver</string>
 
-    Hardware 'face' keys present on the device, stored as a bit field.
+     <!-- Array of OEM specific USB mode override config.
+         OEM can override a certain USB mode depending on ro.bootmode.
+         Specify an array of below items to set override rule.
+         [bootmode]:[original USB mode]:[USB mode used]-->
+    <integer-array translatable="false" name="config_oemUsbModeOverride">
+    </integer-array>
+
+    <!--  Maximum number of supported users -->
+    <integer name="config_multiuserMaximumUsers">1</integer>
+
+     <!-- Safe headphone volume index. When music stream volume is below this index
+    the SPL on headphone output is compliant to EN 60950 requirements for portable music
+    players. -->
+    <integer name="config_safe_media_volume_index">10</integer>
+
+    <!-- Whether safe headphone volume is enabled or not (country specific). -->
+    <bool name="config_safe_media_volume_enabled">true</bool>
+
+    <!-- Timeout in MS for how long you have to long-press the back key to
+         kill the foreground app. -->
+    <integer name="config_backKillTimeout">2000</integer>
+
+    <!-- Workaround for devices with broken keyboards -->
+    <bool name="config_forceDisableHardwareKeyboard">false</bool>
+
+     <!-- Boolean to enable stk functionality on Samsung phones -->
+    <bool name="config_samsung_stk">false</bool>
+
+    <!-- Disable the home key unlock setting -->
+    <bool name="config_disableHomeUnlockSetting">true</bool>
+
+    <!-- Hardware 'face' keys present on the device, stored as a bit field.
          This integer should equal the sum of the corresponding value for each
          of the following keys present:
              1 - Home
@@ -195,4 +636,11 @@
          config to 7. -->
     <integer name="config_deviceHardwareKeys">7</integer>
 
+    <!-- LUN file to be used by legacy USB manager.
+         The existence of this file will be used to determine in the
+         legacy USB manager should be started. -->
+    <string name="config_legacyUmsLunFile">/sys/devices/platform/usb_mass_storage/lun/file</string>
+
+    <!-- Integer to configure panel auto brightness mode when changed -->
+    <integer name="config_panelAutoBrightnessValue">-1</integer>
 </resources>

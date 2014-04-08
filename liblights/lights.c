@@ -55,10 +55,10 @@ char const*const BLUE_LED_FILE
         = "/sys/class/leds/blue/brightness";
 
 char const*const LCD_FILE
-        = "/sys/class/leds/lcd-backlight/brightness";
+        = "/sys/class/leds/lcd-backlight0/brightness";
 
 char const*const BUTTON_FILE
-        = "/sys/class/leds/button-backlight/brightness";
+        = "/sys/class/leds/keyboard-backlight/brightness";
 
 int red, green, blue = 0;
 int blink, freq, pwm = 0;

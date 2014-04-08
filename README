@@ -6,19 +6,20 @@ What's working
 -rild (proprietary) [xmm6260]
 -wifi
 -3dhw (proprietary)
--compass (proprietary)
--accelerometer
--vibrator
--light sensor
--proximity sensor
--gps
--mtp
+-sensors (proprietary)
+-gps (proprietary)
+-mass storage
 -USB-tethering
+-lights (coded)
 
 what's not working
--change brightness
 -audio
+-change brightness
 -camera
--led
 -softkey backlight
 -FM radio
+
+What's weird
+-mobile signal always stays with no bars but works...
+-video player is buggy
+

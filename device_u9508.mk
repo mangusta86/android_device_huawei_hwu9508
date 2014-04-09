@@ -45,9 +45,9 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilts/etc/asound_NDLR.dat:system/etc/asound_NDLR.dat \
      $(LOCAL_PATH)/prebuilts/etc/audio_policy.conf:system/etc/audio_policy.conf 
     
-#PRODUCT_PACKAGES += \
-#     audio.primary.u9508 \
-#     audio_policy.u9508
+PRODUCT_PACKAGES += \
+    audio.a2dp.default \
+    libaudioutils
     
  #   libaudiohw_legacy \
  #   libaudio-resampler
@@ -107,12 +107,12 @@ PRODUCT_PACKAGES += \
 
 
 # Bluetooth & FmRadio
-#PRODUCT_PACKAGES += \
-#    uim-sysfs \
-#    libbt-vendor \
-#    bt_sco_app \
-#    BluetoothSCOApp \
-#    libtinyalsa
+PRODUCT_PACKAGES += \
+    uim-sysfs \
+    libbt-vendor \
+    bt_sco_app \
+    BluetoothSCOApp \
+    libtinyalsa
 
 
 # config files for wifi, camera, rild, media, GPS, keyboard
@@ -138,11 +138,11 @@ PRODUCT_COPY_FILES += \
 
 
 # Live Wallpapers
-#PRODUCT_PACKAGES += \
- #       LiveWallpapers \
-  #      LiveWallpapersPicker \
-   #     VisualizationWallpapers \
-    #    librs_jni
+PRODUCT_PACKAGES += \
+    LiveWallpapers \
+    LiveWallpapersPicker \
+    VisualizationWallpapers \
+    librs_jni
 
 # Misc
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -153,11 +153,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp,adb \
     ro.opengles.version=131072
 
-#PRODUCT_PACKAGES += \
- #   setup_fs \
-  #  libsrec_jni \
-   # com.android.future.usb.accessory \
-    #make_ext4fs 
+PRODUCT_PACKAGES += \
+    setup_fs \
+    libsrec_jni \
+    com.android.future.usb.accessory \
+    make_ext4fs 
 
 $(call inherit-product, build/target/product/full.mk)
 

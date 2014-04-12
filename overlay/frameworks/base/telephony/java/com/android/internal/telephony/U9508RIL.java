@@ -53,7 +53,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public final class RIL extends BaseCommands
+public final class U9508RIL extends BaseCommands
   implements CommandsInterface
 {
   private static final int CDMA_BROADCAST_SMS_NO_OF_SERVICE_CATEGORIES = 31;

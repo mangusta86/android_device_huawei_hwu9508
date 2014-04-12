@@ -6,6 +6,9 @@ rild.libpath=/system/lib/libxgold-ril.so
 rild.libargs=-d /dev/ttyACM0
 rild.cfgfile=/system/etc/ril_xgold_radio.cfg
 audioril.lib=libhuawei-audio-ril.so
+
+ro.telephony.ril_class=EPRJ9508RIL
+
 ro.ril.ecclist=112,911,#911,*911
 
 ro.sf.lcd_density=320

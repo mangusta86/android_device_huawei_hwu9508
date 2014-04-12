@@ -131,9 +131,7 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilts/usr/idc/k3_keypad.idc:system/usr/idc/k3_keypad.idc \
 	$(LOCAL_PATH)/prebuilts/usr/keylayout/k3_keypad.kl:system/usr/keylayout/k3_keypad.kl
 
-# Camera
-PRODUCT_PACKAGES := \
-	Camera
+
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \

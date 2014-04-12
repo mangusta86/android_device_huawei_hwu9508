@@ -48,10 +48,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     libaudioutils
-    
- #   libaudiohw_legacy \
- #   libaudio-resampler
-
 
 # product specific permissions
 PRODUCT_COPY_FILES += \

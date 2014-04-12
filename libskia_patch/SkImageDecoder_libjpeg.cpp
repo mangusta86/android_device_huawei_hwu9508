@@ -916,74 +916,79 @@ static WriteScanline ChooseWriter(const SkBitmap& bm) {
 
 class SkJPEGImageEncoder : public SkImageEncoder {
 protected:
-    virtual bool onEncode(SkWStream* stream, const SkBitmap& bm, int quality) {
-#ifdef TIME_ENCODE
-        AutoTimeMillis atm("JPEG Encode");
-#endif
-
-        const WriteScanline writer = ChooseWriter(bm);
-        if (NULL == writer) {
-            return false;
-        }
-
-        SkAutoLockPixels alp(bm);
-        if (NULL == bm.getPixels()) {
-            return false;
-        }
-
-        jpeg_compress_struct    cinfo;
-        skjpeg_error_mgr        sk_err;
-        skjpeg_destination_mgr  sk_wstream(stream);
-
-        // allocate these before set call setjmp
-        SkAutoMalloc    oneRow;
-        SkAutoLockColors ctLocker;
-
-        cinfo.err = jpeg_std_error(&sk_err);
-        sk_err.error_exit = skjpeg_error_exit;
-        if (setjmp(sk_err.fJmpBuf)) {
-            return false;
-        }
-        jpeg_create_compress(&cinfo);
-
-        cinfo.dest = &sk_wstream;
-        cinfo.image_width = bm.width();
-        cinfo.image_height = bm.height();
-        cinfo.input_components = 3;
-#ifdef WE_CONVERT_TO_YUV
-        cinfo.in_color_space = JCS_YCbCr;
-#else
-        cinfo.in_color_space = JCS_RGB;
-#endif
-        cinfo.input_gamma = 1;
-
-        jpeg_set_defaults(&cinfo);
-        jpeg_set_quality(&cinfo, quality, TRUE /* limit to baseline-JPEG values */);
-        cinfo.dct_method = JDCT_IFAST;
-
-        jpeg_start_compress(&cinfo, TRUE);
-
-        const int       width = bm.width();
-        uint8_t*        oneRowP = (uint8_t*)oneRow.reset(width * 3);
-
-        const SkPMColor* colors = ctLocker.lockColors(bm);
-        const void*      srcRow = bm.getPixels();
-
-        while (cinfo.next_scanline < cinfo.image_height) {
-            JSAMPROW row_pointer[1];    /* pointer to JSAMPLE row[s] */
-
-            writer(oneRowP, srcRow, width, colors);
-            row_pointer[0] = oneRowP;
-            (void) jpeg_write_scanlines(&cinfo, row_pointer, 1);
-            srcRow = (const void*)((const char*)srcRow + bm.rowBytes());
-        }
-
-        jpeg_finish_compress(&cinfo);
-        jpeg_destroy_compress(&cinfo);
-
-        return true;
-    }
+virtual bool onEncode(SkWStream* stream, const SkBitmap& bm, int quality) SK_OVERRIDE;
 };
+
+bool SkJPEGImageEncoder::onEncode(SkWStream* stream, const SkBitmap& bm, int quality) {
+#ifdef TIME_ENCODE
+SkAutoTime atm("JPEG Encode");
+#endif
+
+SkAutoLockPixels alp(bm);
+if (NULL == bm.getPixels()) {
+return false;
+}
+
+jpeg_compress_struct cinfo;
+skjpeg_error_mgr sk_err;
+skjpeg_destination_mgr sk_wstream(stream);
+
+// allocate these before set call setjmp
+SkAutoMalloc oneRow;
+SkAutoLockColors ctLocker;
+
+cinfo.err = jpeg_std_error(&sk_err);
+sk_err.error_exit = skjpeg_error_exit;
+if (setjmp(sk_err.fJmpBuf)) {
+return false;
+}
+
+// Keep after setjmp or mark volatile.
+const WriteScanline writer = ChooseWriter(bm);
+if (NULL == writer) {
+return false;
+}
+
+jpeg_create_compress(&cinfo);
+cinfo.dest = &sk_wstream;
+cinfo.image_width = bm.width();
+cinfo.image_height = bm.height();
+cinfo.input_components = 3;
+#ifdef WE_CONVERT_TO_YUV
+cinfo.in_color_space = JCS_YCbCr;
+#else
+cinfo.in_color_space = JCS_RGB;
+#endif
+cinfo.input_gamma = 1;
+
+jpeg_set_defaults(&cinfo);
+jpeg_set_quality(&cinfo, quality, TRUE /* limit to baseline-JPEG values */);
+#ifdef DCT_IFAST_SUPPORTED
+cinfo.dct_method = JDCT_IFAST;
+#endif
+
+jpeg_start_compress(&cinfo, TRUE);
+
+const int width = bm.width();
+uint8_t* oneRowP = (uint8_t*)oneRow.reset(width * 3);
+
+const SkPMColor* colors = ctLocker.lockColors(bm);
+const void* srcRow = bm.getPixels();
+
+while (cinfo.next_scanline < cinfo.image_height) {
+JSAMPROW row_pointer[1]; /* pointer to JSAMPLE row[s] */
+
+writer(oneRowP, srcRow, width, colors);
+row_pointer[0] = oneRowP;
+(void) jpeg_write_scanlines(&cinfo, row_pointer, 1);
+srcRow = (const void*)((const char*)srcRow + bm.rowBytes());
+}
+
+jpeg_finish_compress(&cinfo);
+jpeg_destroy_compress(&cinfo);
+
+return true;
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 

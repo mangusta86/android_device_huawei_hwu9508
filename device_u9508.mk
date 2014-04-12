@@ -134,6 +134,9 @@ PRODUCT_COPY_FILES += \
 # Camera
 PRODUCT_PACKAGES := \
 	Camera
+	
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/libskia_patch/libskia.so:system/lib/libskia.so
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \

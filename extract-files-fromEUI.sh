@@ -16,21 +16,19 @@
 
 VENDOR=huawei
 DEVICE=hwu9508
-DEVICEBASE= ../../vendor/$VENDOR/$DEVICE/proprietary
-DEVICEMAKEFILE=$DEVICE-vendor-blobs.mk
+DEVICEBASE=../../../vendor/$VENDOR/$DEVICE
+DEVICEMAKEFILE=$DEVICEBASE/$DEVICE-vendor-blobs.mk
 COMMONPROPS=proprietary-files.txt
 EUIFOLDER=/home/mangusta86/Huawei_DEV/B708
 
-#adb root
-#adb wait-for-device
 
 echo "Copying device specific files from EUI..."
 for FILE in `cat $COMMONPROPS | grep -v ^# | grep -v ^$`; do
     DIR=`dirname $FILE`
-    if [ ! -d $DEVICEBASE/$DIR ]; then
-        mkdir -p $DEVICEBASE/$DIR
+    if [ ! -d $DEVICEBASE/proprietary/$DIR ]; then
+        mkdir -p $DEVICEBASE/proprietary/$DIR
     fi
-    cp $EUIFOLDER/$FILE $DEVICEBASE/$FILE
+    cp $EUIFOLDER/$FILE $DEVICEBASE/proprietary/$FILE
 done
 
 
@@ -63,10 +61,10 @@ for FILE in `cat $COMMONPROPS | grep -v ^# | grep -v ^$`; do
     if [ $COUNT = "0" ]; then
         LINEEND=""
     fi
-    echo "    "\$"(LOCAL_PATH)/$DEVICEBASE/$FILE:$FILE$LINEEND" >> $DEVICEMAKEFILE
+    echo "    "\$"(LOCAL_PATH)/$DEVICEBASE/proprietary/$FILE:$FILE$LINEEND" >> $DEVICEMAKEFILE
 done
 
-(cat << EOF) > $DEVICE-vendor.mk
+(cat << EOF) > $DEVICEBASE/$DEVICE-vendor.mk
 # Copyright (C) 2012 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -90,7 +88,7 @@ DEVICE_PACKAGE_OVERLAYS := vendor/$VENDOR/$DEVICE/overlay
 \$(call inherit-product, vendor/$VENDOR/$DEVICE/$DEVICE-vendor-blobs.mk)
 EOF
 
-(cat << EOF) > BoardConfigVendor.mk
+(cat << EOF) > $DEVICEBASE/BoardConfigVendor.mk
 # Copyright (C) 2012 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");

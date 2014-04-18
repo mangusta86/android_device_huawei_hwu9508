@@ -16,20 +16,21 @@
 
 VENDOR=huawei
 DEVICE=hwu9508
-DEVICEBASE= ../../vendor/$VENDOR/$DEVICE/proprietary
-DEVICEMAKEFILE=$DEVICE-vendor-blobs.mk
+DEVICEBASE=../../../vendor/$VENDOR/$DEVICE
+DEVICEMAKEFILE=SDEVICEBASE/$DEVICE-vendor-blobs.mk
 COMMONPROPS=proprietary-files.txt
 
 adb root
 adb wait-for-device
 
+
 echo "Pulling device specific files..."
 for FILE in `cat $COMMONPROPS | grep -v ^# | grep -v ^$`; do
     DIR=`dirname $FILE`
-    if [ ! -d $DEVICEBASE/$DIR ]; then
-        mkdir -p $DEVICEBASE/$DIR
+    if [ ! -d $DEVICEBASE/proprietary/$DIR ]; then
+        mkdir -p $DEVICEBASE/proprietary/$DIR
     fi
-    adb pull /$FILE $DEVICEBASE/$FILE
+    adb pull /$FILE $DEVICEBASE/proprietary/$FILE
 done
 
 
@@ -62,10 +63,10 @@ for FILE in `cat $COMMONPROPS | grep -v ^# | grep -v ^$`; do
     if [ $COUNT = "0" ]; then
         LINEEND=""
     fi
-    echo "    "\$"(LOCAL_PATH)/$DEVICEBASE/$FILE:$FILE$LINEEND" >> $DEVICEMAKEFILE
+    echo "    "\$"(LOCAL_PATH)/$DEVICEBASE/proprietary/$FILE:$FILE$LINEEND" >> $DEVICEMAKEFILE
 done
 
-(cat << EOF) > $DEVICE-vendor.mk
+(cat << EOF) > SDEVICEBASE/$DEVICE-vendor.mk
 # Copyright (C) 2012 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -89,7 +90,7 @@ DEVICE_PACKAGE_OVERLAYS := vendor/$VENDOR/$DEVICE/overlay
 \$(call inherit-product, vendor/$VENDOR/$DEVICE/$DEVICE-vendor-blobs.mk)
 EOF
 
-(cat << EOF) > BoardConfigVendor.mk
+(cat << EOF) > SDEVICEBASE/BoardConfigVendor.mk
 # Copyright (C) 2012 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");

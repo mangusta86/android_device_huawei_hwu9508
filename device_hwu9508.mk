@@ -6,14 +6,14 @@ $(call inherit-product, device/common/gps/gps_us_supl.mk)
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-$(call inherit-product-if-exists, vendor/huawei/u9508/u9508-vendor.mk)
+$(call inherit-product-if-exists, vendor/huawei/hwu9508/hwu9508-vendor.mk)
 
 
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 
-LOCAL_PATH := device/huawei/u9508
+LOCAL_PATH := device/huawei/hwu9508
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 
@@ -166,5 +166,5 @@ $(call inherit-product, build/target/product/full.mk)
 $(call inherit-product-if-exists, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := full_u9508
-PRODUCT_DEVICE := u9508
+PRODUCT_NAME := full_hwu9508
+PRODUCT_DEVICE := hwu9508

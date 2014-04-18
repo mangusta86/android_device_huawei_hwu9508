@@ -18,7 +18,7 @@
 $(call inherit-product, vendor/cm/config/gsm.mk)
 
 # Release name
-PRODUCT_RELEASE_NAME := u9508
+PRODUCT_RELEASE_NAME := hwu9508
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1280
@@ -28,11 +28,11 @@ TARGET_SCREEN_WIDTH := 720
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # Inherit device configuration
-$(call inherit-product, device/huawei/u9508/device_u9508.mk)
+$(call inherit-product, device/huawei/hwu9508/device_hwu9508.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := u9508
-PRODUCT_NAME := cm_u9508
+PRODUCT_DEVICE := hwu9508
+PRODUCT_NAME := cm_hwu9508
 PRODUCT_BRAND := huawei
 PRODUCT_MODEL := u9508
 PRODUCT_MANUFACTURER := huawei

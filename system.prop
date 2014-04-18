@@ -7,7 +7,7 @@ rild.libargs=-d /dev/ttyACM0
 rild.cfgfile=/system/etc/ril_xgold_radio.cfg
 audioril.lib=libhuawei-audio-ril.so
 
-ro.telephony.ril_class=EPRJ9508RIL
+ro.telephony.ril_class=K3V2OEM1RIL
 
 ro.ril.ecclist=112,911,#911,*911
 

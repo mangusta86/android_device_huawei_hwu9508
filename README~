@@ -13,14 +13,13 @@ What's working
 -audio (proprietary)
 -change brightness
 -softkey backlight
--camera
 
 what's not working
+-camera
 -FM radio
 -mass storage
 
 What's weird
--mobile signal detection is on testing (CRITICAL)
--video player is buggy (MAJOR)
--video record is impossible (CRITICAL)
--long time booting (MINOR)
+-mobile signal detection looks weird...
+-video player is buggy
+-long time booting

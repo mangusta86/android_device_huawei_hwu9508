@@ -15,7 +15,7 @@
 # inherit from the proprietary version
 #include vendor/huawei/u9508/BoardConfigVendor.mk
 
-TARGET_SPECIFIC_HEADER_PATH := device/huawei/u9508/overlay/include
+TARGET_SPECIFIC_HEADER_PATH := device/huawei/hwu9508/overlay/include
 
 
 # Platform
@@ -46,7 +46,7 @@ TARGET_BOOTLOADER_NAME= u9508
 # boot image / kernel
 BOARD_KERNEL_CMDLINE := console=ttyS0 vmalloc=384M k3v2_pmem=1 mmcparts=mmcblk0:p1(xloader),p3(nvme),p4(misc),p5(splash),p6(oeminfo),p7(reserved1),p8(reserved2),p9(recovery2),p10(recovery),p11(boot),p12(modemimage),p13(modemnvm1),p14(modemnvm2),p15(system),p16(cache),p17(cust),p18(userdata);mmcblk1:p1(ext_sdcard)
 BOARD_KERNEL_PAGESIZE := 2048 
-TARGET_PREBUILT_KERNEL := device/huawei/u9508/kernel
+TARGET_PREBUILT_KERNEL := device/huawei/hwu9508/kernel
 
 TARGET_PROVIDES_INIT := true
 TARGET_PROVIDES_INIT_TARGET_RC := true
@@ -58,7 +58,7 @@ TARGET_PROVIDES_INIT_TARGET_RC := true
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/huawei/u9508/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/huawei/hwu9508/bluetooth
 
 TARGET_NO_RADIOIMAGE := true
 
@@ -79,7 +79,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 
 #Graphics
-BOARD_EGL_CFG := device/huawei/u9508/prebuilts/lib/egl/egl.cfg
+BOARD_EGL_CFG := device/huawei/hwu9508/prebuilts/lib/egl/egl.cfg
 USE_OPENGL_RENDERER := true
 # HWComposer
 BOARD_USES_HWCOMPOSER := true
@@ -144,10 +144,10 @@ BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 ###################################
 
 #TARGET_RECOVERY_INITRC := device/huawei/u9508/recovery/recovery.rc
-TARGET_RECOVERY_FSTAB := device/huawei/u9508/recovery/etc/recovery.fstab
+TARGET_RECOVERY_FSTAB := device/huawei/hwu9508/recovery/etc/recovery.fstab
 RECOVERY_FSTAB_VERSION := 2
 BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/huawei/u9508/recovery/recovery_keys.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/huawei/hwu9508/recovery/recovery_keys.c
 BOARD_RECOVERY_HANDLES_MOUNT := true
 # RECOVERY_EXTEND_NANDROID_MENU 
 

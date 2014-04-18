@@ -669,9 +669,8 @@ cat libs/telephony/ril_unsol_commands.h \
 
   
   
-protected Object responseSignalStrength(Parcel paramParcel)
+  protected Object responseSignalStrength(Parcel paramParcel)
   {
- 
     int mGsmSignalStrength=paramParcel.readInt(); // Valid values are (0-31, 99) as defined in TS 27.007 8.5
     int mGsmBitErrorRate=paramParcel.readInt();   // bit error rate (0-7, 99) as defined in TS 27.007 8.5
     int mCdmaDbm=paramParcel.readInt();   // This value is the RSSI value
@@ -686,15 +685,21 @@ protected Object responseSignalStrength(Parcel paramParcel)
     int mLteCqi=paramParcel.readInt();  
     int isGsmInt=paramParcel.readInt(); // This value is set by the ServiceStateTracker onSignalStrengthResult
 
-    boolean isGsm=true;
-    
-    if (isGsmInt == 0)
-    {  	
-        isGsm = false;
-        mGsmSignalStrength=(mCdmaDbm+113)/2;
+    boolean isGSM;
+  
+    if (mGsmSignalStrength == 0)
+    {
+      isGSM = false;
+      if ((mCdmaDbm != -1) && (mCdmaDbm != 0))
+          mGsmSignalStrength = ((113 + mCdmaDbm) / 2);
+          else
+          mGsmSignalStrength = mCdmaDbm;
     }
-    
-    return new SignalStrength(mGsmSignalStrength, mGsmBitErrorRate, mCdmaDbm, mCdmaEcio, mEvdoDbm, mEvdoEcio, mEvdoSnr, isGsm);
+    else 
+    {    
+      isGSM = true;
+    }  
+      return new SignalStrength(mGsmSignalStrength, mGsmBitErrorRate, mCdmaDbm, mCdmaEcio, mEvdoDbm, mEvdoEcio, mEvdoSnr, isGSM);
   }
 }
 

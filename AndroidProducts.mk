@@ -14,4 +14,4 @@
 
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/device_u9508.mk
+    $(LOCAL_DIR)/device_hwu9508.mk

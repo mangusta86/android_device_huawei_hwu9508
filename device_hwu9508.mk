@@ -30,11 +30,13 @@ PRODUCT_COPY_FILES += \
 
 # Lights
 PRODUCT_PACKAGES := \
-	lights.k3v2oem1
+	lights.hwu9508
 
 
 # Audio
 PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/prebuilts/lib/hw/audio.primary.k3v2oem1.so:system/lib/hw/audio.primary.hwu9508.so \
+        $(PATH_FILES)/prebuilts/lib/hw/audio_policy.default.so:system/lib/hw/audio_policy.hwu9508.so \
 	$(LOCAL_PATH)/prebuilts/etc/fir_filter/fir_coef_speaker_U9508.txt:system/etc/fir_filter/fir_coef_speaker_U9508.txt \
 	$(LOCAL_PATH)/prebuilts/etc/fir_filter/fir_coef_speaker.txt:system/etc/fir_filter/fir_coef_speaker.txt \
 	$(LOCAL_PATH)/prebuilts/etc/fir_filter/fir_coef_capture.txt:system/etc/fir_filter/fir_coef_capture.txt \

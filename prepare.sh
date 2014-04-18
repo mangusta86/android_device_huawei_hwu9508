@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export LOCAL_FOLDER=device/huawei/u9508;
+export LOCAL_FOLDER=device/huawei/hwu9508;
 export RECOVERY_FOLDER=bootable/recovery;
 export MANIFESTS_FOLDER=.repo/local_manifests;
 

@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # inherit from the proprietary version
-#include vendor/huawei/u9508/BoardConfigVendor.mk
+#include vendor/huawei/hwu9508/BoardConfigVendor.mk
 
 TARGET_SPECIFIC_HEADER_PATH := device/huawei/hwu9508/overlay/include
 
@@ -40,8 +40,8 @@ NEED_WORKAROUND_CORTEX_A9_745320 := true
 TARGET_NO_BOOTLOADER := true
 
 TARGET_BOARD_PLATFORM := k3v2oem1
-TARGET_BOOTLOADER_BOARD_NAME := u9508
-TARGET_BOOTLOADER_NAME= u9508
+TARGET_BOOTLOADER_BOARD_NAME := hwu9508
+TARGET_BOOTLOADER_NAME= hwu9508
 
 # boot image / kernel
 BOARD_KERNEL_CMDLINE := console=ttyS0 vmalloc=384M k3v2_pmem=1 mmcparts=mmcblk0:p1(xloader),p3(nvme),p4(misc),p5(splash),p6(oeminfo),p7(reserved1),p8(reserved2),p9(recovery2),p10(recovery),p11(boot),p12(modemimage),p13(modemnvm1),p14(modemnvm2),p15(system),p16(cache),p17(cust),p18(userdata);mmcblk1:p1(ext_sdcard)
@@ -52,7 +52,7 @@ TARGET_PROVIDES_INIT := true
 TARGET_PROVIDES_INIT_TARGET_RC := true
 #u9508 specific files
 #TARGET_KERNEL_SOURCE := kernel/huawei/k3v2oem1
-#TARGET_KERNEL_CONFIG := cyanogenmod_u9508_defconfig
+#TARGET_KERNEL_CONFIG := cyanogenmod_hwu9508_defconfig
 
 
 # Bluetooth
@@ -102,18 +102,15 @@ WIFI_DRIVER_FW_PATH_AP      := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
 
 
 ## Audio
+TARGET_PROVIDES_LIBAUDIO := true
+#BOARD_USES_LEGACY_ALSA_AUDIO := true
 #BOARD_USES_GENERIC_AUDIO := true
 #BOARD_USES_ALSA_AUDIO:= true
 #BOARD_USES_AUDIO_LEGACY = true
-TARGET_PROVIDES_LIBAUDIO := true
-#BOARD_USES_LEGACY_ALSA_AUDIO := true
-
-## Lights
-#TARGET_PROVIDES_LIBLIGHTS := true
 
 
 # RIL
-#BOARD_RIL_CLASS := ../../../device/huawei/u9508/ril/
+#BOARD_RIL_CLASS := ../../../device/huawei/hwu9508/ril/
 
 
 # Camera

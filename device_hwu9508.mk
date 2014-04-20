@@ -45,7 +45,7 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilts/etc/es305.bin:system/etc/es305.bin \
 	$(LOCAL_PATH)/prebuilts/etc/asound_ce_NDLR.dat:system/etc/asound_ce_NDLR.dat \
 	$(LOCAL_PATH)/prebuilts/etc/asound_NDLR.dat:system/etc/asound_NDLR.dat \
-     $(LOCAL_PATH)/prebuilts/etc/audio_policy.conf:system/etc/audio_policy.conf 
+        $(LOCAL_PATH)/prebuilts/etc/audio_policy.conf:system/etc/audio_policy.conf 
     
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
@@ -53,21 +53,21 @@ PRODUCT_PACKAGES += \
 
 # product specific permissions
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
-    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-    frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
-    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
-    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
-    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
-    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
-    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
-    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
+       frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
+       frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+       frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+       frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
+       frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
+       frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+       frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+       frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+       frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
+       frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+       frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
+       frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
+       frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+       frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+       frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
 
 # Vold management
@@ -77,7 +77,7 @@ PRODUCT_COPY_FILES += \
 
 # Enable switch storage 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilts/etc/init.d/preparesd:system/etc/init.d/preparesd
+       $(LOCAL_PATH)/prebuilts/etc/init.d/preparesd:system/etc/init.d/preparesd
 
 
 # rootdir
@@ -96,21 +96,21 @@ PRODUCT_COPY_FILES += \
 
 # Sim toolkit
 PRODUCT_PACKAGES += \
-    Stk
+       Stk
  
     
 # Torch
 PRODUCT_PACKAGES += \
-    Torch 
+       Torch 
 
 
 # Bluetooth & FmRadio
 PRODUCT_PACKAGES += \
-    uim-sysfs \
-    libbt-vendor \
-    bt_sco_app \
-    BluetoothSCOApp \
-    libtinyalsa
+       uim-sysfs \
+       libbt-vendor \
+       bt_sco_app \
+       BluetoothSCOApp \
+       libtinyalsa
 
 
 # config files for wifi, camera, rild, media, GPS, keyboard
@@ -142,25 +142,25 @@ PRODUCT_COPY_FILES += \
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
-    LiveWallpapers \
-    LiveWallpapersPicker \
-    VisualizationWallpapers \
-    librs_jni
+       LiveWallpapers \
+       LiveWallpapersPicker \
+       VisualizationWallpapers \
+       librs_jni
 
 # Misc
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.ril.hsxpa=2
-    wifi.interface=wlan0 \
-    ap.interface=wlan1 \
-    ro.vold.switchablepair=yes \
-    persist.sys.usb.config=mtp,adb \
-    ro.opengles.version=131072
+       ro.ril.hsxpa=2
+       wifi.interface=wlan0 \
+       ap.interface=wlan1 \
+       ro.vold.switchablepair=yes \
+       persist.sys.usb.config=mtp,adb \
+       ro.opengles.version=131072
 
 PRODUCT_PACKAGES += \
-    setup_fs \
-    libsrec_jni \
-    com.android.future.usb.accessory \
-    make_ext4fs 
+       setup_fs \
+       libsrec_jni \
+       com.android.future.usb.accessory \
+       make_ext4fs 
 
 $(call inherit-product, build/target/product/full.mk)
 

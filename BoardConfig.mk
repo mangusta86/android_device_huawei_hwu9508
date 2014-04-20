@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # inherit from the proprietary version
-#include vendor/huawei/hwu9508/BoardConfigVendor.mk
+include vendor/huawei/hwu9508/BoardConfigVendor.mk
 
 TARGET_SPECIFIC_HEADER_PATH := device/huawei/hwu9508/overlay/include
 
@@ -41,7 +41,6 @@ TARGET_NO_BOOTLOADER := true
 
 TARGET_BOARD_PLATFORM := k3v2oem1
 TARGET_BOOTLOADER_BOARD_NAME := hwu9508
-TARGET_BOOTLOADER_NAME= hwu9508
 
 # boot image / kernel
 BOARD_KERNEL_CMDLINE := console=ttyS0 vmalloc=384M k3v2_pmem=1 mmcparts=mmcblk0:p1(xloader),p3(nvme),p4(misc),p5(splash),p6(oeminfo),p7(reserved1),p8(reserved2),p9(recovery2),p10(recovery),p11(boot),p12(modemimage),p13(modemnvm1),p14(modemnvm2),p15(system),p16(cache),p17(cust),p18(userdata);mmcblk1:p1(ext_sdcard)
@@ -110,7 +109,7 @@ TARGET_PROVIDES_LIBAUDIO := true
 
 
 # RIL
-#BOARD_RIL_CLASS := ../../../device/huawei/hwu9508/ril/
+BOARD_RIL_CLASS := ../../../device/huawei/hwu9508/ril/K3V2OEM1.java
 
 
 # Camera
@@ -140,7 +139,7 @@ BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 #
 ###################################
 
-#TARGET_RECOVERY_INITRC := device/huawei/u9508/recovery/recovery.rc
+#TARGET_RECOVERY_INITRC := device/huawei/hwu9508/recovery/recovery.rc
 TARGET_RECOVERY_FSTAB := device/huawei/hwu9508/recovery/etc/recovery.fstab
 RECOVERY_FSTAB_VERSION := 2
 BOARD_HAS_NO_SELECT_BUTTON := true

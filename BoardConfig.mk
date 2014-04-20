@@ -109,7 +109,7 @@ TARGET_PROVIDES_LIBAUDIO := true
 
 
 # RIL
-BOARD_RIL_CLASS := ../../../device/huawei/hwu9508/ril/K3V2OEM1.java
+BOARD_RIL_CLASS :=../../../device/huawei/hwu9508/ril/K3V2OEM1RIL.java
 
 
 # Camera

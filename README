@@ -9,20 +9,20 @@ What's working
 -sensors (proprietary)
 -gps (proprietary)
 -USB-tethering
--lights (coded)
+-lights (coded, need adjustment)
 -audio (proprietary)
 -change brightness
 -softkey backlight
--camera
--mobile signal detection, rilclass (coded)
+-camera (proprietary+skia patch)
+-mobile signal detection (coded rilclass)
+-mass storage (init.k3v2oem1.usb.rc)
 
 what's not working
 -FM radio
--mass storage
 -battery stats
 
 What's weird
- is on testing (CRITICAL)
+-camera app forceclose but any other camera is ok (MAJOR)
 -video player is buggy (MAJOR)
 -video record is impossible (CRITICAL)
 -long time booting (MINOR)

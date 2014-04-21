@@ -87,10 +87,11 @@ PRODUCT_PACKAGES += \
        libtinyalsa
 
 
-# config files for wifi, GPS
+# config files for wifi, rild, media, GPS, keyboard
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilts/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
 	$(LOCAL_PATH)/prebuilts/etc/gpsconfig.xml:system/etc/gpsconfig.xml 
+
 
 
 # product specific permissions

@@ -35,8 +35,6 @@
 
 static pthread_once_t g_init = PTHREAD_ONCE_INIT;
 static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
-static struct light_state_t g_battery;
-static struct light_state_t g_notification;
 
 
 char const*const LCD_FILE

@@ -36,7 +36,7 @@
 static pthread_once_t g_init = PTHREAD_ONCE_INIT;
 static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
 static struct light_state_t g_battery;
-
+static struct light_state_t g_notification;
 
 
 char const*const LCD_FILE
@@ -146,11 +146,35 @@ static int
 set_light_battery(struct light_device_t* dev,
         struct light_state_t const* state)
 {
-    pthread_mutex_lock(&g_lock);
-    g_battery = *state;
-    handle_speaker_battery_locked(dev);
-    pthread_mutex_unlock(&g_lock);
-    return 0;
+    int err = 0;
+    int red, green, blue;
+    unsigned int colorRGB;
+    int onMS, offMS;
+
+    switch (state->flashMode) {
+        case LIGHT_FLASH_HARDWARE:
+        case LIGHT_FLASH_TIMED:
+            onMS = state->flashOnMS;
+            offMS = state->flashOffMS;
+            break;
+        case LIGHT_FLASH_NONE:
+        default:
+            onMS = 0;
+            offMS = 0;
+            break;
+    }
+
+    colorRGB = state->color;
+
+    red = (colorRGB >> 16) & 0xFF;
+    green = (colorRGB >> 8) & 0xFF;
+    blue = colorRGB & 0xFF;
+
+    err = write_int(RED_LED_FILE, red);
+    err = write_int(GREEN_LED_FILE, green);
+    err = write_int(BLUE_LED_FILE, blue);
+
+    return err;
 }
 
 static int

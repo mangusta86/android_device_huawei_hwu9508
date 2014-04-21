@@ -35,6 +35,9 @@
 
 static pthread_once_t g_init = PTHREAD_ONCE_INIT;
 static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
+static struct light_state_t g_battery;
+static struct light_state_t g_notification;
+
 
 char const*const LCD_FILE
         = "/sys/class/leds/lcd_backlight0/brightness";
@@ -138,6 +141,17 @@ set_light_buttons(struct light_device_t* dev,
     return err;
 
 }
+
+static void
+handle_speaker_battery_locked(struct light_device_t* dev)
+{
+    if (is_lit(&g_battery)) {
+        set_speaker_light_locked(dev, &g_battery);
+    } else {
+         set_speaker_light_locked(dev, &g_notification);
+    }
+}
+
 
 static int
 set_light_battery(struct light_device_t* dev,

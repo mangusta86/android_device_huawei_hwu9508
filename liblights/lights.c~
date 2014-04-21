@@ -35,8 +35,6 @@
 
 static pthread_once_t g_init = PTHREAD_ONCE_INIT;
 static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
-static struct light_state_t g_battery;
-static struct light_state_t g_notification;
 
 
 char const*const LCD_FILE
@@ -165,14 +163,7 @@ set_light_battery(struct light_device_t* dev,
     }
 
     colorRGB = state->color;
-
-    red = (colorRGB >> 16) & 0xFF;
-    green = (colorRGB >> 8) & 0xFF;
-    blue = colorRGB & 0xFF;
-
-    err = write_int(RED_LED_FILE, red);
-    err = write_int(GREEN_LED_FILE, green);
-    err = write_int(BLUE_LED_FILE, blue);
+    err = write_int(CHARGING_LED_FILE, colorRGB ? 255 : 0);
 
     return err;
 }

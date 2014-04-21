@@ -14,15 +14,13 @@ What's working
 -change brightness
 -softkey backlight
 -camera
--mobile signal detection, rilclass (coded)
 
 what's not working
 -FM radio
 -mass storage
--battery stats
 
 What's weird
- is on testing (CRITICAL)
+-mobile signal detection is on testing (CRITICAL)
 -video player is buggy (MAJOR)
 -video record is impossible (CRITICAL)
 -long time booting (MINOR)

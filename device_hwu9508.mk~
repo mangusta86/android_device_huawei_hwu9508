@@ -149,7 +149,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_PROPERTY_OVERRIDES += \
-       ro.ril.hsxpa=2 \
+       ro.ril.hsxpa=2
        wifi.interface=wlan0 \
        ap.interface=wlan1 \
        ro.vold.switchablepair=yes \

@@ -148,6 +148,9 @@ PRODUCT_PACKAGES += \
        librs_jni
 
 # Misc
+# This device have enough room for precise davick
+PRODUCT_TAGS += dalvik.gc.type-precise
+
 PRODUCT_PROPERTY_OVERRIDES += \
        ro.ril.hsxpa=2
        wifi.interface=wlan0 \
@@ -167,6 +170,3 @@ $(call inherit-product, build/target/product/full.mk)
 # call dalvik heap config
 $(call inherit-product-if-exists, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := full_hwu9508
-PRODUCT_DEVICE := hwu9508

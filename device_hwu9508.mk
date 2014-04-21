@@ -62,7 +62,7 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilts/etc/camera/davinci/device.config:system/etc/camera/davinci/device.config \
-	$(LOCAL_PATH)/prebuilts/etc/camera/davinci/device.config:system/etc/camera/davinci/mt9m114_sunny/imgproc.xml \
+	$(LOCAL_PATH)/prebuilts/etc/camera/davinci/mt9m114_sunny/imgproc.xml:system/etc/camera/davinci/mt9m114_sunny/imgproc.xml \
 	$(LOCAL_PATH)/prebuilts/etc/camera/davinci/default/imgproc.xml:system/etc/camera/davinci/default/imgproc.xml \
 	$(LOCAL_PATH)/prebuilts/etc/camera/davinci/ov8830/imgproc.xml:system/etc/camera/davinci/ov8830/imgproc.xml \
     	$(LOCAL_PATH)/prebuilts/etc/camera/davinci/ov8830/cm_correction.dat:system/etc/camera/davinci/ov8830/cm_correction.dat \

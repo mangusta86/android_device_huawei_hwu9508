@@ -17,7 +17,7 @@ system/bin/orientationd
 
 #Audio
 system/lib/libmedia.so
-system/lib/hw/audio.a2dp.default.so
+#system/lib/hw/audio.a2dp.default.so
 system/lib/libaudio-resampler.so
 system/lib/libaudioflinger.so
 system/lib/libdolbyaudioeffectnativeservice.so
@@ -47,7 +47,7 @@ system/bin/glgps
 system/bin/gpslogd
 
 #Bluetooth
-system/lib/hw/bluetooth.default.so
+#system/lib/hw/bluetooth.default.so
 system/vendor/lib/libbt-vendor.so
 
 #WIFI

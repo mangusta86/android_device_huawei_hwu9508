@@ -18,6 +18,8 @@ system/bin/orientationd
 #Audio
 system/lib/libmedia.so
 #system/lib/hw/audio.a2dp.default.so
+system/lib/hw/audio_policy.default.so
+system/lib/hw/audio.primary.k3v2oem1.so
 system/lib/libaudio-resampler.so
 system/lib/libaudioflinger.so
 system/lib/libdolbyaudioeffectnativeservice.so
@@ -65,6 +67,7 @@ system/lib/libimageinfo.so
 system/lib/libgnuexif.so
 #system/lib/libskia.so
 system/lib/libhelixplayer.so
+system/lib/libwvm.so
 
 #Sensors
 system/lib/hw/sensors.k3v2oem1.so
@@ -119,11 +122,9 @@ system/lib/libisdb_omxcore.so
 system/lib/libclcore.bc
 system/lib/libclcore_neon.bc
 system/lib/libmrc_cg_postprocess.so
-system/lib/libstagefright_wfd.so
-system/lib/libstagefrighthw.so
 system/lib/libui.so
 system/lib/libvpp.so
-system/lib/libwvm.so
+
 
 #other binaries
 system/bin/am

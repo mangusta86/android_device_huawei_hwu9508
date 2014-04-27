@@ -41,8 +41,6 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/prebuilts/lib/hw/audio.primary.k3v2oem1.so:system/lib/hw/audio.primary.k3v2oem1.so \
-        $(LOCAL_PATH)/prebuilts/lib/hw/audio_policy.default.so:system/lib/hw/audio_policy.k3v2oem1.so \
 	$(LOCAL_PATH)/prebuilts/etc/fir_filter/fir_coef_speaker_U9508.txt:system/etc/fir_filter/fir_coef_speaker_U9508.txt \
 	$(LOCAL_PATH)/prebuilts/etc/fir_filter/fir_coef_speaker.txt:system/etc/fir_filter/fir_coef_speaker.txt \
 	$(LOCAL_PATH)/prebuilts/etc/fir_filter/fir_coef_capture.txt:system/etc/fir_filter/fir_coef_capture.txt \
@@ -64,7 +62,9 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilts/etc/camera/davinci/device.config:system/etc/camera/davinci/device.config \
 	$(LOCAL_PATH)/prebuilts/etc/camera/davinci/mt9m114_sunny/imgproc.xml:system/etc/camera/davinci/mt9m114_sunny/imgproc.xml \
 	$(LOCAL_PATH)/prebuilts/etc/camera/davinci/default/imgproc.xml:system/etc/camera/davinci/default/imgproc.xml \
+	$(LOCAL_PATH)/prebuilts/etc/camera/davinci/default/multiframe.xml:system/etc/camera/davinci/default/multiframe.xml \
 	$(LOCAL_PATH)/prebuilts/etc/camera/davinci/ov8830/imgproc.xml:system/etc/camera/davinci/ov8830/imgproc.xml \
+	$(LOCAL_PATH)/prebuilts/etc/camera/davinci/ov8830/multiframe.xml:system/etc/camera/davinci/ov8830/multiframe.xml \
     	$(LOCAL_PATH)/prebuilts/etc/camera/davinci/ov8830/cm_correction.dat:system/etc/camera/davinci/ov8830/cm_correction.dat \
     	$(LOCAL_PATH)/prebuilts/etc/camera/davinci/ov8830/cm_foliage.dat:system/etc/camera/davinci/ov8830/cm_foliage.dat \
     	$(LOCAL_PATH)/prebuilts/etc/camera/davinci/ov8830/cm_normal.dat:system/etc/camera/davinci/ov8830/cm_normal.dat \
@@ -90,6 +90,7 @@ PRODUCT_PACKAGES += \
 # config files for wifi, GPS
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilts/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
+	$(LOCAL_PATH)/prebuilts/bin/gps.cer:system/bin/gps.cer \
 	$(LOCAL_PATH)/prebuilts/etc/gpsconfig.xml:system/etc/gpsconfig.xml 
 
 

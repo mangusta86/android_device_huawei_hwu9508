@@ -7,9 +7,9 @@ What's working
 -wifi
 -3dhw (proprietary)
 -sensors (proprietary)
--gps (proprietary) + SpeedFIX(port from galaxy Note)
+-gps (proprietary)
 -USB-tethering
--lights (coded)
+-lights (coded, need adjustments)
 -audio (proprietary)
 -camera (proprietary+skia patch)
 -mobile signal detection (coded rilclass)
@@ -22,4 +22,3 @@ what's not working
 -FM radio (MINOR)
 -camera app forceclose but any other camera is ok (MAJOR)
 -long time booting (MINOR)
--LED notification needs adjustments

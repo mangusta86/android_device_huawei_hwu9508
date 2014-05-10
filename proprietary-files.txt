@@ -12,11 +12,11 @@ system/lib/libsurfaceflinger.so
 system/lib/libsurfaceflinger_client.so
 system/lib/liboverlay.so
 system/bin/surfaceflinger
-system/bin/mediaserver
 system/bin/orientationd
 
-#Audio
+#Audio and mediaserver
 system/lib/libmedia.so
+system/bin/mediaserver
 #system/lib/hw/audio.a2dp.default.so
 system/lib/hw/audio_policy.default.so
 system/lib/hw/audio.primary.k3v2oem1.so
@@ -26,7 +26,6 @@ system/lib/libdolbyaudioeffectnativeservice.so
 system/lib/libdolbymobileaudioeffect_jni.so
 system/lib/libMirrorAudioService.so
 system/lib/libmirror_media.so
-system/lib/hw/libbcmfm_if.so
 
 system/lib/libstagefright_soft_rawdec.so
 system/lib/libstagefright_soft_mpeg4dec.so
@@ -59,15 +58,23 @@ system/lib/libstagefright_chromium_http.so
 
 system/lib/libmediaplayerservice.so
 
+
 #Camera
 system/lib/hw/camera.k3v2oem1.so
 system/lib/libcamera_core.so
 system/lib/libcamera_scalado.so
 system/lib/libimageinfo.so
 system/lib/libgnuexif.so
+system/lib/libRedEye.so
 #system/lib/libskia.so
 system/lib/libhelixplayer.so
 system/lib/libwvm.so
+
+
+#FM Radio
+system/lib/hw/libbcmfm_if.so
+system/lib/libfm_hal.so
+system/lib/libfm_volume.so
 
 #Sensors
 system/lib/hw/sensors.k3v2oem1.so
@@ -105,7 +112,6 @@ system/bin/imc_poweron
 #other libs
 system/lib/libGLSLC.so
 system/lib/libgui.so
-system/lib/libRedEye.so
 system/lib/lib_8290.so
 system/lib/lib_g1.so
 system/lib/libk3jpeg.so

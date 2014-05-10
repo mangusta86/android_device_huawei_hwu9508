@@ -109,12 +109,13 @@ TARGET_PROVIDES_LIBAUDIO := true
 
 
 # RIL
-BOARD_RIL_CLASS :=../../../device/huawei/hwu9508/ril/K3V2OEM1RIL.java
+BOARD_RIL_CLASS :=../../../device/huawei/hwu9508/ril/MateRIL.java
 
 
 # Camera
 USE_CAMERA_STUB := true
-
+USE_CAMERA_STUB := false
+COMMON_GLOBAL_CFLAGS += -DMR0_CAMERA_BLOB
 
 ## FM Radio
 BOARD_HAVE_FM_RADIO := true

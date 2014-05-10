@@ -50,6 +50,7 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilts/etc/asound_ce_NDLR.dat:system/etc/asound_ce_NDLR.dat \
 	$(LOCAL_PATH)/prebuilts/etc/asound_NDLR.dat:system/etc/asound_NDLR.dat \
 	$(LOCAL_PATH)/prebuilts/etc/tpa2028.cfg:system/etc/tpa2028.cfg \
+	$(LOCAL_PATH)/prebuilts/etc/dolby_config.xml:system/etc/dolby_config.xml \
         $(LOCAL_PATH)/prebuilts/etc/audio_policy.conf:system/etc/audio_policy.conf 
     
 PRODUCT_PACKAGES += \

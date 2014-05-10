@@ -14,7 +14,7 @@ system/lib/liboverlay.so
 system/bin/surfaceflinger
 system/bin/orientationd
 
-#dolby service
+#dolby
 system/lib/soundfx/libdolbymobileeffect.so
 system/lib/libdolbyaudioeffectnativeservice.so
 system/lib/libdolbymobileaudioeffect_jni.so

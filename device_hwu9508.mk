@@ -188,6 +188,13 @@ PRODUCT_PACKAGES += \
        com.android.future.usb.accessory \
        make_ext4fs 
 
+PRODUCT_PROPERTY_OVERRIDES+= \
+dalvik.vm.execution-mode=int:jit \
+dalvik.vm.dexopt-flags=v=a,o=v,m=y,u=y \
+dalvik.vm.checkjni=0 \
+dalvik.vm.debug.alloc=0 \
+dalvik.vm.dexopt-data-only=1 
+
 $(call inherit-product, build/target/product/full.mk)
 
 # call dalvik heap config

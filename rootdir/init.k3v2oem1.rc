@@ -1,31 +1,47 @@
 import init.k3v2oem1.usb.rc
+import init.k3v2oem1.cpu.rc
 
 on early-init
-    # See storage config details at http://source.android.com/tech/storage/
-    export SECONDARY_STORAGE /mnt/ext_sdcard
+
+# create mountpoints
+    mkdir /mnt 0775 root system
     mkdir /mnt/shell 0710 shell shell
     mkdir /storage 0555 root sdcard_r
     mkdir /mnt/shell/emulated 0700 shell shell
     mkdir /storage/emulated 0555 root root
 
-    export EXTERNAL_STORAGE /storage/emulated/0
-    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
-    export EMULATED_STORAGE_TARGET /storage/emulated
-
-    # Support legacy paths
-    symlink /storage/emulated/0 /sdcard
-    symlink /storage/emulated/0 /mnt/sdcard
-    symlink /storage/emulated/0 /storage/sdcard0
-    symlink /mnt/shell/emulated/0 /storage/emulated/0
-
 # create Ext SDcard mountpoint
     mkdir /mnt/ext_sdcard 0000 system system
     symlink /mnt/ext_sdcard /mnt/sdcard2
-    symlink /mnt/ext_sdcard /storage/sdcard1
-
-
+    symlink /mnt/ext_sdcard /storage/sdcard1 
+# create USB OTG mountpoint
+    mkdir /mnt/usb 0000 system system
+    symlink /mnt/usb /mnt/usbdisk
+    symlink /mnt/usb /storage/usbdisk 
+	
+    export EXTERNAL_STORAGE /storage/emulated/legacy
+    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
+    export EMULATED_STORAGE_TARGET /storage/emulated
+	export MEDIA_STORAGE /data/share
+    export SECONDARY_STORAGE /mnt/ext_sdcard 
+    export EXTERNAL_USB_STORAGE /mnt/usb
+	
+    # Support legacy paths
+    symlink /storage/emulated/legacy /sdcard
+    symlink /storage/emulated/legacy /mnt/sdcard
+    symlink /storage/emulated/legacy /storage/sdcard0
+ #   symlink /storage/emulated/legacy /storage/emulated/0
+ #   symlink /mnt/shell/emulated/0 /storage/emulated/legacy
+	
 on fs
-    mount ext4 /dev/block/platform/hi_mci.1/by-name/cust /tmp wait rw
+    setprop ro.crypto.fuse_sdcard true 
+#*
+#on post-fs-data
+
+    mkdir /cust 0777 system system 
+    symlink /cust /data/cust
+    mkdir /mnt/usb 0777 system system 
+    mount ext4 /dev/block/platform/hi_mci.1/by-name/cust /cust wait rw
 
     mount ext4 /dev/block/mmcblk0p12 /modem/modem_image
     mount ext4 /dev/block/mmcblk0p13 /modem/nvm1

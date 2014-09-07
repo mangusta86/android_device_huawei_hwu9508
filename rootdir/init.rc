@@ -40,7 +40,7 @@ loglevel 3
     export ANDROID_STORAGE /storage
     export ASEC_MOUNTPOINT /mnt/asec
     export LOOP_MOUNTPOINT /mnt/obb
-    export BOOTCLASSPATH /system/framework/core.jar:/system/framework/core-junit.jar:/system/framework/bouncycastle.jar:/system/framework/ext.jar:/system/framework/framework.jar:/system/framework/hwframework.jar:/system/framework/telephony-common.jar:/system/framework/mms-common.jar:/system/framework/android.policy.jar:/system/framework/services.jar:/system/framework/apache-xml.jar
+    export BOOTCLASSPATH /system/framework/core.jar:/system/framework/core-junit.jar:/system/framework/bouncycastle.jar:/system/framework/ext.jar:/system/framework/framework.jar:/system/framework/hwextcamera.jar:/system/framework/telephony-common.jar:/system/framework/mms-common.jar:/system/framework/android.policy.jar:/system/framework/services.jar:/system/framework/apache-xml.jar:/system/framework/com.google.android.media.effects.jar:/system/framework/scalado_classes.jar:/system/framework/hwframework.jar
 
 # Backward compatibility
     symlink /system/etc /etc
@@ -98,7 +98,7 @@ loglevel 3
 
     write /proc/sys/kernel/panic_on_oops 1
     write /proc/sys/kernel/hung_task_timeout_secs 0
-    write /proc/cpu/alignment 4
+    #write /proc/cpu/alignment 4
     write /proc/sys/kernel/sched_latency_ns 10000000
     write /proc/sys/kernel/sched_wakeup_granularity_ns 2000000
     write /proc/sys/kernel/sched_compat_yield 1
@@ -160,12 +160,14 @@ on fs
     #mount yaffs2 mtd@system /system ro remount
     #mount yaffs2 mtd@userdata /data nosuid nodev
     #mount yaffs2 mtd@cache /cache nosuid nodev
+	wait /dev/block/mmcblk0p15
     mount ext4 /dev/block/mmcblk0p15 /system
     mount ext4 /dev/block/mmcblk0p15 /system ro remount
-    mount ext4 /dev/block/mmcblk0p16 /cache
+    mount ext4 /dev/block/mmcblk0p16 /cache nosuid nodev
     wait /dev/block/mmcblk0p18
-    exec /system/bin/e2fsck -p /dev/block/mmcblk0p18
-    mount ext4 /dev/block/mmcblk0p18 /data nosuid nodev noatime wait crypt discard,noauto_da_alloc,mblk_io_submit,data=writeback,commit=20,barrier=0
+#    exec /system/bin/e2fsck -p /dev/block/mmcblk0p18
+    mount ext4 /dev/block/mmcblk0p18 /data nosuid nodev 
+#noatime wait crypt discard,noauto_da_alloc,mblk_io_submit,data=writeback,commit=20,barrier=0
  
 
     chmod 0660 /sys/devices/virtual/usbswitch/usbsw/swstate
@@ -295,6 +297,7 @@ on post-fs-data
     # won't work.
     # Set indication (checked by vold) that we have finished this action
     #setprop vold.post_fs_data_done 1
+    mkdir /data/media 0770 media_rw media_rw
 
     chmod 0660 /dev/assd
     chown smartcard smartcard /dev/assd
@@ -303,6 +306,34 @@ on post-fs-data
     import /init.cm.rc
 
 on boot
+    # ondemand governor
+    chown system system /sys/devices/system/cpu/cpufreq/ondemand/boostfreq
+    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/boostfreq
+    chown system system /sys/devices/system/cpu/cpufreq/ondemand/boostpulse
+    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/boostpulse
+    chown system system /sys/devices/system/cpu/cpufreq/ondemand/boosttime
+    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
+    chown system system /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
+    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
+    chown system system /sys/devices/system/cpu/cpufreq/ondemand/down_differential
+    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/down_differential
+    chown system system /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
+    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
+    chown system system /sys/devices/system/cpu/cpufreq/ondemand/powersave_bias
+    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/powersave_bias
+    chown system system /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
+    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
+    chown system system /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
+    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
+
+    # Assume SMP uses shared cpufreq policy for all CPUs
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+
 # basic network init
     ifup lo
     hostname localhost
@@ -364,8 +395,12 @@ on boot
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/boostpulse_duration
 
     # Assume SMP uses shared cpufreq policy for all CPUs
-    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    chown root system /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+    chown root system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     chmod 0660 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    chown root system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 
     chown system system /sys/class/timed_output/vibrator/enable
     chown system system /sys/class/leds/keyboard-backlight/brightness
@@ -629,6 +664,9 @@ service media /system/bin/mediaserver
     user media
     group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc shell
     ioprio rt 4
+
+service sysinit /system/bin/sysinit
+    oneshot
 
 service bootanim /system/bin/bootanimation
     class main

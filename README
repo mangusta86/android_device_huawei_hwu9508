@@ -4,12 +4,12 @@ As most of you know at the moment we only have one version available of CM but i
 
 What's working
 -rild (proprietary) [xmm6260]
--wifi
+-wifi (proprietary)
 -3dhw (proprietary)
 -sensors (proprietary)
--gps (proprietary) + SpeedFIX(port from galaxy Note)
+-gps (proprietary)
 -USB-tethering
--lights (coded)
+-lights (proprietary)
 -audio (proprietary)
 -camera (proprietary+skia patch)
 -mobile signal detection (coded rilclass)
@@ -17,10 +17,8 @@ What's working
 -bluetooth
 -battery stats
 -HD Video
+-Dolby service
 
 what's not working
 -FM radio (MINOR)
--camera app forceclose but any other camera is ok (MAJOR)
 -long time booting (MINOR)
--LED notification needs adjustments
--mass storage mode under windows

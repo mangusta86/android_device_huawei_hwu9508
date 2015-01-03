@@ -73,7 +73,7 @@ ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
 ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
 
 # Graphics
-BOARD_EGL_CFG := device/huawei/common/prebuilt/lib/egl/egl.cfg
+BOARD_EGL_CFG := device/huawei/prebuilts/lib/egl/egl.cfg
 USE_OPENGL_RENDERER := true
 
 # Kernel

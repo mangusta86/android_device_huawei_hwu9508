@@ -301,7 +301,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilts/etc/es305.bin:system/etc/es305.bin \
     $(LOCAL_PATH)/prebuilts/etc/es305_uart.bin:system/etc/es305_uart.bin \
     $(LOCAL_PATH)/prebuilts/etc/k3_omx.cfg:system/etc/k3_omx.cfg \
-    $(LOCAL_PATH)/prebuilts/etc/ril_balong_radio.cfg:/system/etc/ril_balong_radio.cfg \
     $(LOCAL_PATH)/prebuilts/etc/ril_xgold_radio.cfg:/system/etc/ril_xgold_radio.cfg \
     $(LOCAL_PATH)/prebuilts/etc/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/prebuilts/etc/media_codecs.xml:system/etc/media_codecs.xml \

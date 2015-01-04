@@ -304,8 +304,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilts/etc/ril_xgold_radio.cfg:/system/etc/ril_xgold_radio.cfg \
     $(LOCAL_PATH)/prebuilts/etc/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/prebuilts/etc/media_codecs.xml:system/etc/media_codecs.xml \
-    $(LOCAL_PATH)/prebuilts/etc/media_profiles.xml:system/etc/media_profiles.xml \
-    $(LOCAL_PATH)/prebuilts/etc/asound_ADL.dat:system/etc/asound_ADL.dat
+    $(LOCAL_PATH)/prebuilts/etc/media_profiles.xml:system/etc/media_profiles.xml
+    #$(LOCAL_PATH)/prebuilts/etc/asound_ADL.dat:system/etc/asound_ADL.dat
 
 # Vold management
 PRODUCT_COPY_FILES += \
@@ -393,14 +393,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilts/etc/camera/tornado_front/TornadoI.ini:system/etc/camera/tornado_front/TornadoI.ini \
     $(LOCAL_PATH)/prebuilts/etc/camera/tracking/targettracking.xml:system/etc/camera/tracking/targettracking.xml \
     $(LOCAL_PATH)/prebuilts/usr/idc/hisik3_touchscreen.idc:system/usr/idc/hisik3_touchscreen.idc \
-    $(LOCAL_PATH)/prebuilts/usr/idc/cyttsp4_mt.idc:system/usr/idc/cyttsp4_mt.idc \
     $(LOCAL_PATH)/prebuilts/usr/idc/k3_keypad.idc:system/usr/idc/k3_keypad.idc \
-    $(LOCAL_PATH)/prebuilts/usr/idc/screenovate_keyboard.idc:system/usr/idc/screenovate_keyboard.idc \
-    $(LOCAL_PATH)/prebuilts/usr/idc/synaptics.idc:system/usr/idc/synaptics.idc \
-    $(LOCAL_PATH)/prebuilts/usr/idc/screenovate_mouse.idc:system/usr/idc/screenovate_mouse.idc \
     $(LOCAL_PATH)/prebuilts/usr/keylayout/k3_keypad.kl:system/usr/keylayout/k3_keypad.kl \
-    $(LOCAL_PATH)/prebuilts/usr/keylayout/screenovate_keyboard.kl:system/usr/keylayout/screenovate_keyboard.kl \
-    $(LOCAL_PATH)/prebuilts/usr/keychars/screenovate_keyboard.kcm:system/usr/keychars/screenovate_keyboard.kcm
 
 
 # This device have enough room for precise davick

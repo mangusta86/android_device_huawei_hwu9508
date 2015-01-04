@@ -92,8 +92,8 @@ BOARD_DATA_FILESYSTEM := ext4
 BOARD_DATA_FILESYSTEM_OPTIONS := rw
 
 # fix this up by examining /proc/mtd on a running device
-BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 8388608
+BOARD_BOOTIMAGE_PARTITION_SIZE := 8400896
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 8400896
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 939524096
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 5926551552
 BOARD_WANTS_EMMC_BOOT := true
@@ -129,7 +129,7 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/huawei/hwu9508/recovery/recovery_keys.c
 TARGET_RECOVERY_FSTAB := device/huawei/hwu9508/recovery/etc/recovery.fstab
 #BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_10x18.h\"
-TARGET_RECOVERY_INITRC := device/huawei/common/recovery/init.rc
+TARGET_RECOVERY_INITRC := device/huawei/hwu9508/recovery/init.rc
 TARGET_PROVIDES_RECOVERY_INIT_RC := true
 BOARD_RECOVERY_SWIPE := true
 BOARD_HAS_SDCARD_INTERNAL := true
@@ -168,7 +168,7 @@ TW_CRYPTO_REAL_BLKDEV := "/dev/block/platform/hi_mci.1/by-name/userdata"
 TW_CRYPTO_MNT_POINT := "/data"
 
 #BOARD_SEPOLICY_DIRS += \
-#    device/huawei/common/sepolicy
+#    device/huawei/hwu9508/sepolicy
 
 #BOARD_SEPOLICY_UNION += \
 #    bluetooth.te \

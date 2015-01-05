@@ -4,7 +4,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
 # Inherit from those products. Most specific first.
-#$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 $(call inherit-product, vendor/huawei/hwu9508/hwu9508-vendor.mk)
 
@@ -305,7 +306,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilts/etc/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/prebuilts/etc/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/prebuilts/etc/media_profiles.xml:system/etc/media_profiles.xml
-    #$(LOCAL_PATH)/prebuilts/etc/asound_ADL.dat:system/etc/asound_ADL.dat
 
 # Vold management
 PRODUCT_COPY_FILES += \

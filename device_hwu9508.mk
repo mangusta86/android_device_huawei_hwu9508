@@ -29,10 +29,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recovery/ueventd.k3v2oem1.rc:recovery/root/ueventd.k3v2oem1.rc \
     $(LOCAL_PATH)/recovery/ueventd.rc:recovery/root/ueventd.rc \
     $(LOCAL_PATH)/recovery/init.rc:recovery/root/init.rc \
-    $(LOCAL_PATH)/recovery/file_contexts:recovery/root/file_contexts \
-    $(LOCAL_PATH)/recovery/property_contexts:recovery/root/property_contexts \
-    $(LOCAL_PATH)/recovery/seapp_contexts:recovery/root/seapp_contexts \
-    $(LOCAL_PATH)/recovery/sepolicy:recovery/root/sepolicy \
     $(LOCAL_PATH)/recovery/res/images/720x1280/batt_level_scale.png:recovery/root/res/images/720x1280/batt_level_scale.png \
     $(LOCAL_PATH)/recovery/res/images/720x1280/batt_level_top.png:recovery/root/res/images/720x1280/batt_level_top.png \
     $(LOCAL_PATH)/recovery/res/images/720x1280/bg.png:recovery/root/res/images/720x1280/bg.png \
@@ -488,11 +484,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vold.switchablepair=yes \
     ro.opengles.version=131072
 
-PRODUCT_PROPERTY_OVERRIDES+= dalvik.vm.execution-mode=int:jit \
-dalvik.vm.dexopt-flags=v=a,o=v,m=y,u=y \
-dalvik.vm.checkjni=0 \
-dalvik.vm.debug.alloc=0 \
-dalvik.vm.dexopt-data-only=1 
 
 $(call inherit-product, build/target/product/full.mk)
 

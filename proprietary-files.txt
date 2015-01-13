@@ -145,6 +145,7 @@ system/lib/lib_8290.so
 system/lib/lib_g1.so
 system/lib/libk3jpeg.so
 system/lib/libmrc_cg_postprocess.so
+system/lib/liblog.so
 
 #other binaries
 system/bin/am

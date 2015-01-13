@@ -300,6 +300,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilts/etc/k3_omx.cfg:system/etc/k3_omx.cfg \
     $(LOCAL_PATH)/prebuilts/etc/ril_xgold_radio.cfg:/system/etc/ril_xgold_radio.cfg \
     $(LOCAL_PATH)/prebuilts/etc/audio_policy.conf:system/etc/audio_policy.conf \
+    $(LOCAL_PATH)/prebuilts/etc/audio_effects.conf:system/etc/audio_effects.conf \
     $(LOCAL_PATH)/prebuilts/etc/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/prebuilts/etc/media_profiles.xml:system/etc/media_profiles.xml
 
@@ -414,7 +415,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilts/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
 	$(LOCAL_PATH)/prebuilts/bin/gps.cer:system/bin/gps.cer \
-	$(LOCAL_PATH)/prebuilts/etc/gpsconfig.xml:system/etc/gpsconfig.xml
+	$(LOCAL_PATH)/prebuilts/etc/gpsconfig.xml:system/etc/gpsconfig.xml \
+	$(LOCAL_PATH)/prebuilts/etc/gps.conf:system/etc/gps.conf 
 
 PRODUCT_PACKAGES += \
     wpa_supplicant.conf \

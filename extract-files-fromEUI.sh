@@ -19,7 +19,7 @@ DEVICE=hwu9508
 DEVICEBASE=../../../vendor/$VENDOR/$DEVICE
 DEVICEMAKEFILE=$DEVICEBASE/$DEVICE-vendor-blobs.mk
 COMMONPROPS=proprietary-files.txt
-EUIFOLDER=~/Huawei_DEV/B804
+EUIFOLDER=~/Huawei_DEV/B804_org
 
 
 echo "Copying device specific files from EUI..."

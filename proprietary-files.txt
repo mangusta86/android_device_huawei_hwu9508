@@ -12,23 +12,21 @@ system/lib/libsurfaceflinger.so
 system/lib/libsurfaceflinger_client.so
 system/lib/liboverlay.so
 system/bin/surfaceflinger
+system/bin/mediaserver
 system/bin/orientationd
 
-#dolby service
-system/lib/soundfx/libdolbymobileeffect.so
-system/lib/libdolbyaudioeffectnativeservice.so
-system/lib/libdolbymobileaudioeffect_jni.so
-
-#Audio and mediaserver
+#Audio
 system/lib/libmedia.so
-system/bin/mediaserver
 #system/lib/hw/audio.a2dp.default.so
 system/lib/hw/audio_policy.default.so
 system/lib/hw/audio.primary.k3v2oem1.so
 system/lib/libaudio-resampler.so
 system/lib/libaudioflinger.so
+system/lib/libdolbyaudioeffectnativeservice.so
+system/lib/libdolbymobileaudioeffect_jni.so
 system/lib/libMirrorAudioService.so
 system/lib/libmirror_media.so
+#system/lib/hw/libbcmfm_if.so
 
 system/lib/libstagefright_soft_rawdec.so
 system/lib/libstagefright_soft_mpeg4dec.so
@@ -61,35 +59,15 @@ system/lib/libstagefright_chromium_http.so
 
 system/lib/libmediaplayerservice.so
 
-system/framework/hwframework.jar
-
-
 #Camera
 system/lib/hw/camera.k3v2oem1.so
 system/lib/libcamera_core.so
-system/lib/libcamera_client.so
-system/lib/libcamera_metadata.so
-system/lib/libcamera_scalado.so
-system/lib/libcameraservice.so
+#system/lib/libcamera_scalado.so
 system/lib/libimageinfo.so
 system/lib/libgnuexif.so
-system/lib/libRedEye.so
 #system/lib/libskia.so
-system/lib/libhelixplayer.so
-system/lib/libwvm.so
-system/lib/libui.so
-system/lib/libvpp.so
-system/lib/libgui.so
-
-system/framework/com.google.android.media.effects.jar
-system/framework/scalado_classes.jar
-system/framework/hwextcamera.jar
-
-
-#FM Radio
-system/lib/hw/libbcmfm_if.so
-system/lib/libfm_hal.so
-system/lib/libfm_volume.so
+#system/lib/libhelixplayer.so
+#system/lib/libwvm.so
 
 #Sensors
 system/lib/hw/sensors.k3v2oem1.so
@@ -101,9 +79,6 @@ system/bin/geomagneticd
 system/lib/hw/gps.k3v2oem1.so
 system/bin/glgps
 system/bin/gpslogd
-
-#Lights
-system/lib/hw/lights.default.so
 
 #Bluetooth
 #system/lib/hw/bluetooth.default.so
@@ -127,7 +102,13 @@ system/bin/Injection_nv
 system/bin/nvm_server
 system/bin/imc_poweron
 
-#OMX
+#other libs
+system/lib/libGLSLC.so
+system/lib/libgui.so
+#system/lib/libRedEye.so
+system/lib/lib_8290.so
+system/lib/lib_g1.so
+system/lib/libk3jpeg.so
 system/lib/lib_k3_ffmpeg.so
 system/lib/lib_k3_omx_avc.so
 system/lib/lib_k3_omx_avcenc.so
@@ -138,13 +119,12 @@ system/lib/lib_k3_omx_vc1.so
 system/lib/lib_k3_omx_vp8.so
 system/lib/lib_k3_omxcore.so
 system/lib/libisdb_omxcore.so
-
-#other libs
-system/lib/libGLSLC.so
-system/lib/lib_8290.so
-system/lib/lib_g1.so
-system/lib/libk3jpeg.so
+system/lib/libclcore.bc
+system/lib/libclcore_neon.bc
 system/lib/libmrc_cg_postprocess.so
+system/lib/libui.so
+system/lib/libvpp.so
+
 
 #other binaries
 system/bin/am
@@ -155,73 +135,15 @@ system/bin/hostapd
 system/bin/ime
 system/bin/input
 system/bin/monkey
-system/bin/pcscd
+#system/bin/pcscd
 system/bin/pm
 system/bin/requestsync
 system/bin/settings
 system/bin/svc
-system/bin/testpcsc
-system/bin/testpcsc_sendapdu
+#system/bin/testpcsc
+#system/bin/testpcsc_sendapdu
 system/bin/uiautomator
-system/bin/wl
-
-
-#DLNA
-system/app/HwDLNA.apk
-
-system/lib/helix/hxnetwksvc.so
-system/lib/helix/dtdrplin.so
-system/lib/helix/drv2.so
-system/lib/helix/vidsite.so
-system/lib/helix/smlrender.so
-system/lib/helix/drvc.so
-system/lib/helix/rtspclnt.so
-system/lib/helix/cvt1.so
-system/lib/helix/rarender.so
-system/lib/helix/hxmedplyeng.so
-system/lib/helix/asxrender.so
-system/lib/helix/hxsdp.so
-system/lib/helix/ramrender.so
-system/lib/helix/wm9v.so
-system/lib/helix/raac.so
-system/lib/helix/wma9.so
-system/lib/helix/rv40.so
-system/lib/helix/wmvrender.so
-system/lib/helix/vidplin.so
-system/lib/helix/hxmedpltfm.so
-system/lib/helix/ralf.so
-system/lib/helix/audplin.so
-system/lib/helix/wmerender.so
-system/lib/helix/smlfformat.so
-system/lib/helix/wmv9.so
-system/lib/helix/authmgr.so
-system/lib/helix/colorcvt.so
-system/lib/helix/omxv.so
-system/lib/helix/smplfsys.so
-system/lib/helix/cook.so
-system/lib/helix/rv20.so
-system/lib/helix/asxff.so
-system/lib/helix/wmaA.so
-system/lib/helix/atrc.so
-system/lib/helix/hxdtdriver.so
-system/lib/helix/rvrender.so
-system/lib/helix/sipr.so
-system/lib/helix/rmfformat.so
-system/lib/helix/wmv8.so
-system/lib/helix/httplivefformat.so
-system/lib/helix/wmarender.so
-system/lib/helix/clntxres.so
-system/lib/helix/hxxml.so
-system/lib/helix/ramfformat.so
-system/lib/helix/asfff.so
-system/lib/helix/rv30.so
-system/lib/helix/nullrend.so
-system/lib/helix/hxltcolor.so
-system/lib/helix/rtspfformat.so
-system/lib/helix/wmp4.so
-system/lib/helix/rn5auth.so
-system/lib/helix/httpfsys.so
-
+#system/bin/wl
 
 #vendor blob
 system/isp.bin

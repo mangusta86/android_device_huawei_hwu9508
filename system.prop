@@ -6,10 +6,15 @@ rild.libpath=/system/lib/libxgold-ril.so
 rild.libargs=-d /dev/ttyACM0
 rild.cfgfile=/system/etc/ril_xgold_radio.cfg
 audioril.lib=libhuawei-audio-ril.so
-
-ro.telephony.ril_class=MateRIL
-
 ro.ril.ecclist=112,911,#911,*911
+ro.telephony.ril_class=AscendP6RIL
 
 ro.sf.lcd_density=320
-hw.lcd.density=320
+
+ro.config.pppoe_enable=1
+ro.config.KeyPassToUser=true
+ro.config.keypasstouser=true
+ro.config.enable.telecom_epush=false
+ro.hwcamera.startbypowervolume=false
+ro.hwcamera.fastcapture=false
+ro.hwcamera.sound.muteable=true

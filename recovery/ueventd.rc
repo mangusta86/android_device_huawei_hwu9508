@@ -37,6 +37,7 @@
 /dev/mux6                0666   root       root
 /dev/mux7                0666   root       root
 /dev/mux8                0666   root       root
+# for CTS test:events can be read, others can't be read
 /dev/mux9                0660   radio      radio
 /dev/mux10               0660   radio      radio
 /dev/mux11               0660   radio      radio
@@ -64,13 +65,12 @@
 /dev/mux_qsc7            0666   root       root
 /dev/mux_qsc8            0666   root       root
 /dev/mux_qsc9            0666   root       root
-/dev/mux_qsc10            0666   root       root
+/dev/mux_qsc10           0666   root       root
 
 # logger should be world writable (for logging) but not readable
-# for CTS test:events can be read, others can't be read
-/dev/log/*                0662   root       log
+/dev/log/*                0666   root       log
 /dev/log/events           0666   root       log
-/dev/smart/*              0662   system       system
+/dev/smart/*              0666   system       system
 # the msm hw3d client device node is world writable/readable.
 /dev/msm_hw3dc            0666   root       root
 
@@ -86,7 +86,8 @@
 /dev/android_adb          0660   adb        adb
 /dev/android_adb_enable   0660   adb        adb
 /dev/ttyMSM0              0600   bluetooth  bluetooth
-/dev/uinput               0660   system     bluetooth
+/dev/uhid                 0660   system     net_bt_stack
+/dev/uinput               0660   system     net_bt_stack
 /dev/alarm                0664   system     radio
 /dev/tty0                 0660   root       system
 /dev/graphics/*           0660   root       graphics
@@ -154,13 +155,46 @@
 /sys/devices/virtual/input/input*   enable      0660  root   input
 /sys/devices/virtual/input/input*   poll_delay  0660  root   input
 /sys/devices/virtual/usb_composite/*   enable      0664  root   system
-# felica
-/dev/ttyAMA3              0600   felica     felica
-/dev/felica               0600   felica     felica
-/dev/felica_cen           0644   flock      system
-/dev/felica_int           0400   system     system
-/dev/felica_pon           0200   felica     felica
-/dev/felica_rfs           0444   felica     felica
-/dev/felica_rws           0644   system     system
+
 #nfc
 /dev/pn544                0600   nfc        nfc
+
+/sys/devices/system/cpu/cpufreq ondemand/boostfreq   0664    system  system
+/sys/devices/system/cpu/cpufreq ondemand/boostpulse  0664    system  system
+/sys/devices/system/cpu/cpufreq ondemand/boosttime   0664    system  system
+/sys/devices/system/cpu/cpufreq ondemand/input_boost   0664    system  system
+/sys/devices/system/cpu/cpufreq ondemand/sampling_rate   0664    system  system
+/sys/devices/system/cpu/cpufreq ondemand/sampling_rate_min   0664    system  system
+/sys/devices/system/cpu/cpufreq ondemand/ignore_nice_load   0664    system  system
+/sys/devices/system/cpu/cpufreq ondemand/io_is_busy      0664    system  system
+/sys/devices/system/cpu/cpufreq ondemand/down_differential   0664    system  system
+/sys/devices/system/cpu/cpufreq ondemand/powersave_bias  0664    system  system
+/sys/devices/system/cpu/cpufreq ondemand/sampling_down_factor    0664    system  system
+/sys/devices/system/cpu/cpufreq ondemand/up_threshold   0664    system  system
+/sys/devices/system/cpu/cpufreq ondemand/up_threshold_multi_core   0664    system  system
+/sys/devices/system/cpu/cpufreq ondemand/down_differential_multi_core   0664    system  system
+/sys/devices/system/cpu/cpufreq ondemand/optimal_freq   0664    system  system
+/sys/devices/system/cpu/cpufreq ondemand/sync_freq   0664    system  system
+/sys/devices/system/cpu/cpufreq ondemand/up_threshold_any_cpu_load   0664    system  system
+/sys/devices/system/cpu/cpufreq ondemand/up_threshold_multi_core   0664    system  system
+
+/sys/devices/system/cpu/cpufreq interactive/boost  0664    system  system
+/sys/devices/system/cpu/cpufreq interactive/boostpulse  0664    system  system
+/sys/devices/system/cpu/cpufreq interactive/boostpulse_duration  0664    system  system
+/sys/devices/system/cpu/cpufreq interactive/timer_rate  0664    system  system
+/sys/devices/system/cpu/cpufreq interactive/min_sample_rate 0664    system  system
+/sys/devices/system/cpu/cpufreq interactive/min_sample_time 0664    system  system
+/sys/devices/system/cpu/cpufreq interactive/sampling_down_factor 0664    system  system
+/sys/devices/system/cpu/cpufreq interactive/sync_freq 0664    system  system
+/sys/devices/system/cpu/cpufreq interactive/target_loads 0664    system  system
+/sys/devices/system/cpu/cpufreq interactive/hispeed_freq    0664    system  system
+/sys/devices/system/cpu/cpufreq interactive/go_hispeed_load 0664    system  system
+/sys/devices/system/cpu/cpufreq interactive/above_hispeed_delay 0664    system  system
+/sys/devices/system/cpu/cpufreq interactive/io_is_busy      0664    system  system
+/sys/devices/system/cpu/cpufreq interactive/timer_slack      0664    system  system
+/sys/devices/system/cpu/cpufreq interactive/up_threshold_any_cpu_freq      0664    system  system
+/sys/devices/system/cpu/cpufreq interactive/up_threshold_any_cpu_load      0664    system  system
+
+/sys/devices/system/cpu/cpu* cpufreq/scaling_max_freq   0664    system  system
+/sys/devices/system/cpu/cpu* cpufreq/scaling_min_freq   0664    system  system
+/sys/devices/system/cpu/cpu* cpufreq/scaling_governor   0664    system  system

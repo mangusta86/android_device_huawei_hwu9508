@@ -3,7 +3,7 @@
 # IMPORTANT: Do not create world writable files or directories.
 # This is a common source of Android security bugs.
 #
-
+import /init.environ.rc
 import /init.usb.rc
 import /init.k3v2oem1.rc
 import /init.trace.rc
@@ -23,24 +23,13 @@ on early-init
     mkdir /storage 0050 root sdcard_r
     # Create mountpoint so Dalvik can mark as slave in zygotes.
     mount tmpfs tmpfs /storage mode=0050,uid=0,gid=1028
+	mkdir /mnt/usb 0775 root system
 
 on init
 
 sysclktz 0
 
 loglevel 3
-
-# setup the global environment
-    export PATH /sbin:/vendor/bin:/system/sbin:/system/bin:/system/xbin
-    export LD_LIBRARY_PATH /vendor/lib:/system/lib
-    export ANDROID_BOOTLOGO 1
-    export ANDROID_ROOT /system
-    export ANDROID_ASSETS /system/app
-    export ANDROID_DATA /data
-    export ANDROID_STORAGE /storage
-    export ASEC_MOUNTPOINT /mnt/asec
-    export LOOP_MOUNTPOINT /mnt/obb
-    export BOOTCLASSPATH /system/framework/core.jar:/system/framework/core-junit.jar:/system/framework/bouncycastle.jar:/system/framework/ext.jar:/system/framework/framework.jar:/system/framework/hwextcamera.jar:/system/framework/telephony-common.jar:/system/framework/mms-common.jar:/system/framework/android.policy.jar:/system/framework/services.jar:/system/framework/apache-xml.jar:/system/framework/com.google.android.media.effects.jar:/system/framework/scalado_classes.jar:/system/framework/hwframework.jar
 
 # Backward compatibility
     symlink /system/etc /etc
@@ -55,6 +44,19 @@ loglevel 3
     mount cgroup none /acct cpuacct
     mkdir /acct/uid
 
+# Create cgroup mount point for memory
+    mount tmpfs none /sys/fs/cgroup mode=0750,uid=0,gid=1000
+    mkdir /sys/fs/cgroup/memory 0750 root system
+    mount cgroup none /sys/fs/cgroup/memory memory
+    write /sys/fs/cgroup/memory/memory.move_charge_at_immigrate 1
+    chown root system /sys/fs/cgroup/memory/tasks
+    chmod 0660 /sys/fs/cgroup/memory/tasks
+    mkdir /sys/fs/cgroup/memory/sw 0750 root system
+    write /sys/fs/cgroup/memory/sw/memory.swappiness 100
+    write /sys/fs/cgroup/memory/sw/memory.move_charge_at_immigrate 1
+    chown root system /sys/fs/cgroup/memory/sw/tasks
+    chmod 0660 /sys/fs/cgroup/memory/sw/tasks
+
     mkdir /system
     mkdir /data 0771 system system
     mkdir /cache 0771 system cache
@@ -62,9 +64,10 @@ loglevel 3
 
     # See storage config details at http://source.android.com/tech/storage/
     mkdir /mnt/shell 0700 shell shell
-    # Ensure permissions are set appropriately after device early-init.
-    mkdir /storage 0050 root sdcard_r
+    mkdir /mnt/media_rw 0700 media_rw media_rw
+    mkdir /storage 0751 root sdcard_r
 
+    mkdir /cust
     mkdir /modem
     mkdir /modem/modem_image
     mkdir /modem/nvm1
@@ -77,7 +80,7 @@ loglevel 3
 
     # Directory for staging bindmounts
     mkdir /mnt/secure/staging 0700 root root
-
+    mkdir /mnt/secure/fuse_temp 0700 root root
 
     # Directory-target for where the secure container
     # imagefile directory will be bind-mounted
@@ -91,23 +94,21 @@ loglevel 3
     mkdir /mnt/obb 0700 root system
     mount tmpfs tmpfs /mnt/obb mode=0755,gid=1000
 
-    # Fuse public mount points.
-    mkdir /mnt/secure/fuse_temp 0700 root root
- #   mkdir /mnt/fuse 0700 root system
- #   mount tmpfs tmpfs /mnt/fuse mode=0775,gid=1000
-
     write /proc/sys/kernel/panic_on_oops 1
     write /proc/sys/kernel/hung_task_timeout_secs 0
-    #write /proc/cpu/alignment 4
+    write /proc/cpu/alignment 4
     write /proc/sys/kernel/sched_latency_ns 10000000
     write /proc/sys/kernel/sched_wakeup_granularity_ns 2000000
     write /proc/sys/kernel/sched_compat_yield 1
     write /proc/sys/kernel/sched_child_runs_first 0
-    write /sys/module/usbcore/parameters/autosuspend 2
+    chmod 0664 /sys/module/usbcore/parameters/autosuspend
+    chown radio radio /sys/module/usbcore/parameters/autosuspend
+    write /sys/module/usbcore/parameters/autosuspend 2000
     write /proc/sys/kernel/randomize_va_space 2
     write /proc/sys/kernel/kptr_restrict 2
     write /proc/sys/kernel/dmesg_restrict 1
     write /proc/sys/vm/mmap_min_addr 32768
+    write /proc/sys/net/ipv4/ping_group_range "0 2147483647"
     write /proc/sys/kernel/sched_rt_runtime_us 950000
     write /proc/sys/kernel/sched_rt_period_us 1000000
 
@@ -153,21 +154,18 @@ loglevel 3
     # change nve device visit permission
     wait /dev/nve0
     chmod 0777 /dev/nve0
+
+# Create location for fs_mgr to store abbreviated output from filesystem
+# checker programs.
+    mkdir /dev/fscklogs 0770 root system
 on fs
 # mount mtd partitions
-    # Mount /system rw first to give the filesystem a chance to save a checkpoint
-    #mount yaffs2 mtd@system /system //the following 4 lines is not useful,it is used by emulator. so delete it. wangdedong
-    #mount yaffs2 mtd@system /system ro remount
-    #mount yaffs2 mtd@userdata /data nosuid nodev
-    #mount yaffs2 mtd@cache /cache nosuid nodev
-	wait /dev/block/mmcblk0p15
     mount ext4 /dev/block/mmcblk0p15 /system
     mount ext4 /dev/block/mmcblk0p15 /system ro remount
-    mount ext4 /dev/block/mmcblk0p16 /cache nosuid nodev
+    mount ext4 /dev/block/mmcblk0p16 /cache
     wait /dev/block/mmcblk0p18
-#    exec /system/bin/e2fsck -p /dev/block/mmcblk0p18
-    mount ext4 /dev/block/mmcblk0p18 /data nosuid nodev 
-#noatime wait crypt discard,noauto_da_alloc,mblk_io_submit,data=writeback,commit=20,barrier=0
+    exec /system/bin/e2fsck -p /dev/block/mmcblk0p18
+    mount ext4 /dev/block/mmcblk0p18 /data nosuid nodev noatime wait crypt discard,noauto_da_alloc,mblk_io_submit,data=writeback,commit=20,barrier=0
  
 
     chmod 0660 /sys/devices/virtual/usbswitch/usbsw/swstate
@@ -226,17 +224,22 @@ on post-fs-data
     # Create dump dir and collect dumps.
     # Do this before we mount cache so eventually we can use cache for
     # storing dumps on platforms which do not have a dedicated dump partition.
-    mkdir /data/dontpanic 0750 root log
+    mkdir /data/dontpanic 0754 root log
 
     # Collect apanic data, free resources and re-arm trigger
     copy /proc/apanic_console /data/dontpanic/apanic_console
     chown root log /data/dontpanic/apanic_console
-    chmod 0640 /data/dontpanic/apanic_console
+    chmod 0644 /data/dontpanic/apanic_console
 
     copy /proc/apanic_threads /data/dontpanic/apanic_threads
     chown root log /data/dontpanic/apanic_threads
-    chmod 0640 /data/dontpanic/apanic_threads
-
+    chmod 0644 /data/dontpanic/apanic_threads
+    
+    copy /proc/apanic_srecorder /data/dontpanic/apanic_srecorder
+    chown root log /data/dontpanic/apanic_srecorder
+    chmod 0644 /data/dontpanic/apanic_srecorder
+    #DTS2012071909013 modified by z222844 for get log tools, end
+    
     write /proc/apanic_console 1
 
     # create basic filesystem structure
@@ -247,13 +250,16 @@ on post-fs-data
     mkdir /data/misc/bluetooth 0770 system system
     mkdir /data/misc/keystore 0700 keystore keystore
     mkdir /data/misc/keychain 0771 system system
+    mkdir /data/misc/radio 0770 system radio
     mkdir /data/misc/sms 0770 system radio
+    mkdir /data/misc/zoneinfo 0775 system system
     mkdir /data/misc/vpn 0770 system vpn
     mkdir /data/misc/systemkeys 0700 system system
     # give system access to wpa_supplicant.conf for backup and restore
     mkdir /data/misc/wifi 0770 wifi wifi
     chmod 0660 /data/misc/wifi/wpa_supplicant.conf
     mkdir /data/local 0751 root root
+    mkdir /data/misc/media 0700 media media
 
     # For security reasons, /data/local/tmp should always be empty.
     # Do not place files or directories in /data/local/tmp
@@ -266,7 +272,6 @@ on post-fs-data
     mkdir /data/property 0700 root root
     mkdir /data/ssh 0750 root shell
     mkdir /data/ssh/empty 0700 root root
-    mkdir /data/radio 0770 radio radio
 
     # create dalvik-cache and double-check the perms, so as to enforce our permissions
     mkdir /data/dalvik-cache 0771 system system
@@ -297,7 +302,6 @@ on post-fs-data
     # won't work.
     # Set indication (checked by vold) that we have finished this action
     #setprop vold.post_fs_data_done 1
-    mkdir /data/media 0770 media_rw media_rw
 
     chmod 0660 /dev/assd
     chown smartcard smartcard /dev/assd
@@ -306,34 +310,6 @@ on post-fs-data
     import /init.cm.rc
 
 on boot
-    # ondemand governor
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/boostfreq
-    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/boostfreq
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/boostpulse
-    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/boostpulse
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/boosttime
-    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
-    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/down_differential
-    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/down_differential
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
-    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/powersave_bias
-    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/powersave_bias
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
-    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
-    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
-
-    # Assume SMP uses shared cpufreq policy for all CPUs
-    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
-    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
-
 # basic network init
     ifup lo
     hostname localhost
@@ -395,12 +371,8 @@ on boot
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/boostpulse_duration
 
     # Assume SMP uses shared cpufreq policy for all CPUs
-    chown root system /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-    chown root system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     chmod 0660 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-    chown root system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
-    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 
     chown system system /sys/class/timed_output/vibrator/enable
     chown system system /sys/class/leds/keyboard-backlight/brightness
@@ -429,6 +401,17 @@ on boot
     chown system system /sys/kernel/ipv4/tcp_rmem_max
     chown root radio /proc/cmdline
     chown system system /sys/class/torch/torch_led/lightness
+
+    chown system system /sys/devices/platform/huawei_touch/touch_chip_info
+    chown system system /sys/devices/platform/huawei_touch/touch_glove
+    chown system system /sys/devices/platform/huawei_touch/touch_mmi_test
+    chown system system /sys/bus/ttsp4/devices/cyttsp4_device_access.main_ttsp_core/ic_grpnum
+    chown system system /sys/bus/ttsp4/devices/cyttsp4_device_access.main_ttsp_core/ic_grpdata
+    
+# Set these so we can remotely update SELinux policy
+    chown system system /sys/fs/selinux/load
+    chown system system /sys/fs/selinux/enforce
+
     chown system system /sys/class/compass/akm8963/enable_acc
     chown system system /sys/class/compass/akm8963/enable_mag
     chown system system /sys/class/compass/akm8963/enable_ori
@@ -468,6 +451,8 @@ on boot
 
     chown system system /dev/block/platform/hi_mci.1/by-name/oeminfo
     chmod 0660 /dev/block/platform/hi_mci.1/by-name/oeminfo
+    chown system system /dev/block/mmcblk0p6
+    chmod 0660 /dev/block/mmcblk0p6
 
 
 	chown system system /sys/devices/platform/huawei_touch/touch_chip_info
@@ -537,18 +522,31 @@ on property:vold.decrypt=trigger_shutdown_framework
     class_reset late_start
     class_reset main
 
-## Daemon processes to be run by init.
-##
+on property:sys.powerctl=*
+    powerctl ${sys.powerctl}
+
+# system server cannot write to /proc/sys files, so proxy it through init
+on property:sys.sysctl.extra_free_kbytes=*
+    write /proc/sys/vm/extra_free_kbytes ${sys.sysctl.extra_free_kbytes}
+
 service ueventd /sbin/ueventd
     class core
     critical
     seclabel u:r:ueventd:s0
 
+service healthd /sbin/healthd
+    class core
+    critical
+    seclabel u:r:healthd:s0
+
+service healthd-charger /sbin/healthd -n
+    class charger
+    critical
+    seclabel u:r:healthd:s0
+
 on property:selinux.reload_policy=1
     restart ueventd
     restart installd
-    chown -R system system /selinux/booleans
-    chown -R system system /sys/fs/selinux/booleans
 
 service console /system/bin/sh
     class core
@@ -579,6 +577,7 @@ service servicemanager /system/bin/servicemanager
     user system
     group system
     critical
+    onrestart restart healthd
     onrestart restart zygote
     onrestart restart media
     onrestart restart surfaceflinger
@@ -598,13 +597,35 @@ service netd /system/bin/netd
 service debuggerd /system/bin/debuggerd
     class main
 
+service pppd-gprs /system/bin/pppd call gprs
+    class main
+    user root
+    group radio cache inet misc audio sdcard_rw qcom_oncrpc diag
+    oneshot
+    disabled
+
+service pppd-evdo /system/bin/pppd call evdo
+    class main
+    user root
+    group radio cache inet misc audio sdcard_rw qcom_oncrpc diag
+    oneshot
+    disabled
+
+on early-boot
+    setprop rild.readytostart null
+
 service ril-daemon /system/bin/rild
     class main
     socket rild stream 660 root radio
     socket rild-debug stream 660 radio system
     user root
-    group radio cache inet misc audio sdcard_rw log system
+    group radio cache inet misc audio sdcard_r sdcard_rw log system
 
+service phs /system/xbin/phoneserver -v 0 -d 2
+    class main
+    user root
+    group radio cache inet misc audio sdcard_rw log
+	disabled
 
 service ril-daemon1 /system/bin/rild -c 1
     class main
@@ -635,11 +656,6 @@ service nvm-server /system/bin/nvm_server
     group radio
     #oneshot
 
-#service hdmi-daemon /system/bin/hdmi_daemon
-#    class main
-#    group system
-#    socket hdmi_daemon stream 660 root system graphics
-
 service surfaceflinger /system/bin/surfaceflinger
     class main
     user system
@@ -657,16 +673,13 @@ service zygote /system/bin/app_process -Xzygote /system/bin --zygote --start-sys
 service drm /system/bin/drmserver
     class main
     user drm
-    group drm system inet drmrpc sdcard_rw shell
+    group drm system inet drmrpc sdcard_rw shell sdcard_r
 
 service media /system/bin/mediaserver
     class main
     user media
-    group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc shell
+    group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc shell sdcard_rw sdcard_r
     ioprio rt 4
-
-service sysinit /system/bin/sysinit
-    oneshot
 
 service bootanim /system/bin/bootanimation
     class main
@@ -703,7 +716,6 @@ service keystore /system/bin/keystore /data/misc/keystore
     class main
     user keystore
     group keystore drmrpc
-    socket keystore stream 666
 
 service dumpstate /system/bin/dumpstate -s
     class main
@@ -739,3 +751,11 @@ service systemstattool /system/bin/systemstattool
 on property:ro.service.systemstattool=true
     start systemstattool
 
+service hw_modem_service /system/bin/hw_modem_service /dev/ttyGS0 /dev/mux_qsc6
+    class main
+    user root
+    disabled
+
+service hwnffserver /system/bin/hwnffserver
+    class main
+    socket hwnff stream 0660 root mount

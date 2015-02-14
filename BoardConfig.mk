@@ -73,7 +73,7 @@ ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
 ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
 
 # Graphics
-BOARD_EGL_CFG := device/huawei/common/prebuilt/lib/egl/egl.cfg
+BOARD_EGL_CFG := device/huawei/hwu9508/prebuilts/lib/egl/egl.cfg
 USE_OPENGL_RENDERER := true
 
 # Kernel
@@ -129,7 +129,7 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/huawei/hwu9508/recovery/recovery_keys.c
 TARGET_RECOVERY_FSTAB := device/huawei/hwu9508/recovery/etc/recovery.fstab
 #BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_10x18.h\"
-TARGET_RECOVERY_INITRC := device/huawei/common/recovery/init.rc
+TARGET_RECOVERY_INITRC := device/huawei/hwu9508/recovery/init.rc
 TARGET_PROVIDES_RECOVERY_INIT_RC := true
 BOARD_RECOVERY_SWIPE := true
 BOARD_HAS_SDCARD_INTERNAL := true
@@ -168,7 +168,7 @@ TW_CRYPTO_REAL_BLKDEV := "/dev/block/platform/hi_mci.1/by-name/userdata"
 TW_CRYPTO_MNT_POINT := "/data"
 
 #BOARD_SEPOLICY_DIRS += \
-#    device/huawei/common/sepolicy
+#    device/huawei/hwu9508/sepolicy
 
 #BOARD_SEPOLICY_UNION += \
 #    bluetooth.te \

@@ -1,14 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
-<glgps xmlns="http://www.glpals.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.glpals.com/glconfig.xsd" >
+﻿<?xml version="1.0" encoding="utf-8"?>
+<glgps xmlns="http://www.glpals.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.glpals.com/ glconfig.xsd" >
   <!--HAL Confguration  -->
-  <hal
+  <hal 
        acPortName="/dev/ttyAMA3"
        lBaudRate="115200"
-
+       
+       cLogEnabled="false"
+       Log="FILE"
        acLogDirectory="/data/gps/log/"
 
        gpioNStdbyPath="/sys/class/gpio/gpio151/value"
-       gpioDelayMs="250"
+       gpioDelayMs="100"
        acNvStoDir="/data/gps/"
        acNmeaOutName="/data/gps/gpspipe"
        ctrlPipe="/data/gps/glgpsctrl"	   
@@ -19,46 +21,44 @@
        arp-supl-cap-ecid="false"
        arp-supl-use-apn="false"
        acSuplServer="supl.google.com"
-       SuplPort="7276"
-       tlsCertPath="/system/bin/gps.cer"
-       tlsEnable="false"
+       SuplPort="7275"
+       tlsCertPath="/data/gps/gps.pem"
        ReAidingIntervalSec="1200"
        SuplUT1Seconds="20"
        SuplUT2Seconds="20"
        SuplUT3Seconds="20"
        SuplVersion="1"
+	   
        SuplLogEnable="false"
-       SuplLogFullName="/data/gps/supllog.txt"
-
-       LbsEnable="true"
-       LbsLocal="false"
-       LbsServer="BCMLS2.glpals.com"
-       LbsPort="7275"
-       LbsSyncLto="false"
-       SyncLto="true"
-       ltoFileName="lto2.dat"
+       SuplLogFullName="/data/share/log/gps/supllog.txt"
+       ltoFileName="lto2.dat" 
        LbsSyncLtoThresholdDays="3"
        acLtoDir="/data/gps/"
-       LbsTAC="10101222"
-       LbsWlanEnable="false"
+       LbsEnable="false"
+  />
+  <hal 
+	   SensorsEnable="true"
+	   SensorsMask="0F"
+	   SensorsLog="false"
+	   SensorsMoEnable="true" 
+	   SensorsTurnEnable="false"
+	   SensorsRawAcclGyroEnable="true"
+  />
 
-       IgnoreJniTime="true"
-   />
-
-  <gll
+  <gll 
        LogPriMask="LOG_INFO"
-       LogFacMask="LOG_GLLAPI | LOG_NMEA | LOG_RAWDATA"
-       FrqPlan="FRQ_PLAN_26MHZ_2PPM_26MHZ_300PPB"
+       LogFacMask="LOG_GLLAPI | LOG_NMEA " 
+       FrqPlan="FRQ_PLAN_26MHZ_2PPM"
        RfType="GL_RF_47511_BRCM_EXT_LNA"
        WarmStandbyTimeout1Seconds="10"
        WarmStandbyTimeout2Seconds="15"
-    >
+  >
   </gll>
+  
   <gll_features
-       EnableLowPowerEls="false"
-       EnableLowPowerPmm="true"
-   />
-
+	   EnableLowPowerEls="false"	  
+	   EnableLowPowerPmm="true"	   
+  />
 <job id="Periodic">
     <task>
         <req_pos/>

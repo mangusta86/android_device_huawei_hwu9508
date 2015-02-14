@@ -1,10 +1,8 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-# The gps config appropriate for this device
-$(call inherit-product, device/common/gps/gps_eu_supl.mk)
-
 # Inherit from those products. Most specific first.
-#$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 $(call inherit-product, vendor/huawei/hwu9508/hwu9508-vendor.mk)
 
@@ -28,10 +26,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recovery/ueventd.k3v2oem1.rc:recovery/root/ueventd.k3v2oem1.rc \
     $(LOCAL_PATH)/recovery/ueventd.rc:recovery/root/ueventd.rc \
     $(LOCAL_PATH)/recovery/init.rc:recovery/root/init.rc \
-    $(LOCAL_PATH)/recovery/file_contexts:recovery/root/file_contexts \
-    $(LOCAL_PATH)/recovery/property_contexts:recovery/root/property_contexts \
-    $(LOCAL_PATH)/recovery/seapp_contexts:recovery/root/seapp_contexts \
-    $(LOCAL_PATH)/recovery/sepolicy:recovery/root/sepolicy \
     $(LOCAL_PATH)/recovery/res/images/720x1280/batt_level_scale.png:recovery/root/res/images/720x1280/batt_level_scale.png \
     $(LOCAL_PATH)/recovery/res/images/720x1280/batt_level_top.png:recovery/root/res/images/720x1280/batt_level_top.png \
     $(LOCAL_PATH)/recovery/res/images/720x1280/bg.png:recovery/root/res/images/720x1280/bg.png \
@@ -301,12 +295,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilts/etc/es305.bin:system/etc/es305.bin \
     $(LOCAL_PATH)/prebuilts/etc/es305_uart.bin:system/etc/es305_uart.bin \
     $(LOCAL_PATH)/prebuilts/etc/k3_omx.cfg:system/etc/k3_omx.cfg \
-    $(LOCAL_PATH)/prebuilts/etc/ril_balong_radio.cfg:/system/etc/ril_balong_radio.cfg \
     $(LOCAL_PATH)/prebuilts/etc/ril_xgold_radio.cfg:/system/etc/ril_xgold_radio.cfg \
     $(LOCAL_PATH)/prebuilts/etc/audio_policy.conf:system/etc/audio_policy.conf \
+    $(LOCAL_PATH)/prebuilts/etc/audio_effects.conf:system/etc/audio_effects.conf \
     $(LOCAL_PATH)/prebuilts/etc/media_codecs.xml:system/etc/media_codecs.xml \
-    $(LOCAL_PATH)/prebuilts/etc/media_profiles.xml:system/etc/media_profiles.xml \
-    $(LOCAL_PATH)/prebuilts/etc/asound_ADL.dat:system/etc/asound_ADL.dat
+    $(LOCAL_PATH)/prebuilts/etc/media_profiles.xml:system/etc/media_profiles.xml
 
 # Vold management
 PRODUCT_COPY_FILES += \
@@ -394,14 +387,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilts/etc/camera/tornado_front/TornadoI.ini:system/etc/camera/tornado_front/TornadoI.ini \
     $(LOCAL_PATH)/prebuilts/etc/camera/tracking/targettracking.xml:system/etc/camera/tracking/targettracking.xml \
     $(LOCAL_PATH)/prebuilts/usr/idc/hisik3_touchscreen.idc:system/usr/idc/hisik3_touchscreen.idc \
-    $(LOCAL_PATH)/prebuilts/usr/idc/cyttsp4_mt.idc:system/usr/idc/cyttsp4_mt.idc \
     $(LOCAL_PATH)/prebuilts/usr/idc/k3_keypad.idc:system/usr/idc/k3_keypad.idc \
-    $(LOCAL_PATH)/prebuilts/usr/idc/screenovate_keyboard.idc:system/usr/idc/screenovate_keyboard.idc \
-    $(LOCAL_PATH)/prebuilts/usr/idc/synaptics.idc:system/usr/idc/synaptics.idc \
-    $(LOCAL_PATH)/prebuilts/usr/idc/screenovate_mouse.idc:system/usr/idc/screenovate_mouse.idc \
     $(LOCAL_PATH)/prebuilts/usr/keylayout/k3_keypad.kl:system/usr/keylayout/k3_keypad.kl \
-    $(LOCAL_PATH)/prebuilts/usr/keylayout/screenovate_keyboard.kl:system/usr/keylayout/screenovate_keyboard.kl \
-    $(LOCAL_PATH)/prebuilts/usr/keychars/screenovate_keyboard.kcm:system/usr/keychars/screenovate_keyboard.kcm
 
 
 # This device have enough room for precise davick
@@ -425,7 +412,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilts/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
 	$(LOCAL_PATH)/prebuilts/bin/gps.cer:system/bin/gps.cer \
-	$(LOCAL_PATH)/prebuilts/etc/gpsconfig.xml:system/etc/gpsconfig.xml
+	$(LOCAL_PATH)/prebuilts/etc/gpsconfig.xml:system/etc/gpsconfig.xml \
+	$(LOCAL_PATH)/prebuilts/etc/gps.conf:system/etc/gps.conf 
 
 PRODUCT_PACKAGES += \
     wpa_supplicant.conf \
@@ -495,11 +483,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vold.switchablepair=yes \
     ro.opengles.version=131072
 
-PRODUCT_PROPERTY_OVERRIDES+= dalvik.vm.execution-mode=int:jit \
-dalvik.vm.dexopt-flags=v=a,o=v,m=y,u=y \
-dalvik.vm.checkjni=0 \
-dalvik.vm.debug.alloc=0 \
-dalvik.vm.dexopt-data-only=1 
 
 $(call inherit-product, build/target/product/full.mk)
 
